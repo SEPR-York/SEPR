@@ -135,7 +135,17 @@ public class MainMenu implements Screen {
             }
         });
         buttons[1] = new TextButton("How to Play", menuButtonStyle);
+        buttons[1].addListener(new ChangeListener() {
+            public void changed(ChangeEvent event, Actor actor) {
+                game.setScreen(new GameScreen(game));
+            }
+        });
         buttons[2] = new TextButton("Leaderboard", menuButtonStyle);
+        buttons[2].addListener(new ChangeListener() {
+            public void changed(ChangeEvent event, Actor actor) {
+                game.setScreen(new GameScreen(game));
+            }
+        });
         //Initialise menu buttons using defined style
 
         //ADD TITLE BAR
