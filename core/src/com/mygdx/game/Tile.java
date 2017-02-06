@@ -26,9 +26,11 @@ public class Tile extends Button {
      */
     private final int tooltipWidth;
     /**
-     * Defines height of the tile's tooltip
+     * Defines height of each text line in tooltip and total sum of heights
      */
-    private final int tooltipHeight;
+    private final int tooltipHeightTotal;
+    private final int tooltipHeightLine1;
+    private final int tooltipHeightLine2;
     /**
      * Defines distance (in pixels) from cursor point to the lower-right (or upper-right) corner of the tile's tooltip
      * (on both axes)
@@ -50,6 +52,7 @@ public class Tile extends Button {
      * Defines the font of the text inside the tile's tooltip
      */
     private final TTFont tooltipFont;
+    private final TTFont tooltipFont2;
     /**
      * Holds game-state for the purpose of accessing the game's renderer
      */
@@ -131,8 +134,10 @@ public class Tile extends Button {
         this.ID = ID;
         //Import and save the tile's assigned getID
 
-        tooltipWidth = 76;
-        tooltipHeight = 33;
+        tooltipWidth = 155;
+        tooltipHeightLine1 = 29;
+        tooltipHeightLine2 = 21;
+        tooltipHeightTotal = tooltipHeightLine1 + tooltipHeightLine2;
         tooltipCursorSpace = 3;
         tooltipTextSpace = 3;
 
@@ -140,6 +145,7 @@ public class Tile extends Button {
         tooltipLineColor = Color.BLACK;
 
         tooltipFont = new TTFont(Gdx.files.internal("font/testfontbignoodle.ttf"), 36);
+        tooltipFont2 = new TTFont(Gdx.files.internal("font/testfontbignoodle.ttf"), 20);
         //Visual parameters of the tile's tooltip
 
         tooltipActive = false;
@@ -328,14 +334,16 @@ public class Tile extends Button {
      */
     public void drawTooltip() {
         if (tooltipActive == true) {
-            if (Gdx.input.getY() < tooltipHeight) {
-                drawer.borderedRectangle(tooltipFillColor, tooltipLineColor, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace, Gdx.input.getY() + tooltipCursorSpace, tooltipWidth, tooltipHeight, 1);
+            if (Gdx.input.getY() < tooltipHeightTotal) {
+                drawer.borderedRectangle(tooltipFillColor, tooltipLineColor, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace, Gdx.input.getY() + tooltipCursorSpace, tooltipWidth, tooltipHeightTotal, 1);
                 //Draw the tooltip's main space onto the screen in the region to the top-left of the cursor
                 drawer.text("Tile " + this.ID, tooltipFont, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() + tooltipCursorSpace + tooltipTextSpace);
+                drawer.text("Food: " + this.FoodCount + " Ore: " + this.OreCount + " Energy: " + this.EnergyCount, tooltipFont2, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() + tooltipHeightLine1 + tooltipCursorSpace + tooltipTextSpace);
                 //Draw an identification label in that space
             } else {
-                drawer.borderedRectangle(tooltipFillColor, tooltipLineColor, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace, Gdx.input.getY() - tooltipHeight - tooltipCursorSpace, tooltipWidth, tooltipHeight, 1);
-                drawer.text("Tile " + this.ID, tooltipFont, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() - tooltipHeight - tooltipCursorSpace + tooltipTextSpace);
+                drawer.borderedRectangle(tooltipFillColor, tooltipLineColor, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace, Gdx.input.getY() - tooltipHeightTotal - tooltipCursorSpace, tooltipWidth, tooltipHeightTotal, 1);
+                drawer.text("Tile " + this.ID, tooltipFont, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() - tooltipHeightTotal - tooltipCursorSpace + tooltipTextSpace);
+                drawer.text("Food: " + this.FoodCount + " Ore: " + this.OreCount + " Energy: " + this.EnergyCount, tooltipFont2, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() - tooltipHeightLine2 - tooltipCursorSpace + tooltipTextSpace);
                 //Do the same thing, but in the region to the bottom-left of the cursor if the cursor is near the
                 //top of the game's window
             }
