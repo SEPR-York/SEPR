@@ -18,6 +18,8 @@ public class LeaderboardBackend{
 	public static void main(String args[]){
 		LeaderboardBackend instance = new LeaderboardBackend();
 		instance.OpenFile();
+		String player = instance.ReturnBestPlayers();
+		System.out.println(player);
 		System.out.println("works");
 	}
 	
@@ -72,6 +74,29 @@ public class LeaderboardBackend{
 			e.printStackTrace();
 			return;
 		}
+	}
+	
+	public String ReturnBestPlayers(){
+		/*
+		 * This function will return the best three players that have played the game so that they are able to be diplayed
+		 * @return ArrayOfBestPlayers - This is an array of size three that contains the best three players 
+		 */
+		
+		ArrayList<String[]> AllThePlayers = getListofScores();
+		int MaxScore = 0;
+		String BestPlayer = "";
+		for (int i = 0; i < AllThePlayers.size(); i++){
+			int tmp = Integer.parseInt(AllThePlayers.get(i)[1]);
+			if (tmp > MaxScore){
+				MaxScore = tmp;
+				BestPlayer = AllThePlayers.get(i)[0];
+			}	
+		}
+		return(BestPlayer);
+	}
+	
+	public void AddNewPlayer(String Player, int score){
+		
 	}
 	
 	public ArrayList<String[]> getListofScores()
