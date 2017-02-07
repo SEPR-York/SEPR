@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class LeaderboardBackend{
 	
 	// Declaration and Initialisation of the array list of String Array
-	private ArrayList<String[]> ArrayOfPeArrayOfPeopleWithScoresopleWithScores = new ArrayList<String[]>();
+	private ArrayList<String[]> ArrayOfPeopleWithScores = new ArrayList<String[]>();
 	
 	
 	public static void main(String args[]){
@@ -64,7 +64,14 @@ public class LeaderboardBackend{
 
 		// Print out first element of the first array (Just for testing)
 		System.out.println(ArrayOfPeopleWithScores.get(0)[1]);
-		br.close();
+		try
+		{
+			br.close();		
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			return;
+		}
 	}
 	
 	public ArrayList<String[]> getListofScores()
