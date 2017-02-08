@@ -166,8 +166,13 @@ public class Roboticon {
         Modifiers[2] = foodLevel * n;
 
         return Modifiers;
-
-
+    }
+    
+    public Integer[] setProductionModifier(int ore, int energy, int food)
+    {
+    	Integer[] Modifiers = {ore, energy, food};
+    	
+    	return Modifiers;
     }
 
     /**

@@ -1,3 +1,5 @@
+package com.mygdx.game;
+
 /*
  * This Class handles the Gambling system of the game
  *@version 1.0.0
