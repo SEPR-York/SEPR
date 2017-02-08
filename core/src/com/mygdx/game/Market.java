@@ -45,7 +45,7 @@ public class Market extends Table {
      * Variable holding current Ore resource amount as an Integer, initialises at 0 as stated in the brief.
      */
     private Integer OreStock = 0;
-    
+
     /**
      * Variable holding current Food resource amount as an Integer, initialises at 16 as stated in the brief.
      */
@@ -851,14 +851,14 @@ public class Market extends Table {
         if (Stock == 0 && oper.equals("buy")) {
             costOfResources = 0;
         } else if (Stock == 0 && oper.equals("sell")) {
-            costOfResources = 200;
+            costOfResources = 20;
 
         } else if (oper.equals("buy")) {
-            cost = 160 / Stock + 2;
+            cost = 160 / Stock;
             costOfResources = (int) Math.round(cost);
 
         } else if (oper.equals("sell")) {
-            cost = 160 / Stock;
+            cost = 160 / (Stock + 2);
             int costInt = (int) Math.round(cost);
             if (costInt < 1) {
                 costOfResources = 1;
@@ -953,7 +953,3 @@ public class Market extends Table {
         }
     }
 }
-
-
-
-
