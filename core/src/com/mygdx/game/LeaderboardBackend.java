@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 
 /*
@@ -13,6 +14,46 @@ public class LeaderboardBackend{
 
 	// Declaration and Initialisation of the array list of String Array
 	private ArrayList<String[]> ArrayOfPeopleWithScores = new ArrayList<String[]>();
+	
+	
+	
+/*##############################################################################
+#
+#						GETTERS
+#
+##############################################################################*/
+	
+	
+	public ArrayList<String[]> getListofScores(){
+		return ArrayOfPeopleWithScores;
+	}
+	
+/*##############################################################################
+#
+#						Setters
+#
+##############################################################################*/
+	
+	public void AddPlayerToLeaderboard(String player,int score){
+		
+		/*
+		 * This class handles adding new players to the end of the Game save file
+		 * 
+		 * @param player - This is the name of the player that you want to store(type String)
+		 * @param score - the score of the player that you want to store (type int)
+		 */
+		try
+		{
+		    String filename= "GameSave.txt";
+		    FileWriter fw = new FileWriter(filename,true); //the true will append the new data
+		    fw.write(player + "," + Integer.toString(score) + ",\n");//appends the string to the file
+		    fw.close();
+		}
+		catch(IOException ioe)
+		{
+		    System.err.println("IOException: " + ioe.getMessage());
+		}
+	}
 
 
 	public static void main(String args[]){
@@ -22,6 +63,7 @@ public class LeaderboardBackend{
 		System.out.println(players[0][0]);
 		System.out.println(players[1][0]);
 		System.out.println(players[2][0]);
+		instance.AddPlayerToLeaderboard("ticks", 100);
 		System.out.println("works");
 	}
 
@@ -31,8 +73,7 @@ public class LeaderboardBackend{
 		try{
 			// Assign it given the file path
 			br = new BufferedReader(new FileReader("GameSave.txt"));
-		} catch (Exception e)
-		{
+		} catch (Exception e){
 			// Return on error, to be fixed with exception handling
 			e.printStackTrace();
 			return;
@@ -42,38 +83,28 @@ public class LeaderboardBackend{
 		String line;
 
 		// Attempt to read the line from file
-		try
-		{
+		try{
 			line = br.readLine();
-		} catch (Exception e)
-		{
+		} catch (Exception e){
 			e.printStackTrace();
 			return;
 		}
 
 		// While there is a line to read add it to the ArrayList
-		while (line != null)
-		{
+		while (line != null){
 			ArrayOfPeopleWithScores.add(line.split(","));
 			// Attempt to read the next line
-			try
-			{
+			try{
 				line = br.readLine();
-			} catch (Exception e)
-			{
+			} catch (Exception e){
 				e.printStackTrace();
 				return;
 			}
 		}
 
-
-		// Print out first element of the first array (Just for testing)
-		System.out.println(ArrayOfPeopleWithScores.get(0)[1]);
-		try
-		{
+		try{
 			br.close();
-		} catch (Exception e)
-		{
+		} catch (Exception e){
 			e.printStackTrace();
 			return;
 		}
@@ -96,8 +127,7 @@ public class LeaderboardBackend{
 		return(index);
 	}
 
-	public String[][] GetTopThree()
-	{
+	public String[][] GetTopThree(){
 		ArrayList<String[]> AllThePlayers = new ArrayList<String[]>(getListofScores());
 		String[][] retArray = new String[3][];
 		for (int i = 0; i < 3; i++)
@@ -111,18 +141,6 @@ public class LeaderboardBackend{
 
 	}
 
-	public void AddNewPlayer(String Player, int score){
 
-	}
-
-	public ArrayList<String[]> getListofScores()
-	{
-		return ArrayOfPeopleWithScores;
-	}
-
-	public void AddRecordToList(String[] arr)
-	{
-		ArrayOfPeopleWithScores.add(arr);
-	}
 
 }
