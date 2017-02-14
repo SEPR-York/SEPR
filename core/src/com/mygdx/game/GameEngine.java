@@ -186,125 +186,18 @@ public class GameEngine {
 
         timer.stop();
 
-        if(phase == 1){
-            if(tileAcquired == true) {
-                tileAcquired = false;
+        switch (phase) {
+            case 1: Phase1Setup();
+                    break;
+            case 2: Phase2Setup();
+                    break;
+            case 3: Phase3Setup();
+                    break;
+            case 4: Phase4Setup();
+                    break;
+            case 5: Phase5Setup();
+                    break;
 
-                if (currentPlayerID == 1) {
-                    switchCurrentPlayer();
-                } else {
-                    phase = 2;
-                    gameScreen.updatePhaseLabel("BUY ROBOTICONS");
-
-                    timer.setTime(0, 30);
-                    timer.start();
-                    //Reset the timer to 30 seconds and start it if the game is proceeding into phase 2
-
-                    switchCurrentPlayer();
-                    drawer.switchTextButton(gameScreen.endTurnButton(), true, Color.WHITE);
-                    //Once the game moves out of phase 1, re-enable the "end turn" button
-                    //This button is disabled during phase 1 to force players into claiming tiles
-
-                    market.refreshButtonAvailability();
-                    //Update the market's interface to allow for roboticons to be purchased
-                }
-            }
-        }
-        else if(phase == 2){
-            timer.setTime(0, 30);
-            timer.start();
-            //Reset the timer to 30 seconds, regardless of whether the game is staying in phase 2 or proceeding into phase 3
-
-            if(currentPlayerID == 1){
-                switchCurrentPlayer();
-
-                market.refreshButtonAvailability();
-                //Update the market interface for the other player
-            }
-            else{
-                phase = 3;
-                gameScreen.updatePhaseLabel("PLACE ROBOTICONS");
-
-                market.refreshButtonAvailability();
-                //Disable the market's interface
-
-                switchCurrentPlayer();
-            }
-
-            gameScreen.selectTile(selectedTile);
-            //Re-select the current tile to prevent buttons from being enabled mistakenly
-        }
-        else if(phase == 3){
-            if(currentPlayerID == 1){
-                timer.setTime(0, 30);
-                timer.start();
-                //Reset the timer to 30 seconds for the other player
-
-                switchCurrentPlayer();
-            }
-            else {
-                phase = 4;
-                gameScreen.updatePhaseLabel("PRODUCTION");
-
-                timer.setTime(0, 0);
-                //Stop the timer if the game is entering phase 4
-
-                switchCurrentPlayer();
-            }
-
-            gameScreen.selectTile(selectedTile);
-            //Re-select the current tile to prevent buttons from being enabled mistakenly
-        }
-        else if(phase == 4){
-            List<Tile> tileList = players[1].getTileList();
-            for (Tile Tile : tileList){
-
-                if (tileList.size() > 0){
-                    System.out.print("yes");
-                    players[1] = Tile.Produce(players[1]);
-                    switchCurrentPlayer();
-                }
-
-            }
-            List<Tile> tileList2 = players[2].getTileList();
-            for (Tile Tile : tileList2){
-                if(tileList2.size() > 0){
-                    players[2] = Tile.Produce(players[2]);
-                    switchCurrentPlayer();
-                }
-
-            }
-
-            phase = 5;
-            gameScreen.updatePhaseLabel("MARKET OPEN");
-
-            market.refreshButtonAvailability();
-            //Open the market again
-
-            gameScreen.selectTile(selectedTile);
-            //Re-select the current tile to prevent buttons from being enabled mistakenly
-        }
-        else if(phase == 5){
-            if (currentPlayerID == 1) {
-                switchCurrentPlayer();
-
-                market.refreshButtonAvailability();
-                //Update the market's interface for the other player
-            }
-            else if (checkGameEnd() == false) {
-                phase = 1;
-                gameScreen.updatePhaseLabel("ACQUISITION");
-
-                market.refreshButtonAvailability();
-                //Close the market again
-
-                drawer.switchTextButton(gameScreen.endTurnButton(), false, Color.GRAY);
-                //Disable the "end turn" button during phase 1 to force players into claiming tiles
-                switchCurrentPlayer();
-            }
-
-            gameScreen.selectTile(selectedTile);
-            //Re-select the current tile to prevent buttons from being enabled mistakenly
         }
 
         if(checkGameEnd() == true){
@@ -322,6 +215,136 @@ public class GameEngine {
 
         gameScreen.closeUpgradeOverlay();
         //If the upgrade overlay is open, close it when the next phase begins
+    }
+
+    private void Phase1Setup()
+    {
+        if(tileAcquired == true) {
+            tileAcquired = false;
+
+            if (currentPlayerID == 1) {
+                switchCurrentPlayer();
+            } else {
+                phase = 2;
+                gameScreen.updatePhaseLabel("BUY ROBOTICONS");
+
+                timer.setTime(0, 30);
+                timer.start();
+                //Reset the timer to 30 seconds and start it if the game is proceeding into phase 2
+
+                switchCurrentPlayer();
+                drawer.switchTextButton(gameScreen.endTurnButton(), true, Color.WHITE);
+                //Once the game moves out of phase 1, re-enable the "end turn" button
+                //This button is disabled during phase 1 to force players into claiming tiles
+
+                market.refreshButtonAvailability();
+                //Update the market's interface to allow for roboticons to be purchased
+            }
+        }
+    }
+
+    private void Phase2Setup()
+    {
+        timer.setTime(0, 30);
+        timer.start();
+        //Reset the timer to 30 seconds, regardless of whether the game is staying in phase 2 or proceeding into phase 3
+
+        if(currentPlayerID == 1){
+            switchCurrentPlayer();
+
+            market.refreshButtonAvailability();
+            //Update the market interface for the other player
+        }
+        else{
+            phase = 3;
+            gameScreen.updatePhaseLabel("PLACE ROBOTICONS");
+
+            market.refreshButtonAvailability();
+            //Disable the market's interface
+
+            switchCurrentPlayer();
+        }
+
+        gameScreen.selectTile(selectedTile);
+        //Re-select the current tile to prevent buttons from being enabled mistakenly
+    }
+
+    private void Phase3Setup()
+    {
+        if(currentPlayerID == 1){
+            timer.setTime(0, 30);
+            timer.start();
+            //Reset the timer to 30 seconds for the other player
+
+            switchCurrentPlayer();
+        }
+        else {
+            phase = 4;
+            gameScreen.updatePhaseLabel("PRODUCTION");
+
+            timer.setTime(0, 0);
+            //Stop the timer if the game is entering phase 4
+
+            switchCurrentPlayer();
+        }
+
+        gameScreen.selectTile(selectedTile);
+        //Re-select the current tile to prevent buttons from being enabled mistakenly
+    }
+
+    private void Phase4Setup()
+    {
+        List<Tile> tileList = players[1].getTileList();
+        for (Tile Tile : tileList){
+
+            if (tileList.size() > 0){
+                System.out.print("yes");
+                players[1] = Tile.Produce(players[1]);
+                switchCurrentPlayer();
+            }
+
+        }
+        List<Tile> tileList2 = players[2].getTileList();
+        for (Tile Tile : tileList2){
+            if(tileList2.size() > 0){
+                players[2] = Tile.Produce(players[2]);
+                switchCurrentPlayer();
+            }
+
+        }
+
+        phase = 5;
+        gameScreen.updatePhaseLabel("MARKET OPEN");
+
+        market.refreshButtonAvailability();
+        //Open the market again
+
+        gameScreen.selectTile(selectedTile);
+        //Re-select the current tile to prevent buttons from being enabled mistakenly
+    }
+
+    private void Phase5Setup()
+    {
+        if (currentPlayerID == 1) {
+            switchCurrentPlayer();
+
+            market.refreshButtonAvailability();
+            //Update the market's interface for the other player
+        }
+        else if (checkGameEnd() == false) {
+            phase = 1;
+            gameScreen.updatePhaseLabel("ACQUISITION");
+
+            market.refreshButtonAvailability();
+            //Close the market again
+
+            drawer.switchTextButton(gameScreen.endTurnButton(), false, Color.GRAY);
+            //Disable the "end turn" button during phase 1 to force players into claiming tiles
+            switchCurrentPlayer();
+        }
+
+        gameScreen.selectTile(selectedTile);
+        //Re-select the current tile to prevent buttons from being enabled mistakenly
     }
 
     /**
