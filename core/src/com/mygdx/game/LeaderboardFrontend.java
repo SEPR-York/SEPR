@@ -77,10 +77,10 @@ public class LeaderboardFrontend implements Screen {
     private Sprite background;
 
     private LeaderboardBackend backend = new LeaderboardBackend();
-    
-    private String[][] players = backend.GetTopThree();
-    
-    
+
+    private String[][] players;
+
+
     //Import current game-state
 
     /**
@@ -91,6 +91,8 @@ public class LeaderboardFrontend implements Screen {
      */
     @Override
     public void show() {
+        backend.OpenFile();
+        players = backend.GetTopThree();
         drawer = new Drawer(game);
 
         batch = new SpriteBatch();
@@ -127,9 +129,9 @@ public class LeaderboardFrontend implements Screen {
 
 
         //ADD TITLE
-        
-        
-        
+
+
+
         buttons[0] = new TextButton("Leaderboard", menuButtonStyle);
         buttons[1] = new TextButton(players[0][0] + " : "+players[0][1],menuButtonStyle);
         buttons[2] = new TextButton(players[0][0] + " : "+players[1][1],menuButtonStyle);
@@ -173,9 +175,9 @@ public class LeaderboardFrontend implements Screen {
         stage.draw();
         //Draw the stage onto the screen
     }
-    
 
-    
+
+
 
     @Override
     public void resize(int width, int height) {
