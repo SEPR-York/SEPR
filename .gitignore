@@ -26,6 +26,7 @@ Thumbs.db
 .idea/
 **/build/**
 **/.metadata/
+**/.settings/**
 
 /tests/build/
 Images/

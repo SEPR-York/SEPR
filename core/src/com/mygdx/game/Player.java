@@ -42,6 +42,8 @@ public class Player {
      */
     private Boolean Active = false;
 
+    private Boolean isAI = false;
+
     /**
      * The college that the player is playing as.
      */
