@@ -29,7 +29,15 @@ public class RandomEffect
 	 */
 	private void meteorShower(Player[] players, Tile tile)
 	{
+<<<<<<< Updated upstream
 
+=======
+<<<<<<< HEAD
+		tile.getRoboticonStored();
+=======
+
+>>>>>>> origin/Development
+>>>>>>> Stashed changes
 	}
 
 	/**
@@ -38,7 +46,7 @@ public class RandomEffect
 	 * @param player
 	 * @param tile
 	 */
-	private void solarFlares(Player[] player, Tile tile)
+	private void solarFlares()
 	{
 
 	}
@@ -51,8 +59,14 @@ public class RandomEffect
 
 =======
 	
+<<<<<<< HEAD
+=======
 	
 >>>>>>> 3a95b71f0fcbe1578d06669fd35568e773fdc920
+<<<<<<< Updated upstream
+=======
+>>>>>>> origin/Development
+>>>>>>> Stashed changes
 	/**
 	 *
 	 * @param player
@@ -60,27 +74,31 @@ public class RandomEffect
 	 */
 	private void randomlyChooseEffect(Player[] players, Tile tile)
 	{
-		Random rand0 = new Random(); //If there will be an effect this round
-		Random rand1 = new Random(); //Randomly choose which effect will be set
-		Random rand2 = new Random(); //Randomly select a player to effect
+		Random rand0 = new Random(); 							// If there will be an effect this round
+		Random rand1 = new Random(); 							// Randomly choose which effect will be set
+		Random rand2 = new Random(); 							// Randomly select a player to effect
 		
-		//int randomPlayerSelect = rand2.nextInt(2);
+		//int randomPlayerSelect = rand2.nextInt(2);			// 
 		//Player randomPlayer = Player[randomPlayerSelect];
+		int random = rand0.nextInt(5);
 		
-        int randomNumber = rand1.nextInt(3);
-        
-        if(randomNumber == 1)
-        {
-        	buildsWall(players, tile);
-        }
-        
-        else if(randomNumber == 2)
-        {
-        	meteorShower(players, tile);
-        }
-        else
-        {
-        	solarFlares(players, tile);
-        }
+		if(random == 3) 										// If the random number is 3 - basically a 1 in 5 chance the random effect will occur each round
+		{
+	        int randomNumber = rand1.nextInt(3); 				// Randomly chooses a number between 1 and 3
+	        
+	        if(randomNumber == 1) 								// If that random number is 1
+	        {
+	        	buildsWall(players, tile); 						// Builds the wall around a random tile & stops production
+	        }
+	        
+	        else if(randomNumber == 2) 							// If the random number is 2
+	        {
+	        	meteorShower(players, tile); 					// Rains a meteorShower and takes away all of a player's ore
+	        }
+	        else 
+	        {
+	        	solarFlares(); 									// Solar Flares 
+	        }
+		}
 	}
 }
