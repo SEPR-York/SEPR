@@ -128,7 +128,7 @@ public class LeaderboardFrontend implements Screen {
         //STILL NEED TO SORT OUT BUTTON ANIMATIONS
 
 
-        //ADD TITLE
+        //These add the information to a bufffer that is later rendered. 
 
 
 
@@ -141,9 +141,11 @@ public class LeaderboardFrontend implements Screen {
         buttons[6] = new TextButton("", menuButtonStyle);
         buttons[7] = new TextButton("", menuButtonStyle);
         buttons[8] = new TextButton("Back to Main Menu", menuButtonStyle);
-//        drawer.addTableRow(table, new Label("Leaderboard", new Label.LabelStyle(titleFont.font(), Color.WHITE)), 0, 0, 350, 0);
-//        drawer.addTableRow(table, new Label("Back to Main Menu", new Label.LabelStyle(menuFont.font(), Color.BLACK)), 0, 0, 100, 0);
-
+        buttons[8].addListener(new ChangeListener() {
+            public void changed(ChangeEvent event, Actor actor) {
+                game.setScreen(new MainMenu(game));
+            }
+        });
 
         //ADD BUTTONS
         for (int i = 0; i < buttons.length; i++) {
