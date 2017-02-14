@@ -156,7 +156,7 @@ public class GameEngine {
         //Mark the game's current play-state as "running" (IE: not paused)
 
         Player Player1 = new Player(1);
-        Player Player2 = new Player(2);
+        Player Player2 = new AIPlayer(2);
         players[1] = Player1;
         players[2] = Player2;
         College Goodricke = new College(1, "The best college");
