@@ -43,7 +43,7 @@ public class LeaderboardFrontend implements Screen {
     /**
      * Array of all menu buttons
      */
-    private TextButton[] buttons = new TextButton[5];
+    private TextButton[] buttons = new TextButton[9];
 
     /**
      * Establishes the font which is used to encode the menu's options
@@ -133,10 +133,14 @@ public class LeaderboardFrontend implements Screen {
 
 
         buttons[0] = new TextButton("Leaderboard", menuButtonStyle);
-        buttons[1] = new TextButton(players[0][0] + " : "+players[0][1],menuButtonStyle);
-        buttons[2] = new TextButton(players[1][0] + " : "+players[1][1],menuButtonStyle);
-        buttons[3] = new TextButton(players[2][0] + " : "+players[2][1],menuButtonStyle);
-        buttons[4] = new TextButton("Back to Main Menu", menuButtonStyle);
+        buttons[1] = new TextButton("", menuButtonStyle);
+        buttons[2] = new TextButton("", menuButtonStyle);
+        buttons[3] = new TextButton(players[0][0] + " : "+players[0][1],menuButtonStyle);
+        buttons[4] = new TextButton(players[1][0] + " : "+players[1][1],menuButtonStyle);
+        buttons[5] = new TextButton(players[2][0] + " : "+players[2][1],menuButtonStyle);
+        buttons[6] = new TextButton("", menuButtonStyle);
+        buttons[7] = new TextButton("", menuButtonStyle);
+        buttons[8] = new TextButton("Back to Main Menu", menuButtonStyle);
 //        drawer.addTableRow(table, new Label("Leaderboard", new Label.LabelStyle(titleFont.font(), Color.WHITE)), 0, 0, 350, 0);
 //        drawer.addTableRow(table, new Label("Back to Main Menu", new Label.LabelStyle(menuFont.font(), Color.BLACK)), 0, 0, 100, 0);
 
