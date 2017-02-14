@@ -98,6 +98,8 @@ public class GameScreen implements Screen {
      * Label stating the getID of the currently-selected tile
      */
     private Label selectedTileLabel;
+    
+    private Label selectedTileRoboticonLevels;
 
     /**
      * Object defining QOL drawing functions for rectangles and on-screen tables
@@ -550,9 +552,14 @@ public class GameScreen implements Screen {
         selectedTileRoboticonIcon.setVisible(false);
         selectedTileRoboticonIcon.setScaling(Scaling.fit);
         selectedTileRoboticonIcon.setAlign(Align.center);
+        gameFont.setSize(20);
+        gameFont.font().getData().markupEnabled = true;
+        selectedTileRoboticonLevels = new Label("1\n1\n1", new Label.LabelStyle(gameFont.font(), Color.WHITE));
+        selectedTileRoboticonLevels.setVisible(false);
         tableRight.row();
         tableRight.add(selectedTileOwnerIcon).size(64, 64).center();
         tableRight.add(selectedTileRoboticonIcon).size(64, 64).center();
+        tableRight.add(selectedTileRoboticonLevels).size(8, 64).left();
         //Instantiate and deploy icons to represent tiles' owners and Roboticons
 
         gameFont.setSize(20);
@@ -573,7 +580,7 @@ public class GameScreen implements Screen {
         tableRight.add(deployRoboticonButton).padBottom(15);
         //Add tile claim/deploy buttons to interface
 
-        drawer.addTableRow(tableRight, engine.market(), 2);
+        drawer.addTableRow(tableRight, engine.market(), 3);
         //Establish market and add market interface to right-hand table
 
         gameStage.addActor(tableRight);
@@ -696,8 +703,11 @@ public class GameScreen implements Screen {
         drawer.filledRectangle(Color.WHITE, 0, Gdx.graphics.getHeight() - 46, 256, 1);
         //Draw lines and rectangles in left-hand table
 
-        drawer.lineRectangle(Color.WHITE, ((int) (Gdx.graphics.getWidth() * 0.875)) - 93, 52, 66, 66, 1);
-        drawer.lineRectangle(Color.WHITE, ((int) (Gdx.graphics.getWidth() * 0.875)) + 27, 52, 66, 66, 1);
+        int parentX = (int) selectedTileRoboticonIcon.getParent().getX();
+        //drawer.lineRectangle(Color.WHITE, ((int) (Gdx.graphics.getWidth() * 0.875)) - 93, 52, 66, 66, 1);
+        drawer.lineRectangle(Color.WHITE, (int) selectedTileOwnerIcon.getX() + parentX, 52, 66, 66, 1);
+        //drawer.lineRectangle(Color.WHITE, ((int) (Gdx.graphics.getWidth() * 0.875)) + 27, 52, 66, 66, 1);
+        drawer.lineRectangle(Color.WHITE, (int) selectedTileRoboticonIcon.getX() + parentX, 52, 66, 66, 1);
         drawer.filledRectangle(Color.WHITE, Gdx.graphics.getWidth() - 256, 190, 256, 1);
         //Draw lines in right-hand table
     }
@@ -842,6 +852,10 @@ public class GameScreen implements Screen {
                 selectedTileRoboticonIcon.setVisible(true);
                 selectedTileRoboticonIcon.setDrawable(new TextureRegionDrawable(new TextureRegion(tile.getRoboticonStored().getIconTexture())));
                 selectedTileOwnerIcon.setSize(64, 64);
+                
+                int lvls[] = tile.getRoboticonStored().getLevel();
+                selectedTileRoboticonLevels.setText("[GREEN]" + lvls[2] + "[]\n[RED]" + lvls[0] + "[]\n[GOLD]" + lvls[1] + "[]");
+                selectedTileRoboticonLevels.setVisible(true);
 
                 if (engine.phase() == 3 && tile.getOwner() == engine.currentPlayer()) {
                     drawer.switchTextButton(deployRoboticonButton, true, Color.WHITE);
@@ -855,6 +869,7 @@ public class GameScreen implements Screen {
                 deployRoboticonButton.setText("DEPLOY");
 
                 selectedTileRoboticonIcon.setVisible(false);
+                selectedTileRoboticonLevels.setVisible(false);
 
                 if (engine.phase() == 3 && tile.getOwner() == engine.currentPlayer() && engine.currentPlayer().getRoboticonInventory() > 0) {
                     drawer.switchTextButton(deployRoboticonButton, true, Color.WHITE);
@@ -867,6 +882,7 @@ public class GameScreen implements Screen {
         } else {
             selectedTileOwnerIcon.setVisible(false);
             selectedTileRoboticonIcon.setVisible(false);
+            selectedTileRoboticonLevels.setVisible(false);
 
             if (engine.phase() == 1) {
                 drawer.switchTextButton(claimTileButton, true, Color.WHITE);

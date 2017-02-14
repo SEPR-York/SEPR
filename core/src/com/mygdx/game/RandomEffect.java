@@ -10,7 +10,7 @@ public class RandomEffect
 	 * @param player
 	 * @param tile
 	 */
-	private void buildsWall(Player player, Tile tile)
+	private void buildsWall(Player Player[], Tile tile)
 	{
 		Roboticon rob = tile.getRoboticonStored(); // Stores the roboticon on that tile under rob
 		rob.setProductionModifier(0,0,0);
@@ -18,11 +18,16 @@ public class RandomEffect
 	}
 
 	/**
+<<<<<<< HEAD
 	 * The meteor shower will damage the production of a tile. This means the
 	 * @param player
+=======
+	 * The meteor shower will damage the production of a tile. This means the 
+	 * @param players
+>>>>>>> 3a95b71f0fcbe1578d06669fd35568e773fdc920
 	 * @param tile
 	 */
-	private void meteorShower(Player player, Tile tile)
+	private void meteorShower(Player[] players, Tile tile)
 	{
 
 	}
@@ -33,36 +38,49 @@ public class RandomEffect
 	 * @param player
 	 * @param tile
 	 */
-	private void solarFlares(Player player, Tile tile)
+	private void solarFlares(Player[] player, Tile tile)
 	{
 
 	}
+<<<<<<< HEAD
 
 	private Player choosePlayer()
 	{
 		return null;
 	}
 
+=======
+	
+	
+>>>>>>> 3a95b71f0fcbe1578d06669fd35568e773fdc920
 	/**
 	 *
 	 * @param player
 	 * @param tile
 	 */
-	private void randomlyChooseEffect(Player player, Tile tile)
+	private void randomlyChooseEffect(Player[] players, Tile tile)
 	{
-		Random rand = new Random();
-        int randomNumber = rand.nextInt(3);
+		Random rand0 = new Random(); //If there will be an effect this round
+		Random rand1 = new Random(); //Randomly choose which effect will be set
+		Random rand2 = new Random(); //Randomly select a player to effect
+		
+		//int randomPlayerSelect = rand2.nextInt(2);
+		//Player randomPlayer = Player[randomPlayerSelect];
+		
+        int randomNumber = rand1.nextInt(3);
+        
         if(randomNumber == 1)
         {
-        	buildsWall(player, tile);
+        	buildsWall(players, tile);
         }
+        
         else if(randomNumber == 2)
         {
-        	meteorShower(player, tile);
+        	meteorShower(players, tile);
         }
         else
         {
-        	solarFlares(player, tile);
+        	solarFlares(players, tile);
         }
 	}
 }
