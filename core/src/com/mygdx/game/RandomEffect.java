@@ -17,27 +17,10 @@ public class RandomEffect
 
 	}
 
-	/**
-<<<<<<< HEAD
-	 * The meteor shower will damage the production of a tile. This means the
-	 * @param player
-=======
-	 * The meteor shower will damage the production of a tile. This means the 
-	 * @param players
->>>>>>> 3a95b71f0fcbe1578d06669fd35568e773fdc920
-	 * @param tile
-	 */
+
 	private void meteorShower(Player[] players, Tile tile)
 	{
-<<<<<<< Updated upstream
 
-=======
-<<<<<<< HEAD
-		tile.getRoboticonStored();
-=======
-
->>>>>>> origin/Development
->>>>>>> Stashed changes
 	}
 
 	/**
@@ -50,23 +33,7 @@ public class RandomEffect
 	{
 
 	}
-<<<<<<< HEAD
 
-	private Player choosePlayer()
-	{
-		return null;
-	}
-
-=======
-	
-<<<<<<< HEAD
-=======
-	
->>>>>>> 3a95b71f0fcbe1578d06669fd35568e773fdc920
-<<<<<<< Updated upstream
-=======
->>>>>>> origin/Development
->>>>>>> Stashed changes
 	/**
 	 *
 	 * @param player
