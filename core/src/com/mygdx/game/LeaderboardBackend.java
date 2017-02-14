@@ -62,11 +62,7 @@ public class LeaderboardBackend{
 		LeaderboardBackend instance = new LeaderboardBackend();
 		instance.OpenFile();
 		String[][] players = instance.GetTopThree();
-		System.out.println(players[0][0]);
-		System.out.println(players[1][0]);
-		System.out.println(players[2][0]);
-		instance.AddPlayerToLeaderboard("ticks", 100);
-		System.out.println("works");
+		
 	}
 
 	public void OpenFile(){
