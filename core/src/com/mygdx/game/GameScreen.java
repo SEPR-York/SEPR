@@ -402,6 +402,8 @@ public class GameScreen implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 engine.upgradeRoboticon(2);
+                int lvls[] = engine.selectedTile().getRoboticonStored().getLevel();
+                selectedTileRoboticonLevels.setText("[GREEN]" + lvls[2] + "[]\n[RED]" + lvls[0] + "[]\n[GOLD]" + lvls[1] + "[]");
 
                 closeUpgradeOverlay();
                 updateInventoryLabels();
@@ -416,6 +418,8 @@ public class GameScreen implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 engine.upgradeRoboticon(0);
+                int lvls[] = engine.selectedTile().getRoboticonStored().getLevel();
+                selectedTileRoboticonLevels.setText("[GREEN]" + lvls[2] + "[]\n[RED]" + lvls[0] + "[]\n[GOLD]" + lvls[1] + "[]");
 
                 closeUpgradeOverlay();
                 updateInventoryLabels();
@@ -430,6 +434,8 @@ public class GameScreen implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 engine.upgradeRoboticon(1);
+                int lvls[] = engine.selectedTile().getRoboticonStored().getLevel();
+                selectedTileRoboticonLevels.setText("[GREEN]" + lvls[2] + "[]\n[RED]" + lvls[0] + "[]\n[GOLD]" + lvls[1] + "[]");
 
                 closeUpgradeOverlay();
                 updateInventoryLabels();
