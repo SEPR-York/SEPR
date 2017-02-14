@@ -75,9 +75,12 @@ public class LeaderboardFrontend implements Screen {
      * The object which will encode the menu's background
      */
     private Sprite background;
-    
-    private String[][] players = LeaderboardBackend.GetTopThree();
 
+    private LeaderboardBackend backend = new LeaderboardBackend();
+    
+    private String[][] players = backend.GetTopThree();
+    
+    
     //Import current game-state
 
     /**

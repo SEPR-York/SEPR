@@ -3,9 +3,11 @@ package com.mygdx.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Timer;
@@ -102,6 +104,10 @@ public class Tile extends Button {
      * Holds the colour of the border to be drawn over the tile when it is claimed
      */
     private Color tileBorderColor;
+    
+    //ADDED STUFF TO COMMENT
+    private Image trump;
+    
     /**
      * Determines the thickness of the tile's border (in pixels)
      */
@@ -396,6 +402,15 @@ public class Tile extends Button {
         tileBorderColor = color;
     }
 
+    public void setWall(Boolean bool, float x, float y)
+    {
+    	trump = new Image(new Texture("image/Trump.png"));
+        trump.setPosition(x,y);
+        
+        // gameStage.addActor(trump);
+    	// BUILD THE WALL AND DISPLAY THE Trump.png
+    }
+    
     /**
      * Returns the colour of the tile's border
      *
