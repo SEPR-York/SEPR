@@ -83,6 +83,10 @@ public class LeaderboardFrontend implements Screen {
 
     //Import current game-state
 
+    public LeaderboardFrontend(Game game) {
+        this.game = game;
+    }
+
     /**
      * Secondary constructor of the main menu which focuses on preparing visual elements
      * Specifically instantiates the menu's stage; spatial construction table; fonts; background image and buttons
@@ -128,7 +132,7 @@ public class LeaderboardFrontend implements Screen {
         //STILL NEED TO SORT OUT BUTTON ANIMATIONS
 
 
-        //These add the information to a bufffer that is later rendered. 
+        //These add the information to a bufffer that is later rendered.
 
 
 

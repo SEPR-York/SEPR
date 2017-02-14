@@ -143,7 +143,7 @@ public class MainMenu implements Screen {
         buttons[2] = new TextButton("Leaderboard", menuButtonStyle);
         buttons[2].addListener(new ChangeListener() {
             public void changed(ChangeEvent event, Actor actor) {
-                game.setScreen(new LeaderboardFrontend());
+                game.setScreen(new LeaderboardFrontend(game));
             }
         });
         //Initialise menu buttons using defined style
