@@ -28,6 +28,7 @@ public class Main extends Game {
 	 */
 	@Override
 	public void create () {
+		System.out.println("Create");
 		setScreen(new SplashScreen(game));
 		//Load the splash screen as soon as the game opens
 	}

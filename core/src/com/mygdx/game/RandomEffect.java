@@ -14,10 +14,16 @@ public class RandomEffect
 	{
 		Roboticon rob = tile.getRoboticonStored(); // Stores the roboticon on that tile under rob
 		rob.setProductionModifier(0,0,0);
-
+		float x = tile.getOriginX();
+		float y = tile.getOriginY();
+		tile.setWall(true, x, y);
 	}
 
-
+	/**
+	 * Destorys the roboticon on the specific tile
+	 * @param players
+	 * @param tile
+	 */
 	private void meteorShower(Player[] players, Tile tile)
 	{
 

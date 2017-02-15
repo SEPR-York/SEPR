@@ -197,7 +197,6 @@ public class GameEngine {
                     break;
             case 5: Phase5Setup();
                     break;
-
         }
 
         if(checkGameEnd() == true){
