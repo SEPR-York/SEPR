@@ -73,8 +73,28 @@ public class LeaderboardBackend{
 			br = new BufferedReader(new FileReader("GameSave.txt"));
 		} catch (Exception e){
 			// Return on error, to be fixed with exception handling
-			e.printStackTrace();
-			return;
+			File f = new File("./GameSave.txt");
+			try 
+			{
+				f.createNewFile();
+			}
+			catch (Exception err)
+			{
+				err.printStackTrace();
+				return;	
+			}
+			AddPlayerToLeaderboard("Example Player 1",0);
+			AddPlayerToLeaderboard("Example Player 2",0);
+			AddPlayerToLeaderboard("Example Player 3",0);
+			try 
+			{
+				br = new BufferedReader(new FileReader("GameSave.txt"));	
+			}
+			catch (Exception err)
+			{
+				err.printStackTrace();
+				return;	
+			}
 		}
 
 		// Declare string to store current line
@@ -116,12 +136,31 @@ public class LeaderboardBackend{
 
 		ArrayList<String[]> AllThePlayers = new ArrayList<String[]>(a);
 		int index = 0;
+		int highest = 0;
 		for (int i = 0; i < AllThePlayers.size(); i++){
-			int tmp = Integer.parseInt(AllThePlayers.get(i)[1]);
-			if (tmp > Integer.parseInt(AllThePlayers.get(index)[1])){
+			if (AllThePlayers.get(index).length == 1)
+			{
+				String[] retArray = new String[2];
+				retArray[0] = "";
+				retArray[1] = "";
+				AllThePlayers.set(index, retArray);
+			}
+			int tmp;
+			try
+			{
+				tmp = Integer.parseInt(AllThePlayers.get(i)[1]);	
+			}
+			catch (Exception e)
+			{
+				tmp = 0;
+				e.printStackTrace();
+			}
+			if (tmp > highest){
 				index = i;
+				highest = tmp;
 			}
 		}
+		System.out.println(AllThePlayers.get(index).length);
 		return(index);
 	}
 
@@ -130,8 +169,22 @@ public class LeaderboardBackend{
 		String[][] retArray = new String[3][];
 		for (int i = 0; i < 3; i++)
 		{
+			retArray[i] = new String[2];
+			retArray[i][0] = "";
+			retArray[i][1] = "";
+		}
+		for (int i = 0; i < 3 && AllThePlayers.size() != 0; i++)
+		{
 			int index = ReturnBestPlayer(AllThePlayers);
+			if (AllThePlayers.get(index).length == 1)
+			{
+				String[] tmpArray = new String[2];
+				tmpArray[0] = "";
+				tmpArray[1] = "";
+				AllThePlayers.set(index, tmpArray);
+			}
 			retArray[i] = AllThePlayers.get(index);
+			
 			AllThePlayers.remove(index);
 		}
 

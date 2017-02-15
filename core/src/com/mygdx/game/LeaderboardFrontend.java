@@ -20,8 +20,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
  * @since Assessment 2
  * @version Assessment 3
  *
- * An executable version of the game can be found at: https://jm179796.github.io/SEPR/DRTN-Assessment2.jar
- * Our website is: https://jm179796.github.io/SEPR/
  */
 public class LeaderboardFrontend implements Screen {
 
@@ -43,7 +41,7 @@ public class LeaderboardFrontend implements Screen {
     /**
      * Array of all menu buttons
      */
-    private TextButton[] buttons = new TextButton[9];
+    private TextButton[] buttons = new TextButton[7];
 
     /**
      * Establishes the font which is used to encode the menu's options
@@ -137,15 +135,14 @@ public class LeaderboardFrontend implements Screen {
 
 
         buttons[0] = new TextButton("Leaderboard", menuButtonStyle);
-        buttons[1] = new TextButton("", menuButtonStyle);
-        buttons[2] = new TextButton("", menuButtonStyle);
-        buttons[3] = new TextButton(players[0][0] + " : "+players[0][1],menuButtonStyle);
-        buttons[4] = new TextButton(players[1][0] + " : "+players[1][1],menuButtonStyle);
-        buttons[5] = new TextButton(players[2][0] + " : "+players[2][1],menuButtonStyle);
-        buttons[6] = new TextButton("", menuButtonStyle);
-        buttons[7] = new TextButton("", menuButtonStyle);
-        buttons[8] = new TextButton("Back to Main Menu", menuButtonStyle);
-        buttons[8].addListener(new ChangeListener() {
+        buttons[1] = new TextButton("\n\n\n\n", menuButtonStyle);
+        System.out.println(players[0].length);
+        buttons[2] = new TextButton(players[0][0] + " : "+players[0][1],menuButtonStyle);
+        buttons[3] = new TextButton(players[1][0] + " : "+players[1][1],menuButtonStyle);
+        buttons[4] = new TextButton(players[2][0] + " : "+players[2][1],menuButtonStyle);
+        buttons[5] = new TextButton("\n\n\n\n", menuButtonStyle);
+        buttons[6] = new TextButton("Back to Main Menu", menuButtonStyle);
+        buttons[6].addListener(new ChangeListener() {
             public void changed(ChangeEvent event, Actor actor) {
                 game.setScreen(new MainMenu(game));
             }
