@@ -21,7 +21,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
  * @version Assessment 3
  *
  */
-public class LeaderboardFrontend implements Screen {
+public class HowToPlay implements Screen {
 
     /**
      * Stores current game-state, enabling transitions between screens and external QOL drawing functions
@@ -41,7 +41,7 @@ public class LeaderboardFrontend implements Screen {
     /**
      * Array of all menu buttons
      */
-    private TextButton[] buttons = new TextButton[7];
+    private TextButton[] buttons = new TextButton[12];
 
     /**
      * Establishes the font which is used to encode the menu's options
@@ -74,14 +74,12 @@ public class LeaderboardFrontend implements Screen {
      */
     private Sprite background;
 
-    private LeaderboardBackend backend = new LeaderboardBackend();
-
-    private String[][] players;
+    
 
 
     //Import current game-state
 
-    public LeaderboardFrontend(Game game) {
+    public HowToPlay(Game game) {
         this.game = game;
     }
 
@@ -93,8 +91,6 @@ public class LeaderboardFrontend implements Screen {
      */
     @Override
     public void show() {
-        backend.OpenFile();
-        players = backend.GetTopThree();
         drawer = new Drawer(game);
 
         batch = new SpriteBatch();
@@ -134,14 +130,19 @@ public class LeaderboardFrontend implements Screen {
 
 
 
-        buttons[0] = new TextButton("Leaderboard", menuButtonStyle);
-        buttons[1] = new TextButton("\n\n\n\n", menuButtonStyle);
-        buttons[2] = new TextButton(players[0][0] + " : "+players[0][1],menuButtonStyle);
-        buttons[3] = new TextButton(players[1][0] + " : "+players[1][1],menuButtonStyle);
-        buttons[4] = new TextButton(players[2][0] + " : "+players[2][1],menuButtonStyle);
-        buttons[5] = new TextButton("\n\n\n\n", menuButtonStyle);
-        buttons[6] = new TextButton("Back to Main Menu", menuButtonStyle);
-        buttons[6].addListener(new ChangeListener() {
+        buttons[0] = new TextButton("How to Play", menuButtonStyle);
+        buttons[1] = new TextButton("", menuButtonStyle);
+        buttons[2] = new TextButton("", menuButtonStyle);
+        buttons[3] = new TextButton("", menuButtonStyle);
+        buttons[4] = new TextButton("", menuButtonStyle);
+        buttons[5] = new TextButton("", menuButtonStyle);
+        buttons[6] = new TextButton("", menuButtonStyle);
+        buttons[7] = new TextButton("", menuButtonStyle);
+        buttons[8] = new TextButton("", menuButtonStyle);
+        buttons[9] = new TextButton("", menuButtonStyle);
+        buttons[10] = new TextButton("", menuButtonStyle);
+        buttons[11] = new TextButton("Back to Main Menu", menuButtonStyle);
+        buttons[11].addListener(new ChangeListener() {
             public void changed(ChangeEvent event, Actor actor) {
                 game.setScreen(new MainMenu(game));
             }

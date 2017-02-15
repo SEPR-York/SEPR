@@ -1,1 +1,3 @@
-Hello,
+Luke,100,
+Jack,50,
+Ella,10,

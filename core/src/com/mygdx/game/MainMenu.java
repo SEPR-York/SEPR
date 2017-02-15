@@ -137,7 +137,7 @@ public class MainMenu implements Screen {
         buttons[1] = new TextButton("How to Play", menuButtonStyle);
         buttons[1].addListener(new ChangeListener() {
             public void changed(ChangeEvent event, Actor actor) {
-                game.setScreen(new GameScreen(game));
+                game.setScreen(new HowToPlay(game));
             }
         });
         buttons[2] = new TextButton("Leaderboard", menuButtonStyle);
@@ -150,7 +150,7 @@ public class MainMenu implements Screen {
 
         //ADD TITLE BAR
         drawer.addTableRow(table, new Label("Sabbaticoup", new Label.LabelStyle(titleFont.font(), Color.WHITE)), 0, 0, 0, 0);
-        drawer.addTableRow(table, new Label("(Title TBC)", new Label.LabelStyle(tempFont.font(), Color.WHITE)), 0, 0, 50, 0);
+        drawer.addTableRow(table, new Label("(Gandhi Inc.)", new Label.LabelStyle(tempFont.font(), Color.WHITE)), 0, 0, 50, 0);
 
         //ADD BUTTONS
         for (int i = 0; i < buttons.length; i++) {
