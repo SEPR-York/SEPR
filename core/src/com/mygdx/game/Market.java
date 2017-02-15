@@ -396,14 +396,14 @@ public class Market extends Table {
         //More visual guff!
 
         this.row();
-        this.add(new Label("Ore", new Label.LabelStyle(tableFont.font(), Color.WHITE))).left();
-        this.add(oreStockLabel).left();
-        //Add label to encode current ore stocks to the market's visual framework
-
-        this.row();
         this.add(new Label("Food", new Label.LabelStyle(tableFont.font(), Color.WHITE))).left();
         this.add(foodStockLabel).left();
         //Add label to encode current food stocks to the market's visual framework
+        
+        this.row();
+        this.add(new Label("Ore", new Label.LabelStyle(tableFont.font(), Color.WHITE))).left();
+        this.add(oreStockLabel).left();
+        //Add label to encode current ore stocks to the market's visual framework
 
         this.row();
         this.add(new Label("Energy", new Label.LabelStyle(tableFont.font(), Color.WHITE))).left();

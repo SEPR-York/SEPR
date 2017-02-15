@@ -679,7 +679,7 @@ public class GameScreen implements Screen {
 
         gameFont.setSize(36);
         upgradeOverlay.table().add(new Label("UPGRADE ROBOTICON", new Label.LabelStyle(gameFont.font(), Color.WHITE))).padBottom(20);
-        //Visual guff
+        //Add title header
 
         gameFont.setSize(24);
         upgradeOverlay.table().row();
