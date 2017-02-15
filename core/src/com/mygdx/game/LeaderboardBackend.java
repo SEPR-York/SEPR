@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class LeaderboardBackend{
 
-	// Declaration and Initialisation of the array list of String Array
+															// Declaration and Initialisation of the array list of String Array
 	private ArrayList<String[]> ArrayOfPeopleWithScores = new ArrayList<String[]>();
 	
 	
@@ -38,8 +38,8 @@ public class LeaderboardBackend{
 	
 	public void AddPlayerToLeaderboard(String player,int score){
 		
-		/*
-		 * This class handles adding new players to the end of the Game save file
+		/**
+		 * This method handles adding new players to the end of the Game save file
 		 * 
 		 * @param player - This is the name of the player that you want to store(type String)
 		 * @param score - the score of the player that you want to store (type int)
@@ -47,8 +47,8 @@ public class LeaderboardBackend{
 		try
 		{
 		    String filename= "GameSave.txt";
-		    FileWriter fw = new FileWriter(filename,true); //the true will append the new data
-		    fw.write(player + "," + Integer.toString(score) + ",\n");//appends the string to the file
+		    FileWriter fw = new FileWriter(filename,true); 						//The true will append the new data
+		    fw.write(player + "," + Integer.toString(score) + ",\n");			//Appends the string to the file
 		    fw.close();
 		}
 		catch(IOException ioe)
@@ -66,29 +66,36 @@ public class LeaderboardBackend{
 	}
 
 	public void OpenFile(){
-		// Declare the buffered reader (To Read the file)
-		BufferedReader br;
+		
+		/**
+		 * This method opens the GameSave.txt file, splits the vaules held in the file 
+		 * and the populates the array list "arrayofpeoplewithscores".
+		 * <p>
+		 * This method also contains error handling for if the file "GameSave.txt" does not exist.
+		 * If the file does not exist, the method will create the file and populate it with 
+		 * Example players. 
+		 */
+		
+		BufferedReader br;														// Declare the buffered reader (To Read the file)
 		try{
-			// Assign it given the file path
-			br = new BufferedReader(new FileReader("GameSave.txt"));
-		} catch (Exception e){
-			// Return on error, to be fixed with exception handling
+			br = new BufferedReader(new FileReader("GameSave.txt"));			// Assign it given the file path
+		} catch (Exception e){													//Catches the error if the file does not exist
 			File f = new File("./GameSave.txt");
 			try 
 			{
-				f.createNewFile();
+				f.createNewFile();												//creates the new file
 			}
 			catch (Exception err)
 			{
-				err.printStackTrace();
+				err.printStackTrace();											//if a new file cannot be created an error is raised. 
 				return;	
 			}
-			AddPlayerToLeaderboard("Example Player 1",0);
+			AddPlayerToLeaderboard("Example Player 1",0);						//populates the file with example players with a score of 0
 			AddPlayerToLeaderboard("Example Player 2",0);
 			AddPlayerToLeaderboard("Example Player 3",0);
 			try 
 			{
-				br = new BufferedReader(new FileReader("GameSave.txt"));	
+				br = new BufferedReader(new FileReader("GameSave.txt"));		//opens the newly created file
 			}
 			catch (Exception err)
 			{
@@ -97,23 +104,20 @@ public class LeaderboardBackend{
 			}
 		}
 
-		// Declare string to store current line
-		String line;
+		
+		String line;															// Declare string to store current line
 
-		// Attempt to read the line from file
 		try{
-			line = br.readLine();
-		} catch (Exception e){
+			line = br.readLine();												// Attempt to read the line from file
+		} catch (Exception e){													//Catches error if cannot read line
 			e.printStackTrace();
 			return;
 		}
 
-		// While there is a line to read add it to the ArrayList
-		while (line != null){
-			ArrayOfPeopleWithScores.add(line.split(","));
-			// Attempt to read the next line
+		while (line != null){													// While there is a line to read add it to the ArrayList
+			ArrayOfPeopleWithScores.add(line.split(","));						//splits the file up on a comma
 			try{
-				line = br.readLine();
+				line = br.readLine();											// Attempt to read the next line
 			} catch (Exception e){
 				e.printStackTrace();
 				return;
@@ -121,7 +125,7 @@ public class LeaderboardBackend{
 		}
 
 		try{
-			br.close();
+			br.close();															//tries to close the file
 		} catch (Exception e){
 			e.printStackTrace();
 			return;
@@ -129,15 +133,20 @@ public class LeaderboardBackend{
 	}
 
 	private int ReturnBestPlayer(ArrayList<String[]> a){
-		/*
-		 * This function will return the best three players that have played the game so that they are able to be diplayed
+		/**
+		 * This function will return the best three players that have played the game so that they are able to be displayed
+		 * <p>
+		 * This method also contains error handling for if the "GameSave.txt" file contains less than three players
+		 * 
 		 * @return ArrayOfBestPlayers - This is an array of size three that contains the best three players
 		 */
 
 		ArrayList<String[]> AllThePlayers = new ArrayList<String[]>(a);
 		int index = 0;
 		int highest = 0;
-		for (int i = 0; i < AllThePlayers.size(); i++){
+		for (int i = 0; i < AllThePlayers.size(); i++){ 						//This for loop is part of the error handling. it loops through the array list of all the players
+																				//and if one of the sting array that it contains only has one value in it, it will replace that with 
+																				//an empty array. This stops a null pointer error. 
 			if (AllThePlayers.get(index).length == 1)
 			{
 				String[] retArray = new String[2];
@@ -160,7 +169,6 @@ public class LeaderboardBackend{
 				highest = tmp;
 			}
 		}
-		System.out.println(AllThePlayers.get(index).length);
 		return(index);
 	}
 
