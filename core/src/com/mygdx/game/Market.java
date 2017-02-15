@@ -357,18 +357,18 @@ public class Market extends Table {
         //Visual guff
 
         this.row();
-        this.add(new Label("Ore", new Label.LabelStyle(tableFont.font(), Color.WHITE))).left();
-        this.add(buyOre).left();
-        this.add(sellOre).left();
-        //Add buttons for buying and selling ore to the market's visual framework
-        //Note that the strings encoded by these TextButtons represent the market's current buying/selling prices for ore
-
-        this.row();
         this.add(new Label("Food", new Label.LabelStyle(tableFont.font(), Color.WHITE))).left();
         this.add(buyFood).left();
         this.add(sellFood).left();
         //Add buttons for buying and selling food to the market's visual framework
         //Note that the strings encoded by these TextButtons represent the market's current buying/selling prices for food
+        
+        this.row();
+        this.add(new Label("Ore", new Label.LabelStyle(tableFont.font(), Color.WHITE))).left();
+        this.add(buyOre).left();
+        this.add(sellOre).left();
+        //Add buttons for buying and selling ore to the market's visual framework
+        //Note that the strings encoded by these TextButtons represent the market's current buying/selling prices for ore
 
         this.row();
         this.add(new Label("Energy", new Label.LabelStyle(tableFont.font(), Color.WHITE))).left();
