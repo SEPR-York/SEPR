@@ -140,6 +140,8 @@ public class Tile extends Button {
         this.ID = ID;
         //Import and save the tile's assigned getID
 
+        
+        // Parameters for the size of the tile tooltip
         tooltipWidth = 275;
         tooltipHeightLine1 = 26;
         tooltipHeightLine2 = 18;
@@ -150,10 +152,10 @@ public class Tile extends Button {
         tooltipFillColor = Color.GRAY;
         tooltipLineColor = Color.BLACK;
 
+        // Define the tooltip fonts
         tooltipFont = new TTFont(Gdx.files.internal("font/testfontbignoodle.ttf"), 36);
         tooltipFont2 = new TTFont(Gdx.files.internal("font/testfontbignoodle.ttf"), 20);
         tooltipFont2.font().getData().markupEnabled = true;
-        //Visual parameters of the tile's tooltip
 
         tooltipActive = false;
         //Initialise boolean variable to track when the tile's tooltip is on-screen
@@ -340,25 +342,40 @@ public class Tile extends Button {
      * This must be called during the construction of each frame in which the tooltip is to be shown
      */
     public void drawTooltip() {
+    	
+    	// Fetch levels of assigned roboticon, if there is one.
     	int lvls[] = {0,0,0};
     	if (this.roboticonStored != null) {
     		lvls = this.roboticonStored.getLevel();
     	}
         if (tooltipActive == true) {
+        	// Check cursor Y to determine if label needs to be above or below cursor.
             if (Gdx.input.getY() < tooltipHeightTotal) {
+            	// Draw the tooltip's background onto the screen in the region to the top-left of the cursor.
                 drawer.borderedRectangle(tooltipFillColor, tooltipLineColor, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace, Gdx.input.getY() + tooltipCursorSpace, tooltipWidth, tooltipHeightTotal, 1);
-                //Draw the tooltip's main space onto the screen in the region to the top-left of the cursor
+                // Add the tile's ID to the tooltip
                 drawer.text("Tile " + this.ID, tooltipFont, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() + tooltipCursorSpace + tooltipTextSpace);
+                // Add the tile's base production to the tooltip
                 drawer.text("Base Production: [GREEN]" + this.FoodCount + "[], [RED]" + this.OreCount + "[], [GOLD]" + this.EnergyCount + "[]", tooltipFont2, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() + tooltipHeightLine1 + tooltipCursorSpace + 2*tooltipTextSpace);
-                drawer.text("Current Production: [GREEN]" + this.FoodCount*lvls[2] + "-" + this.FoodCount*lvls[2]*5 + "[], [RED]" + this.OreCount*lvls[0] + "-" + this.OreCount*lvls[0]*5 + "[], [GOLD]" + this.EnergyCount*lvls[1] + "-" + this.EnergyCount*lvls[1]*5 + "[]", tooltipFont2, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() + tooltipHeightLine1 + tooltipHeightLine2 + 2*tooltipCursorSpace + tooltipTextSpace);
-                //Draw an identification label in that space
+                // Calculate and add the tile's current production range to the tooltip if a roboticon is assigned... 
+                if (this.roboticonStored != null) {
+                	drawer.text("Current Production: [GREEN]" + this.FoodCount*lvls[2] + "-" + this.FoodCount*lvls[2]*5 + "[], [RED]" + this.OreCount*lvls[0] + "-" + this.OreCount*lvls[0]*5 + "[], [GOLD]" + this.EnergyCount*lvls[1] + "-" + this.EnergyCount*lvls[1]*5 + "[]", tooltipFont2, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() + tooltipHeightLine1 + tooltipHeightLine2 + 2*tooltipCursorSpace + tooltipTextSpace);
+                // ...or give a 'no production' message if there is not.
+                } else {
+                	drawer.text("No production: [FIREBRICK]Missing roboticon[]", tooltipFont2, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() + tooltipHeightLine1 + tooltipHeightLine2 + 2*tooltipCursorSpace + tooltipTextSpace);
+                }
+            
+            // Draw the same tooltip, but in the region to the bottom-left of the cursor if the cursor is near the top of the game's window
             } else {
                 drawer.borderedRectangle(tooltipFillColor, tooltipLineColor, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace, Gdx.input.getY() - tooltipHeightTotal - tooltipCursorSpace, tooltipWidth, tooltipHeightTotal, 1);
                 drawer.text("Tile " + this.ID, tooltipFont, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() - tooltipHeightTotal - tooltipCursorSpace + tooltipTextSpace);
                 drawer.text("Base Production: [GREEN]" + this.FoodCount + "[], [RED]" + this.OreCount + "[], [GOLD]" + this.EnergyCount + "[]", tooltipFont2, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() - 2*tooltipHeightLine2 - tooltipCursorSpace);
-                drawer.text("Current Production: [GREEN]" + this.FoodCount*lvls[2] + "-" + this.FoodCount*lvls[2]*5 + "[], [RED]" + this.OreCount*lvls[0] + "-" + this.OreCount*lvls[0]*5 + "[], [GOLD]" + this.EnergyCount*lvls[1] + "-" + this.EnergyCount*lvls[1]*5 + "[]", tooltipFont2, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() - tooltipHeightLine2 - tooltipCursorSpace);
-                //Do the same thing, but in the region to the bottom-left of the cursor if the cursor is near the
-                //top of the game's window
+                if (this.roboticonStored != null) {
+                	drawer.text("Current Production: [GREEN]" + this.FoodCount*lvls[2] + "-" + this.FoodCount*lvls[2]*5 + "[], [RED]" + this.OreCount*lvls[0] + "-" + this.OreCount*lvls[0]*5 + "[], [GOLD]" + this.EnergyCount*lvls[1] + "-" + this.EnergyCount*lvls[1]*5 + "[]", tooltipFont2, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() - tooltipHeightLine2 - tooltipCursorSpace);
+                } else {
+                    drawer.text("No production: [FIREBRICK]Missing roboticon[]", tooltipFont2, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() - tooltipHeightLine2 - tooltipCursorSpace);
+                }
+                
             }
         }
     }

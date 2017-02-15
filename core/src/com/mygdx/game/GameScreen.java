@@ -511,8 +511,8 @@ public class GameScreen implements Screen {
         moneyCounter = new Label(engine.currentPlayer().getMoney().toString(), new Label.LabelStyle(gameFont.font(), Color.WHITE));
         moneyCounter.setAlignment(Align.right);
         drawer.addTableRow(resourceCounters, new LabelledElement("Food", gameFont, Color.WHITE, foodCounter, 100, 40));
-        drawer.addTableRow(resourceCounters, new LabelledElement("Energy", gameFont, Color.WHITE, energyCounter, 100, 40));
         drawer.addTableRow(resourceCounters, new LabelledElement("Ore", gameFont, Color.WHITE, oreCounter, 100, 40));
+        drawer.addTableRow(resourceCounters, new LabelledElement("Energy", gameFont, Color.WHITE, energyCounter, 100, 40));
         drawer.addTableRow(resourceCounters, new LabelledElement("Roboticons", gameFont, Color.WHITE, roboticonCounter, 100, 40));
         drawer.addTableRow(resourceCounters, new LabelledElement("Money", gameFont, Color.WHITE, moneyCounter, 100, 40));
         tableLeft.add(resourceCounters).size(150, 120).align(Align.right);
@@ -679,13 +679,13 @@ public class GameScreen implements Screen {
 
         gameFont.setSize(36);
         upgradeOverlay.table().add(new Label("UPGRADE ROBOTICON", new Label.LabelStyle(gameFont.font(), Color.WHITE))).padBottom(20);
-        //Visual guff
+        //Add title header
 
         gameFont.setSize(24);
         upgradeOverlay.table().row();
-        upgradeOverlay.table().add(new LabelledElement("ORE", gameFont, Color.WHITE, oreUpgradeButton, 175, 0)).left();
-        upgradeOverlay.table().row();
         upgradeOverlay.table().add(new LabelledElement("FOOD", gameFont, Color.WHITE, foodUpgradeButton, 175, 0)).left();
+        upgradeOverlay.table().row();
+        upgradeOverlay.table().add(new LabelledElement("ORE", gameFont, Color.WHITE, oreUpgradeButton, 175, 0)).left();
         upgradeOverlay.table().row();
         upgradeOverlay.table().add(new LabelledElement("ENERGY", gameFont, Color.WHITE, energyUpgradeButton, 175, 0)).left().padBottom(20);
         //Add buttons for upgrading roboticons to the overlay
@@ -710,9 +710,7 @@ public class GameScreen implements Screen {
         //Draw lines and rectangles in left-hand table
 
         int parentX = (int) selectedTileRoboticonIcon.getParent().getX();
-        //drawer.lineRectangle(Color.WHITE, ((int) (Gdx.graphics.getWidth() * 0.875)) - 93, 52, 66, 66, 1);
         drawer.lineRectangle(Color.WHITE, (int) selectedTileOwnerIcon.getX() + parentX, 52, 66, 66, 1);
-        //drawer.lineRectangle(Color.WHITE, ((int) (Gdx.graphics.getWidth() * 0.875)) + 27, 52, 66, 66, 1);
         drawer.lineRectangle(Color.WHITE, (int) selectedTileRoboticonIcon.getX() + parentX, 52, 66, 66, 1);
         drawer.filledRectangle(Color.WHITE, Gdx.graphics.getWidth() - 256, 190, 256, 1);
         //Draw lines in right-hand table
@@ -859,6 +857,7 @@ public class GameScreen implements Screen {
                 selectedTileRoboticonIcon.setDrawable(new TextureRegionDrawable(new TextureRegion(tile.getRoboticonStored().getIconTexture())));
                 selectedTileOwnerIcon.setSize(64, 64);
                 
+                // Update and display levels of assigned roboticon
                 int lvls[] = tile.getRoboticonStored().getLevel();
                 selectedTileRoboticonLevels.setText("[GREEN]" + lvls[2] + "[]\n[RED]" + lvls[0] + "[]\n[GOLD]" + lvls[1] + "[]");
                 selectedTileRoboticonLevels.setVisible(true);
