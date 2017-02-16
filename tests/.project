@@ -2,36 +2,29 @@
 <projectDescription>
 	<name>Duck-Related-Team-Game-tests</name>
 	<comment>Project tests created by Buildship.</comment>
-	<projects/>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
 	<natures>
 		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<buildSpec>
-		<buildCommand>
-			<name>org.eclipse.jdt.core.javabuilder</name>
-			<arguments/>
-		</buildCommand>
-		<buildCommand>
-			<name>org.eclipse.buildship.core.gradleprojectbuilder</name>
-			<arguments/>
-		</buildCommand>
-	</buildSpec>
 	<linkedResources>
 		<link>
 			<name>assets</name>
 			<type>2</type>
-			<location>/Users/Will/Documents/EPFL/First Semester/Introduction à la programmation (CS-106)/Programs/eclipse/Eclipse.app/Contents/MacOS/Z::/w2k/YEAR2/SEPR/Phase 3/Project Files/SEPR/core/assets</location>
-		</link>
-		<link>
-			<name>assets</name>
-			<type>2</type>
-			<location>Z:/w2k/YEAR2/SEPR/Phase 3/Project Files/SEPR/core/assets</location>
-		</link>
-		<link>
-			<name>assets</name>
-			<type>2</type>
-			<location>Z:/w2k/YEAR2/SEPR/Phase 3/Project Files/SEPR/core/assets</location>
+			<location>/usr/userfs/l/lrj509/w2k/SPER/ProjectThree/SEPR/core/assets</location>
 		</link>
 	</linkedResources>
 </projectDescription>
