@@ -14,17 +14,15 @@ import java.util.ArrayList;
 
 public class LeaderboardBackend{
 
-															// Declaration and Initialisation of the array list of String Array
+																				// Declaration and Initialisation of the array list of String Array
 	private ArrayList<String[]> ArrayOfPeopleWithScores = new ArrayList<String[]>();
 	
 	
 	
-/*##############################################################################
-#
-#						GETTERS
-#
-##############################################################################*/
-	
+
+	/**
+	 * A getter for the array list ""
+	 */
 	
 	public ArrayList<String[]> getListofScores(){
 		return ArrayOfPeopleWithScores;

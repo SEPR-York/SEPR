@@ -16,8 +16,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 /**
- * @author Duck Related Team Name in Big Massive Letters && Gandhi Inc.
- * @since Assessment 2
+ * This class has been modified from the main menu class. 
+ * @author Gandhi Inc.
+ * @since Assessment 3
  * @version Assessment 3
  *
  */
@@ -48,17 +49,7 @@ public class LeaderboardFrontend implements Screen {
      */
     private TTFont menuFont;
 
-    /**
-     * Establishes the font which is used to encode the game's title
-     */
-    private TTFont titleFont;
-
-    /**
-     * Establishes the font which, at the moment, encodes a "Title TBC" message
-     */
-    private TTFont tempFont;
-
-    /**
+     /**
      * Object defining QOL drawing functions for rectangles and on-screen tables
      * Used in this class accelerate table row creation
      */
@@ -73,13 +64,20 @@ public class LeaderboardFrontend implements Screen {
      * The object which will encode the menu's background
      */
     private Sprite background;
+    
 
     private LeaderboardBackend backend = new LeaderboardBackend();
+    
+    /**
+     * a string array for storing the top 3 players
+     */
 
     private String[][] players;
 
 
-    //Import current game-state
+    /**
+     * imports the current game state
+     */
 
     public LeaderboardFrontend(Game game) {
         this.game = game;
@@ -93,8 +91,8 @@ public class LeaderboardFrontend implements Screen {
      */
     @Override
     public void show() {
-        backend.OpenFile();
-        players = backend.GetTopThree();
+        backend.OpenFile(); 																				
+        players = backend.GetTopThree();																//populates the players array with the top three players and their respective scores
         drawer = new Drawer(game);
 
         batch = new SpriteBatch();
@@ -104,15 +102,12 @@ public class LeaderboardFrontend implements Screen {
         table = new Table();
         //Initialise stage and button-table
 
-        titleFont = new TTFont(Gdx.files.internal("font/earthorbiterxtrabold.ttf"), 36, 2, Color.BLACK, false);
-        menuFont = new TTFont(Gdx.files.internal("font/enterthegrid.ttf"), 36, 2, Color.BLACK, false);
-        tempFont = new TTFont(Gdx.files.internal("font/earthorbiter.ttf"), 24, 2, Color.BLACK, false);
-        //Initialise menu font
+        menuFont = new TTFont(Gdx.files.internal("font/enterthegrid.ttf"), 36, 2, Color.BLACK, false);	//The font information for the text that is displayed. 
 
         Gdx.input.setInputProcessor(stage);
         //Set the stage up to accept user inputs
 
-        background = new Sprite(new Texture("image/Solid_white.svg.png"));
+        background = new Sprite(new Texture("image/Solid_white.svg.png")); 								//sets the background to a solid white image
         background.setSize(background.getWidth(), background.getHeight());
         background.setCenter(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
         //Create logo sprite and re-size/re-position it to fit into game window
@@ -121,15 +116,16 @@ public class LeaderboardFrontend implements Screen {
         //Fill the screen with the table
         //This is bound to change in the future for obvious reasons
 
-        TextButton.TextButtonStyle menuButtonStyle = new TextButton.TextButtonStyle();
+        TextButton.TextButtonStyle menuButtonStyle = new TextButton.TextButtonStyle();					//
         menuButtonStyle.font = menuFont.font();
         menuButtonStyle.fontColor = Color.BLACK;
         menuButtonStyle.pressedOffsetX = 1;
         menuButtonStyle.pressedOffsetY = -1;
         //Set up the format for the buttons on the menu
-        //STILL NEED TO SORT OUT BUTTON ANIMATIONS
 
-
+        
+        
+        
         //These add the information to a bufffer that is later rendered.
 
 
@@ -154,9 +150,6 @@ public class LeaderboardFrontend implements Screen {
 
         //FINALISE TABLE
         stage.addActor(table);
-
-        //Draw temporary debug lines
-        //drawer.debug(stage);
     }
 
     /**
