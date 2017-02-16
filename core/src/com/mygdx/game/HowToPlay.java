@@ -16,8 +16,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 /**
- * @author Duck Related Team Name in Big Massive Letters && Gandhi Inc.
- * @since Assessment 2
+ * This has been modified from the main menu class
+ * @author Gandhi Inc.
+ * @since Assessment 3
  * @version Assessment 3
  *
  */
@@ -39,7 +40,7 @@ public class HowToPlay implements Screen {
     private Table table;
 
     /**
-     * Array of all menu buttons
+     * Array of all the text that needs to be rended. 
      */
     private TextButton[] buttons = new TextButton[12];
 
@@ -77,9 +78,9 @@ public class HowToPlay implements Screen {
     
 
 
-    //Import current game-state
 
-    public HowToPlay(Game game) {
+
+    public HowToPlay(Game game){ 																				    //Import current game-state
         this.game = game;
     }
 
@@ -93,45 +94,37 @@ public class HowToPlay implements Screen {
     public void show() {
         drawer = new Drawer(game);
 
-        batch = new SpriteBatch();
-        //Initialise sprite-batch
+        batch = new SpriteBatch(); 																					//Initialise sprite-batch
+        
 
         stage = new Stage();
-        table = new Table();
-        //Initialise stage and button-table
+        table = new Table();																						//Initialise stage and button-table
 
-        titleFont = new TTFont(Gdx.files.internal("font/earthorbiterxtrabold.ttf"), 36, 2, Color.BLACK, false);
-        menuFont = new TTFont(Gdx.files.internal("font/enterthegrid.ttf"), 36, 2, Color.BLACK, false);
-        tempFont = new TTFont(Gdx.files.internal("font/earthorbiter.ttf"), 24, 2, Color.BLACK, false);
-        //Initialise menu font
+        menuFont = new TTFont(Gdx.files.internal("font/enterthegrid.ttf"), 36, 2, Color.BLACK, false);				//Initialise menu font
 
-        Gdx.input.setInputProcessor(stage);
-        //Set the stage up to accept user inputs
+
+        Gdx.input.setInputProcessor(stage);																			//Set the stage up to accept user inputs
+        
 
         background = new Sprite(new Texture("image/Solid_white.svg.png"));
         background.setSize(background.getWidth(), background.getHeight());
         background.setCenter(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
-        //Create logo sprite and re-size/re-position it to fit into game window
 
-        table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        //Fill the screen with the table
-        //This is bound to change in the future for obvious reasons
+        table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()); 									//Fill the screen with the table
 
-        TextButton.TextButtonStyle menuButtonStyle = new TextButton.TextButtonStyle();
+        
+        
+
+        TextButton.TextButtonStyle menuButtonStyle = new TextButton.TextButtonStyle(); 								//enables the button to look like it is depressed when it is pressed
         menuButtonStyle.font = menuFont.font();
         menuButtonStyle.fontColor = Color.BLACK;
         menuButtonStyle.pressedOffsetX = 1;
         menuButtonStyle.pressedOffsetY = -1;
-        //Set up the format for the buttons on the menu
-        //STILL NEED TO SORT OUT BUTTON ANIMATIONS
-
-
-        //These add the information to a bufffer that is later rendered.
 
 
 
-        buttons[0] = new TextButton("How to Play", menuButtonStyle);
-        buttons[1] = new TextButton("", menuButtonStyle);
+        buttons[0] = new TextButton("How to Play", menuButtonStyle); 												//places the lines of text into an array
+        buttons[1] = new TextButton("", menuButtonStyle); 															//which is then rendered onto the screen later
         buttons[2] = new TextButton("", menuButtonStyle);
         buttons[3] = new TextButton("", menuButtonStyle);
         buttons[4] = new TextButton("", menuButtonStyle);
@@ -141,23 +134,24 @@ public class HowToPlay implements Screen {
         buttons[8] = new TextButton("", menuButtonStyle);
         buttons[9] = new TextButton("", menuButtonStyle);
         buttons[10] = new TextButton("", menuButtonStyle);
-        buttons[11] = new TextButton("Back to Main Menu", menuButtonStyle);
-        buttons[11].addListener(new ChangeListener() {
+        
+        
+        
+        buttons[11] = new TextButton("Back to Main Menu", menuButtonStyle); 										//creates the "back to main menu" button and adds a listner 
+        buttons[11].addListener(new ChangeListener() { 																//to the button so when it is pressed it sends you back to the main menu
             public void changed(ChangeEvent event, Actor actor) {
                 game.setScreen(new MainMenu(game));
             }
         });
 
-        //ADD BUTTONS
-        for (int i = 0; i < buttons.length; i++) {
+        
+        for (int i = 0; i < buttons.length; i++) {																	//renders the buttons
             drawer.addTableRow(table, buttons[i]);
         }
 
-        //FINALISE TABLE
-        stage.addActor(table);
+        
+        stage.addActor(table);																						//FINALISE TABLE
 
-        //Draw temporary debug lines
-        //drawer.debug(stage);
     }
 
     /**
@@ -168,19 +162,17 @@ public class HowToPlay implements Screen {
      */
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Gdx.gl.glClearColor(1, 1, 1, 1); 																			 //First instruction sets background colour
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        //OpenGL nonsense
-        //First instruction sets background colour
 
-        batch.begin();
+        batch.begin(); 																								//Run through the rendering pipeline to draw the menu's background image to the screen
+
         background.draw(batch);
         batch.end();
-        //Run through the rendering pipeline to draw the menu's background image to the screen
-
-        stage.act(delta);
+        
+        stage.act(delta);																							//Draw the stage onto the screen
         stage.draw();
-        //Draw the stage onto the screen
+        
     }
 
 
@@ -213,7 +205,6 @@ public class HowToPlay implements Screen {
     @Override
     public void dispose() {
         menuFont.dispose();
-
         stage.dispose();
     }
 }

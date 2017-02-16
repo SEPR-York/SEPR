@@ -95,61 +95,56 @@ public class LeaderboardFrontend implements Screen {
         players = backend.GetTopThree();																//populates the players array with the top three players and their respective scores
         drawer = new Drawer(game);
 
-        batch = new SpriteBatch();
-        //Initialise sprite-batch
+        batch = new SpriteBatch();																		//Initialise sprite-batch
+        
 
         stage = new Stage();
-        table = new Table();
-        //Initialise stage and button-table
+        table = new Table();																			//Initialise stage and button-table
+        
 
         menuFont = new TTFont(Gdx.files.internal("font/enterthegrid.ttf"), 36, 2, Color.BLACK, false);	//The font information for the text that is displayed. 
 
-        Gdx.input.setInputProcessor(stage);
-        //Set the stage up to accept user inputs
+        Gdx.input.setInputProcessor(stage);																//Set the stage up to accept user inputs
+        
 
         background = new Sprite(new Texture("image/Solid_white.svg.png")); 								//sets the background to a solid white image
         background.setSize(background.getWidth(), background.getHeight());
         background.setCenter(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
-        //Create logo sprite and re-size/re-position it to fit into game window
 
-        table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        //Fill the screen with the table
-        //This is bound to change in the future for obvious reasons
+        table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());						//Fill the screen with the table
+        
 
-        TextButton.TextButtonStyle menuButtonStyle = new TextButton.TextButtonStyle();					//
+        
+        TextButton.TextButtonStyle menuButtonStyle = new TextButton.TextButtonStyle();					//enables the button to look like it is depressed when it is pressed
         menuButtonStyle.font = menuFont.font();
         menuButtonStyle.fontColor = Color.BLACK;
         menuButtonStyle.pressedOffsetX = 1;
         menuButtonStyle.pressedOffsetY = -1;
-        //Set up the format for the buttons on the menu
-
-        
-        
-        
-        //These add the information to a bufffer that is later rendered.
 
 
-
-        buttons[0] = new TextButton("Leaderboard", menuButtonStyle);
-        buttons[1] = new TextButton("\n\n\n\n", menuButtonStyle);
+        buttons[0] = new TextButton("Leaderboard", menuButtonStyle);									//places the lines of text into an array
+        buttons[1] = new TextButton("\n\n\n\n", menuButtonStyle);										//which is then rendered onto the screen later
         buttons[2] = new TextButton(players[0][0] + " : "+players[0][1],menuButtonStyle);
         buttons[3] = new TextButton(players[1][0] + " : "+players[1][1],menuButtonStyle);
         buttons[4] = new TextButton(players[2][0] + " : "+players[2][1],menuButtonStyle);
         buttons[5] = new TextButton("\n\n\n\n", menuButtonStyle);
-        buttons[6] = new TextButton("Back to Main Menu", menuButtonStyle);
-        buttons[6].addListener(new ChangeListener() {
+        
+        
+        
+        
+        buttons[6] = new TextButton("Back to Main Menu", menuButtonStyle);								//creates the "back to main menu" button and adds a listner
+        buttons[6].addListener(new ChangeListener() {													//to the button so when it is pressed it sends you back to the main menu
             public void changed(ChangeEvent event, Actor actor) {
                 game.setScreen(new MainMenu(game));
             }
         });
 
-        //ADD BUTTONS
-        for (int i = 0; i < buttons.length; i++) {
+        for (int i = 0; i < buttons.length; i++) {														//Renders the table
             drawer.addTableRow(table, buttons[i]);
         }
 
-        //FINALISE TABLE
-        stage.addActor(table);
+        
+        stage.addActor(table);																			//FINALISE TABLE
     }
 
     /**
@@ -160,19 +155,17 @@ public class LeaderboardFrontend implements Screen {
      */
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Gdx.gl.glClearColor(1, 1, 1, 1);																//sets background colour
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        //OpenGL nonsense
-        //First instruction sets background colour
 
-        batch.begin();
+        batch.begin();																					//Run through the rendering pipeline to draw the menu's background image to the screen
         background.draw(batch);
         batch.end();
-        //Run through the rendering pipeline to draw the menu's background image to the screen
+        
 
-        stage.act(delta);
+        stage.act(delta);																				//Draw the stage onto the screen
         stage.draw();
-        //Draw the stage onto the screen
+        
     }
 
 
