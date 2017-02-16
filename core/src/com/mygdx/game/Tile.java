@@ -307,15 +307,17 @@ public class Tile extends Button {
     public void assignRoboticon( Roboticon roboticon) {
         this.roboticonStored = roboticon;
     }
-
+    
     /**
      * Removes the first instance of the roboticon from the list.
      *
      * @param Roboticon The roboticon to be removed.
      */
-    public void unassignRoboticon(Roboticon Roboticon) {
-        roboticonStored = null;
+    public void removeRoboticon(Roboticon rob)
+    {
+    	this.roboticonStored = null;
     }
+    
 
     /**
      * Returns the tile's associated function
@@ -408,7 +410,20 @@ public class Tile extends Button {
     public boolean isOwned() {
         return Owner.getPlayerID() != 0;
     }
-
+    
+    public void listOfOwnedTiles()
+	{
+    	int list[] ;
+		for (int i=0; i<16; i++)
+		{
+			if(isOwned())
+			{
+				// Add the tile ID to the list.
+			}
+		}
+		
+	}
+    
     /**
      * Sets the colour of the tile's border
      * This must only be called if and when a player acquires the tile

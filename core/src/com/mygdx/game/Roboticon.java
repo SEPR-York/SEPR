@@ -81,7 +81,7 @@ public class Roboticon {
 
         this.CurrentTile.assignRoboticon(this);
     }
-
+    
     /**
      * Function to get the current roboticon Level
      * @return Integer array of the resource
