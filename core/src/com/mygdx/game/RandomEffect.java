@@ -61,12 +61,12 @@ public class RandomEffect
 	        
 	        if(randomNumber == 1) 								// If that random number is 1
 	        {
-	        	buildsWall(tile); 						// Builds the wall around a random tile & stops production
+	        	buildsWall(tile); 								// Builds the wall around a random tile & stops production
 	        }
 	        
 	        else if(randomNumber == 2) 							// If the random number is 2
 	        {
-	        	meteorShower(tile); 					// Rains a meteorShower and takes away all of a player's ore
+	        	meteorShower(tile); 							// Rains a meteorShower and takes away all of a player's ore
 	        }
 	        else 
 	        {
