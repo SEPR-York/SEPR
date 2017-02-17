@@ -104,10 +104,10 @@ public class Tile extends Button {
      * Holds the colour of the border to be drawn over the tile when it is claimed
      */
     private Color tileBorderColor;
-    
+
     //ADDED STUFF TO COMMENT
     private Image trump;
-    
+
     /**
      * Determines the thickness of the tile's border (in pixels)
      */
@@ -140,7 +140,7 @@ public class Tile extends Button {
         this.ID = ID;
         //Import and save the tile's assigned getID
 
-        
+
         // Parameters for the size of the tile tooltip
         tooltipWidth = 275;
         tooltipHeightLine1 = 26;
@@ -173,7 +173,7 @@ public class Tile extends Button {
         //Import and save the tile's landmark status
 
         this.runnable = runnable;
-        this.Owner = new Player(0);
+        this.Owner = new Player(0, false);
         //Establish the function that the tile should execute when interacted with
         //Currently, "interacting" with the tile means clicking on it
 
@@ -307,7 +307,7 @@ public class Tile extends Button {
     public void assignRoboticon( Roboticon roboticon) {
         this.roboticonStored = roboticon;
     }
-    
+
     /**
      * Removes the first instance of the roboticon from the list.
      *
@@ -317,7 +317,7 @@ public class Tile extends Button {
     {
     	this.roboticonStored = null;
     }
-    
+
 
     /**
      * Returns the tile's associated function
@@ -344,7 +344,7 @@ public class Tile extends Button {
      * This must be called during the construction of each frame in which the tooltip is to be shown
      */
     public void drawTooltip() {
-    	
+
     	// Fetch levels of assigned roboticon, if there is one.
     	int lvls[] = {0,0,0};
     	if (this.roboticonStored != null) {
@@ -359,14 +359,14 @@ public class Tile extends Button {
                 drawer.text("Tile " + this.ID, tooltipFont, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() + tooltipCursorSpace + tooltipTextSpace);
                 // Add the tile's base production to the tooltip
                 drawer.text("Base Production: [GREEN]" + this.FoodCount + "[], [RED]" + this.OreCount + "[], [GOLD]" + this.EnergyCount + "[]", tooltipFont2, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() + tooltipHeightLine1 + tooltipCursorSpace + 2*tooltipTextSpace);
-                // Calculate and add the tile's current production range to the tooltip if a roboticon is assigned... 
+                // Calculate and add the tile's current production range to the tooltip if a roboticon is assigned...
                 if (this.roboticonStored != null) {
                 	drawer.text("Current Production: [GREEN]" + this.FoodCount*lvls[2] + "-" + this.FoodCount*lvls[2]*5 + "[], [RED]" + this.OreCount*lvls[0] + "-" + this.OreCount*lvls[0]*5 + "[], [GOLD]" + this.EnergyCount*lvls[1] + "-" + this.EnergyCount*lvls[1]*5 + "[]", tooltipFont2, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() + tooltipHeightLine1 + tooltipHeightLine2 + 2*tooltipCursorSpace + tooltipTextSpace);
                 // ...or give a 'no production' message if there is not.
                 } else {
                 	drawer.text("No production: [FIREBRICK]Missing roboticon[]", tooltipFont2, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() + tooltipHeightLine1 + tooltipHeightLine2 + 2*tooltipCursorSpace + tooltipTextSpace);
                 }
-            
+
             // Draw the same tooltip, but in the region to the bottom-left of the cursor if the cursor is near the top of the game's window
             } else {
                 drawer.borderedRectangle(tooltipFillColor, tooltipLineColor, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace, Gdx.input.getY() - tooltipHeightTotal - tooltipCursorSpace, tooltipWidth, tooltipHeightTotal, 1);
@@ -377,7 +377,7 @@ public class Tile extends Button {
                 } else {
                     drawer.text("No production: [FIREBRICK]Missing roboticon[]", tooltipFont2, Gdx.input.getX() - tooltipWidth - tooltipCursorSpace + tooltipTextSpace, Gdx.input.getY() - tooltipHeightLine2 - tooltipCursorSpace);
                 }
-                
+
             }
         }
     }
@@ -410,7 +410,7 @@ public class Tile extends Button {
     public boolean isOwned() {
         return Owner.getPlayerID() != 0;
     }
-    
+
     public void listOfOwnedTiles()
 	{
     	int list[] ;
@@ -421,9 +421,9 @@ public class Tile extends Button {
 				// Add the tile ID to the list.
 			}
 		}
-		
+
 	}
-    
+
     /**
      * Sets the colour of the tile's border
      * This must only be called if and when a player acquires the tile
@@ -438,11 +438,11 @@ public class Tile extends Button {
     {
     	trump = new Image(new Texture("image/Trump.png"));
         trump.setPosition(x,y);
-        
+
         // gameStage.addActor(trump);
     	// BUILD THE WALL AND DISPLAY THE Trump.png
     }
-    
+
     /**
      * Returns the colour of the tile's border
      *

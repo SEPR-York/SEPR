@@ -42,12 +42,12 @@ public class Player {
      */
     private Boolean Active = false;
 
-    private Boolean isAI = false;
-
     /**
      * The college that the player is playing as.
      */
     private College College;
+
+    private boolean ai;
 
     /**
      * A list of the tiles that the player owns.
@@ -64,8 +64,9 @@ public class Player {
      *
      * @param PlayerID The id of the player that is being created. Should be an integer greater than 0.
      */
-    public Player(Integer PlayerID) {
+    public Player(Integer PlayerID, boolean isAi) {
         this.playerID = PlayerID;
+        this.ai = isAi;
     }
 
 
@@ -248,5 +249,10 @@ public class Player {
      */
     public College getCollege() {
         return this.College;
+    }
+
+    public boolean isAi()
+    {
+        return ai;
     }
 }

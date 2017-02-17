@@ -155,8 +155,8 @@ public class GameEngine {
         state = State.RUN;
         //Mark the game's current play-state as "running" (IE: not paused)
 
-        Player Player1 = new Player(1);
-        Player Player2 = new AIPlayer(2);
+        Player Player1 = new Player(1, false);
+        Player Player2 = new Player(2, true);
         players[1] = Player1;
         players[2] = Player2;
         College Goodricke = new College(1, "The best college");
@@ -187,15 +187,15 @@ public class GameEngine {
         timer.stop();
 
         switch (phase) {
-            case 1: Phase1Setup();
+            case 1: Phase2Setup();
                     break;
-            case 2: Phase2Setup();
+            case 2: Phase3Setup();
                     break;
-            case 3: Phase3Setup();
+            case 3: Phase4Setup();
                     break;
-            case 4: Phase4Setup();
+            case 4: Phase5Setup();
                     break;
-            case 5: Phase5Setup();
+            case 5: Phase1Setup();
                     break;
         }
 
@@ -216,7 +216,7 @@ public class GameEngine {
         //If the upgrade overlay is open, close it when the next phase begins
     }
 
-    private void Phase1Setup()
+    private void Phase2Setup()
     {
         if(tileAcquired == true) {
             tileAcquired = false;
@@ -242,7 +242,7 @@ public class GameEngine {
         }
     }
 
-    private void Phase2Setup()
+    private void Phase3Setup()
     {
         timer.setTime(0, 30);
         timer.start();
@@ -268,7 +268,7 @@ public class GameEngine {
         //Re-select the current tile to prevent buttons from being enabled mistakenly
     }
 
-    private void Phase3Setup()
+    private void Phase4Setup()
     {
         if(currentPlayerID == 1){
             timer.setTime(0, 30);
@@ -291,7 +291,7 @@ public class GameEngine {
         //Re-select the current tile to prevent buttons from being enabled mistakenly
     }
 
-    private void Phase4Setup()
+    private void Phase5Setup()
     {
         List<Tile> tileList = players[1].getTileList();
         for (Tile Tile : tileList){
@@ -322,7 +322,7 @@ public class GameEngine {
         //Re-select the current tile to prevent buttons from being enabled mistakenly
     }
 
-    private void Phase5Setup()
+    private void Phase1Setup()
     {
         if (currentPlayerID == 1) {
             switchCurrentPlayer();
@@ -362,6 +362,8 @@ public class GameEngine {
 
         gameScreen.updateInventoryLabels();
         //Display the "new" player's inventory on-screen
+
+        System.out.println(players[currentPlayerID].isAi());
 
     }
 
