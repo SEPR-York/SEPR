@@ -139,14 +139,15 @@ public class HowToPlay implements Screen {
         buttons[10] = new TextButton("for more information, click here", menuButtonStyle);
         buttons[10].addListener(new ChangeListener() 
         { 	
-        	public void openpage(ChangeEvent event, Actor actor)
-        	{
-        		try 
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				try 
         		{
             	    Desktop.getDesktop().browse(new URL("http://www.google.com").toURI());
             	} 
         		catch (Exception e) {}
-        	}
+				
+			}
         	
         });
         
