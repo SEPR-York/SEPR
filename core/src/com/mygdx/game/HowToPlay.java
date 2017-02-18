@@ -1,5 +1,8 @@
 package com.mygdx.game;
 
+import java.awt.Desktop;
+import java.net.URL;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -133,7 +136,19 @@ public class HowToPlay implements Screen {
         buttons[7] = new TextButton("", menuButtonStyle);
         buttons[8] = new TextButton("", menuButtonStyle);
         buttons[9] = new TextButton("", menuButtonStyle);
-        buttons[10] = new TextButton("", menuButtonStyle);
+        buttons[10] = new TextButton("for more information, click here", menuButtonStyle);
+        buttons[10].addListener(new ChangeListener() 
+        { 	
+        	public void openpage(ChangeEvent event, Actor actor)
+        	{
+        		try 
+        		{
+            	    Desktop.getDesktop().browse(new URL("http://www.google.com").toURI());
+            	} 
+        		catch (Exception e) {}
+        	}
+        	
+        });
         
         
         
