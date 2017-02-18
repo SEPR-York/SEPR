@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>Duck-Related-Team-Game-tests</name>
-	<comment>Project tests created by Buildship.</comment>
+	<comment>Project Duck-Related-Team-Game-tests created by Buildship.</comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -24,7 +24,7 @@
 		<link>
 			<name>assets</name>
 			<type>2</type>
-			<location>/usr/userfs/l/lrj509/w2k/SPER/ProjectThree/SEPR/core/assets</location>
+			<location>/Users/Will/Google Drive York Uni/SEPR/SEPR/core/assets</location>
 		</link>
 	</linkedResources>
 </projectDescription>
