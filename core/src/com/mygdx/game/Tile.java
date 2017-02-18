@@ -413,6 +413,8 @@ public class Tile extends Button {
         return Owner.getPlayerID() != 0;
     }
 
+    
+    // **************  NEEDS COMPLETEING *****************
     public void listOfOwnedTiles()
 	{
     	int list[] ;
@@ -440,9 +442,9 @@ public class Tile extends Button {
     {
     	trump = new Image(new Texture("image/Trump.png"));
         trump.setPosition(x,y);
-
-        // gameStage.addActor(trump);
-    	// BUILD THE WALL AND DISPLAY THE Trump.png
+        // GameScreen.constructImage(trump);
+       
+        // ****************  NEEDS COMPLETEING ********************
     }
     
     public void setSolarFlare(float x, float y)

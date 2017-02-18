@@ -695,6 +695,14 @@ public class GameScreen implements Screen {
         //Add a final button for closing the overlay
     }
 
+    
+    public void constructImage(Image im)
+    {
+    	gameStage.addActor(im);
+    }
+    
+
+       
     /**
      * Draw auxiliary rectangles to provide window-dressing for the interface
      */
