@@ -107,6 +107,8 @@ public class Tile extends Button {
 
     //ADDED STUFF TO COMMENT
     private Image trump;
+    private Image meteor;
+    private Image flare;
 
     /**
      * Determines the thickness of the tile's border (in pixels)
@@ -441,6 +443,18 @@ public class Tile extends Button {
 
         // gameStage.addActor(trump);
     	// BUILD THE WALL AND DISPLAY THE Trump.png
+    }
+    
+    public void setSolarFlare(float x, float y)
+    {
+    	flare = new Image(new Texture("image/Flare.png"));
+    	flare.setPosition(x,y);
+    }
+    
+    public void setMeteor(float x, float y)
+    {
+    	meteor = new Image(new Texture("image/Meteor.png"));
+    	meteor.setPosition(x,y);
     }
 
     /**
