@@ -14,6 +14,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+
+
 
 /**
  * @author Duck Related Team Name in Big Massive Letters && Gandhi Inc.
@@ -130,8 +134,19 @@ public class MainMenu implements Screen {
 
         buttons[0] = new TextButton("Start", menuButtonStyle);
         buttons[0].addListener(new ChangeListener() {
-            public void changed(ChangeEvent event, Actor actor) {
-                game.setScreen(new ChoosePlayer(game));
+            public void changed(ChangeEvent event, Actor actor) 
+            {
+                JFrame frame = new JFrame("PLAYER NAMES");
+
+                String player1 = JOptionPane.showInputDialog(frame, "Player 1 enter your name");
+                
+                System.out.printf("Player 1's name is '%s'.\n", player1);
+                
+                String player2 = JOptionPane.showInputDialog(frame, "Player 2 enter your name");
+
+                System.out.printf("Player 2's name is '%s'.\n", player2);
+            
+                game.setScreen(new GameScreen(game));
             }
         });
         buttons[1] = new TextButton("How to Play", menuButtonStyle);
