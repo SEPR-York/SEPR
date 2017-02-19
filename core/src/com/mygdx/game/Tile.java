@@ -1,5 +1,7 @@
 package com.mygdx.game;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -8,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Timer;
@@ -101,7 +104,6 @@ public class Tile extends Button {
      */
     private boolean tooltipActive;
 
-    private boolean wallActive;
 
     /**
      * Holds the colour of the border to be drawn over the tile when it is claimed
@@ -109,9 +111,9 @@ public class Tile extends Button {
     private Color tileBorderColor;
 
     //ADDED STUFF TO COMMENT
-    private Image trump;
-    private Image meteor;
-    private Image flare;
+    private boolean wallActive;
+    private boolean solarActive;
+    private boolean meteorActive;
 
     /**
      * Determines the thickness of the tile's border (in pixels)
@@ -417,21 +419,7 @@ public class Tile extends Button {
         return Owner.getPlayerID() != 0;
     }
 
-
-    // **************  NEEDS COMPLETEING *****************
-    public void listOfOwnedTiles()
-	{
-    	int list[] ;
-		for (int i=0; i<16; i++)
-		{
-			if(isOwned())
-			{
-				// Add the tile ID to the list.
-			}
-		}
-
-	}
-
+    
     /**
      * Sets the colour of the tile's border
      * This must only be called if and when a player acquires the tile
@@ -444,27 +432,32 @@ public class Tile extends Button {
 
     public void setWall()
     {
-        this.wallActive = true;
-        // GameScreen.constructImage(trump);
-
-        // ****************  NEEDS COMPLETEING ********************
+    	this.wallActive = true;
     }
 
+    public void setSolarFlare()
+    {
+    	this.solarActive = true;
+    }
+    
+    public void setMeteor()
+    {
+    	this.meteorActive = true;
+    }
+    
     public boolean hasWall()
     {
         return this.wallActive;
     }
 
-    public void setSolarFlare(float x, float y)
+    public boolean hasSolarFlare()
     {
-    	flare = new Image(new Texture("image/Flare.png"));
-    	flare.setPosition(x,y);
+    	return this.solarActive;
     }
 
-    public void setMeteor(float x, float y)
+    public boolean hasMeteor()
     {
-    	meteor = new Image(new Texture("image/Meteor.png"));
-    	meteor.setPosition(x,y);
+    	return this.meteorActive;
     }
 
     /**

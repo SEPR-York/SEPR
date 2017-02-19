@@ -171,6 +171,8 @@ public class GameScreen implements Screen {
     private Image selectedTileRoboticonIcon;
 
     private Texture WallTexture;
+    private Texture MeteorTexture;
+    private Texture SolarTexture;
 
     private SpriteBatch batch;
 
@@ -240,6 +242,9 @@ public class GameScreen implements Screen {
         //Construct roboticon upgrade overlay (and, again, hide it for the moment)
 
         WallTexture = new Texture(Gdx.files.internal("image/Trump.png"));
+        MeteorTexture = new Texture(Gdx.files.internal("image/Meteor.png"));
+        SolarTexture = new Texture(Gdx.files.internal("image/Flare.png"));
+        
 
         //drawer.debug(gameStage);
         //Call this to draw temporary debug lines around all of the actors on the stage
@@ -279,6 +284,24 @@ public class GameScreen implements Screen {
                     float x = tile.getX() + tile.getParent().getX();
                     float y = tile.getY() + tile.getParent().getY();
                     batch.draw(WallTexture, (int) x, (int) y);
+                    batch.end();
+                }
+                //Draw each tile's border too
+                if (tile.hasMeteor())
+                {
+                    batch.begin();
+                    float x = tile.getX() + tile.getParent().getX();
+                    float y = tile.getY() + tile.getParent().getY();
+                    batch.draw(MeteorTexture, (int) x, (int) y);
+                    batch.end();
+                }
+                //Draw each tile's border too
+                if (tile.hasSolarFlare())
+                {
+                    batch.begin();
+                    float x = tile.getX() + tile.getParent().getX();
+                    float y = tile.getY() + tile.getParent().getY();
+                    batch.draw(SolarTexture, (int) x, (int) y);
                     batch.end();
                 }
             }
@@ -724,13 +747,6 @@ public class GameScreen implements Screen {
         drawer.addTableRow(upgradeOverlay.table(), closeUpgradeOverlayButton);
         //Add a final button for closing the overlay
     }
-
-
-    public void constructImage(Image im)
-    {
-    	gameStage.addActor(im);
-    }
-
 
 
     /**

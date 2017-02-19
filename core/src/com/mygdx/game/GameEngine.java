@@ -183,7 +183,7 @@ public class GameEngine {
      */
     public void nextPhase() {
         System.out.print("Player " + currentPlayerID + " | Phase " + phase + "\n");
-
+        RandomEffect randomEffect = new RandomEffect();
         timer.stop();
 
         switch (phase) {
@@ -196,6 +196,7 @@ public class GameEngine {
             case 4: Phase5Setup();
                     break;
             case 5: Phase1Setup();
+            		randomEffect.randomlyChooseEffect(players[currentPlayerID]);
                     break;
         }
 
