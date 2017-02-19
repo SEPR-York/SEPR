@@ -1,5 +1,5 @@
 #DRTN SEPR
-Team: [Kieran Hall](https://github.com/NotKieran), [Jack Mountain](https://github.com/jm179796), [Nico Pinedo](https://github.com/NicoPinedo), [Martynas Minskis](https://github.com/mm1544), [Joseph Leakey](https://github.com/MisterSeph).
+Team: [Will](https://github.com/will6767), [Luke](https://github.com/lrj509), [Steven](https://github.com/smt529), [Robert](https://github.com/ras570), [Pedro](https://github.com/Wigder).
 
 
 Master Build Status:      [![Build Status](https://travis-ci.org/jm179796/SEPR.svg?branch=master)](https://travis-ci.org/jm179796/SEPR)
