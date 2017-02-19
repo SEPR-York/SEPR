@@ -19,6 +19,7 @@ public class PlayerTest extends TesterFile {
 
     private Game game = new Main();
     private Player TestPlayer = new Player(1, false);
+
     private Tile TestTile = new Tile(game, 0,0,0,0, true, new Runnable() {
         @Override
         public void run() {
@@ -68,11 +69,15 @@ public class PlayerTest extends TesterFile {
 
     @Test
     public void testcalculateScore(){
-        Integer ore = TestPlayer.getOreCount();
-        Integer food = TestPlayer.getFoodCount();
-        Integer energy = TestPlayer.getEnergyCount();
+        GameEngine engine = new GameEngine(null, null);
+
+        Market market = new Market(game, engine);
+
+        Integer ore = TestPlayer.getOreCount() * market.getOreSellPrice();
+        Integer food = TestPlayer.getFoodCount() * market.getFoodSellPrice();
+        Integer energy = TestPlayer.getEnergyCount() * market.getEnergySellPrice();
         Integer score = ore + food + energy;
-        assertEquals(score, TestPlayer.calculateScore());
+        assertEquals(score, TestPlayer.calculateScore(market));
         //assertEquals((TestPlayer.getOreCount() + TestPlayer.getFoodCount() + TestPlayer.getEnergyCount()), TestPlayer.calculateScore());
     }
 
