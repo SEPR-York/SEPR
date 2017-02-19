@@ -13,9 +13,7 @@ public class RandomEffect
 	{
 		Roboticon rob = tile.getRoboticonStored(); 			// Stores the roboticon on that tile under rob
 		rob.setProductionModifier(0,0,0);					// Set the production of that roboticon to 0 for all elements
-		float x = tile.getOriginX();						// Get the x position of the tile
-		float y = tile.getOriginY();						// Get the y position of the tile
-		tile.setWall();							// Get the tile to build the wall and set value to TRUE
+		tile.hasWall();										// Get the tile to build the wall and set value to TRUE
 	}
 
 	/**
@@ -27,9 +25,7 @@ public class RandomEffect
 	{
 		Roboticon rob = tile.getRoboticonStored();			// Find the roboticon on that tile
 		tile.removeRoboticon(rob);							// Remove the roboticon from that tile
-		float x = tile.getOriginX();						// Get the x position of the tile
-		float y = tile.getOriginY();						// Get the y position of the tile
-		tile.setMeteor(x, y);								// Get the tile to build the meteor logo
+		tile.hasMeteor();									// Get the tile to build the meteor logo
 	}
 
 	/**
@@ -40,10 +36,8 @@ public class RandomEffect
 	private void solarFlares(Tile tile)
 	{
 		Roboticon rob = tile.getRoboticonStored();			// Find the roboticon stored on the tile
-		rob.setProductionModifier(0, 0, 0);					// Set the production of that tile to 0 for the round
-		float x = tile.getOriginX();						// Get the x position of the tile
-		float y = tile.getOriginY();						// Get the y position of the tile
-		tile.setSolarFlare(x, y);							// Get the tile to build the solar flare on it
+		//rob.setProductionModifier(0, 0, 0);					// Set the production of that tile to 0 for the round
+		tile.hasSolarFlare();								// Get the tile to build the solar flare on it
 	}
 
 
@@ -51,13 +45,15 @@ public class RandomEffect
 	 *
 	 * @param tile
 	 */
-	private void randomlyChooseEffect(Tile tile)
+	private void randomlyChooseEffect(Player player)
 	{
 		Random rand0 = new Random(); 						// If there will be an effect this round
 		Random rand1 = new Random(); 						// Randomly choose which effect will be set
 		Random rand2 = new Random(); 						// Randomly select a player to effect
-
-
+		
+		int randomTile = rand2.nextInt(player.getTileList().size());
+		Tile tile = player.getTileList().get(randomTile);
+		
 		int random = rand0.nextInt(5);
 
 		if(random == 3) 									// If the random number is 3 - basically a 1 in 5 chance the random effect will occur each round
@@ -75,7 +71,7 @@ public class RandomEffect
 	        }
 	        else
 	        {
-	        	solarFlares(tile); 								// Solar Flares
+	        	solarFlares(tile); 							// Solar Flares
 	        }
 		}
 	}
