@@ -15,6 +15,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -98,7 +99,7 @@ public class GameScreen implements Screen {
      * Label stating the getID of the currently-selected tile
      */
     private Label selectedTileLabel;
-    
+
     private Label selectedTileRoboticonLevels;
 
     /**
@@ -167,6 +168,10 @@ public class GameScreen implements Screen {
      */
     private Image selectedTileRoboticonIcon;
 
+    private Texture WallTexture;
+
+    private SpriteBatch batch;
+
     /**
      * Customised stage that shows up to offer roboticon upgrade choices
      */
@@ -187,6 +192,8 @@ public class GameScreen implements Screen {
         //Import current game-state to access the game's renderer
 
         engine = new GameEngine(game, this);
+
+        batch = new SpriteBatch();
         //Start game engine up
     }
 
@@ -230,6 +237,8 @@ public class GameScreen implements Screen {
         constructUpgradeOverlay();
         //Construct roboticon upgrade overlay (and, again, hide it for the moment)
 
+        WallTexture = new Texture(Gdx.files.internal("image/Trump.png"));
+
         //drawer.debug(gameStage);
         //Call this to draw temporary debug lines around all of the actors on the stage
     }
@@ -253,7 +262,7 @@ public class GameScreen implements Screen {
             gameStage.act(delta);
             gameStage.draw();
             //Draw the stage onto the screen
-            
+
             for (Tile tile : engine.tiles()) {
                 if (upgradeOverlayVisible == false) {
                     tile.drawTooltip();
@@ -262,6 +271,14 @@ public class GameScreen implements Screen {
 
                 tile.drawBorder();
                 //Draw each tile's border too
+                if (tile.hasWall())
+                {
+                    batch.begin();
+                    float x = tile.getX() + tile.getParent().getX();
+                    float y = tile.getY() + tile.getParent().getY();
+                    batch.draw(WallTexture, (int) x, (int) y);
+                    batch.end();
+                }
             }
 
             if (upgradeOverlayVisible == true) {
@@ -695,14 +712,14 @@ public class GameScreen implements Screen {
         //Add a final button for closing the overlay
     }
 
-    
+
     public void constructImage(Image im)
     {
     	gameStage.addActor(im);
     }
-    
 
-       
+
+
     /**
      * Draw auxiliary rectangles to provide window-dressing for the interface
      */
@@ -864,7 +881,7 @@ public class GameScreen implements Screen {
                 selectedTileRoboticonIcon.setVisible(true);
                 selectedTileRoboticonIcon.setDrawable(new TextureRegionDrawable(new TextureRegion(tile.getRoboticonStored().getIconTexture())));
                 selectedTileOwnerIcon.setSize(64, 64);
-                
+
                 // Update and display levels of assigned roboticon
                 int lvls[] = tile.getRoboticonStored().getLevel();
                 selectedTileRoboticonLevels.setText("[GREEN]" + lvls[2] + "[]\n[RED]" + lvls[0] + "[]\n[GOLD]" + lvls[1] + "[]");

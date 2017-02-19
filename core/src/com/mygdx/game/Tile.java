@@ -100,6 +100,9 @@ public class Tile extends Button {
      * Boolean variable that's true whenever the tile's tooltip is visible and false otherwise
      */
     private boolean tooltipActive;
+
+    private boolean wallActive;
+
     /**
      * Holds the colour of the border to be drawn over the tile when it is claimed
      */
@@ -142,6 +145,7 @@ public class Tile extends Button {
         this.ID = ID;
         //Import and save the tile's assigned getID
 
+        this.wallActive = false;
 
         // Parameters for the size of the tile tooltip
         tooltipWidth = 275;
@@ -413,7 +417,7 @@ public class Tile extends Button {
         return Owner.getPlayerID() != 0;
     }
 
-    
+
     // **************  NEEDS COMPLETEING *****************
     public void listOfOwnedTiles()
 	{
@@ -438,21 +442,25 @@ public class Tile extends Button {
         tileBorderColor = color;
     }
 
-    public void setWall(Boolean bool, float x, float y)
+    public void setWall()
     {
-    	trump = new Image(new Texture("image/Trump.png"));
-        trump.setPosition(x,y);
+        this.wallActive = true;
         // GameScreen.constructImage(trump);
-       
+
         // ****************  NEEDS COMPLETEING ********************
     }
-    
+
+    public boolean hasWall()
+    {
+        return this.wallActive;
+    }
+
     public void setSolarFlare(float x, float y)
     {
     	flare = new Image(new Texture("image/Flare.png"));
     	flare.setPosition(x,y);
     }
-    
+
     public void setMeteor(float x, float y)
     {
     	meteor = new Image(new Texture("image/Meteor.png"));
