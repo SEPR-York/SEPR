@@ -1,8 +1,10 @@
 import com.badlogic.gdx.Game;
+import com.mygdx.game.College;
 import com.mygdx.game.GameEngine;
 import com.mygdx.game.GameScreen;
 import com.mygdx.game.Market;
 import com.mygdx.game.Player;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -19,7 +21,9 @@ public class MarketTest extends TesterFile{
     private Player TestPlayer = new Player(0, "");
     private Game testGame;
     private GameScreen testScreen;
-    private GameEngine testGameEngine = new GameEngine(testGame,testScreen, "", "");
+    College college1 = new College("Derwent");
+    College college2 = new College("James");
+    private GameEngine testGameEngine = new GameEngine(testGame,testScreen, "", "", college1, college2);
     private Market TestMarket = new Market(testGame,testGameEngine);
 
     /**

@@ -1,5 +1,6 @@
 import com.badlogic.gdx.Game;
 import com.mygdx.game.*;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class PlayerTest extends TesterFile {
         }
     });
     private Roboticon TestRoboticon = new Roboticon(0, TestPlayer, TestTile);
-    private College TestCollege = new College (1, "I am a test.");
+    private College TestCollege = new College ("Derwent");
 
     @Test
     public void testAssignCollege(){
@@ -69,7 +70,10 @@ public class PlayerTest extends TesterFile {
 
     @Test
     public void testcalculateScore(){
-        GameEngine engine = new GameEngine(null, null, "", "");
+    	College college1 = new College("Derwent");
+        College college2 = new College("James");
+        
+        GameEngine engine = new GameEngine(null, null, "", "", college1, college2);
 
         Market market = new Market(game, engine);
 
