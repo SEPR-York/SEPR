@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 public class RandomEffect
 {
@@ -60,8 +61,6 @@ public class RandomEffect
 		Tile tile = player.getTileList().get(randomTile);
 
 		int random = rand0.nextInt(3);
-		System.out.println("If 1 then RandomEffect should occur: " + random);
-		//System.out.println("If 1 then Trump, 2 is Meteor, 3 is Solar should occur: " + );
 
 		if(random == 1 && tile.hasRoboticon()) 				// If the random number is 1 - basically a 1 in 5 chance the random effect will occur each round
 		{
@@ -69,15 +68,21 @@ public class RandomEffect
 
 	        if(randomNumber == 1) 							// If that random number is 1
 	        {
+	        	System.out.println("Builds a wall!");
+	            JOptionPane.showMessageDialog(null, "Trump has built a wall! Looks like you will no longer be able to produce resources!");
 	        	buildsWall(tile); 							// Builds the wall around a random tile & stops production
 	        }
 
 	        else if(randomNumber == 2) 						// If the random number is 2
 	        {
+	        	System.out.println("Meteor strike!");
+	            JOptionPane.showMessageDialog(null, "Meteor Strike! No roboticons have survived on that tile!");
 	        	meteorShower(tile); 						// Rains a meteorShower and takes away all of a player's ore
 	        }
 	        else
 	        {
+	        	System.out.println("Solar flares!");
+	            JOptionPane.showMessageDialog(null, "Solar flares! Half your resources have now been stolen!");
 	        	solarFlares(tile); 							// Solar Flares
 	        }
 		}
