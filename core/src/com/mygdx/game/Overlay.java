@@ -5,22 +5,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-
 /**
- * @author Duck Related Team Name in Big Massive Letters
- * @since Assessment 2
- * @version Assessment 2
- *
- * An executable version of the game can be found at: https://jm179796.github.io/SEPR/DRTN-Assessment2.jar
- * Our website is: https://jm179796.github.io/SEPR/
+ * @author Gandhi-Inc.
+ * @version Assessment 3
+ *          An executable version of the game can be found at: ____________
+ *          Our website is: www.gandhi-inc.me
+ * @since Assessment 3
  */
 
 public class Overlay extends Stage {
-
-    /**
-     * Stores current game-state, granting direct render access to the class
-     */
-    private Game game;
 
     /**
      * Table providing spatial framework for the overlay
@@ -73,9 +66,6 @@ public class Overlay extends Stage {
     public Overlay(Game game, Color fillColor, Color lineColour, float regionWidth, float regionHeight, int lineThickness) {
         super();
         //Construct the core stage
-
-        this.game = game;
-        //Import current game-state to access the game's renderer
 
         drawer = new Drawer(game);
         //Import QOL drawing functions

@@ -3,12 +3,11 @@ package com.mygdx.game;
 import com.badlogic.gdx.Game;
 
 /**
- * @author Duck Related Team Name in Big Massive Letters
- * @version Assessment 2
- *          <p>
- *          An executable version of the game can be found at: https://jm179796.github.io/SEPR/DRTN-Assessment2.jar
- *          Our website is: https://jm179796.github.io/SEPR/
- * @since Assessment 2
+ * @author Gandhi-Inc.
+ * @version Assessment 3
+ *          An executable version of the game can be found at: ____________
+ *          Our website is: www.gandhi-inc.me
+ * @since Assessment 3
  */
 public class Main extends Game {
 	/**

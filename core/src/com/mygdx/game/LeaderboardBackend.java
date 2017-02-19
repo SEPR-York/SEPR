@@ -5,11 +5,13 @@ import java.io.FileReader;
 import java.io.*;
 import java.util.ArrayList;
 
-/*
+/**
  * This class handles the back end for the leaderboard.
- * @author Gandhi Inc.
- * @version assessment 3
- * @since assessment 3
+ * @author Gandhi-Inc.
+ * @version Assessment 3
+ *          An executable version of the game can be found at: ____________
+ *          Our website is: www.gandhi-inc.me
+ * @since Assessment 3
  */
 
 public class LeaderboardBackend{
@@ -59,8 +61,6 @@ public class LeaderboardBackend{
 	public static void main(String args[]){
 		LeaderboardBackend instance = new LeaderboardBackend();
 		instance.OpenFile();
-		String[][] players = instance.GetTopThree();
-
 	}
 
 	public void OpenFile(){

@@ -7,7 +7,13 @@ package com.mygdx.game;
 */
 
 import java.util.Random;
-
+/**
+ * @author Gandhi-Inc.
+ * @version Assessment 3
+ *          An executable version of the game can be found at: ____________
+ *          Our website is: www.gandhi-inc.me
+ * @since Assessment 3
+ */
 class Gamble{
 
     public static void main(String args[]){

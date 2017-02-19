@@ -18,11 +18,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 /**
- * This has been modified from the main menu class
- * @author Gandhi Inc.
- * @since Assessment 3
+ * @author Gandhi-Inc.
  * @version Assessment 3
- *
+ *          An executable version of the game can be found at: ____________
+ *          Our website is: www.gandhi-inc.me
+ * @since Assessment 3
  */
 public class HowToPlay implements Screen {
 

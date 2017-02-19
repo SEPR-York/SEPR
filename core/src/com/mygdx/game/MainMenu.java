@@ -17,15 +17,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 import javax.swing.*;
 
-
-
 /**
- * @author Duck Related Team Name in Big Massive Letters && Gandhi Inc.
- * @since Assessment 2
+ * @author Gandhi-Inc.
  * @version Assessment 3
- *
- * An executable version of the game can be found at: https://jm179796.github.io/SEPR/DRTN-Assessment2.jar
- * Our website is: https://jm179796.github.io/SEPR/
+ *          An executable version of the game can be found at: ____________
+ *          Our website is: www.gandhi-inc.me
+ * @since Assessment 3
  */
 public class MainMenu implements Screen {
 

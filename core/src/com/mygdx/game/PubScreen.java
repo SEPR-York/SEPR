@@ -15,7 +15,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-
+/**
+ * @author Gandhi-Inc.
+ * @version Assessment 3
+ *          An executable version of the game can be found at: ____________
+ *          Our website is: www.gandhi-inc.me
+ * @since Assessment 3
+ */
 public class PubScreen implements Screen
 {
 
@@ -88,7 +94,7 @@ public class PubScreen implements Screen
         buttons[0] = new TextButton("Welcome to the pub!", menuButtonStyle); 												//places the lines of text into an array
         buttons[1] = new TextButton("", menuButtonStyle); 															//which is then rendered onto the screen later
         buttons[2] = new TextButton("", menuButtonStyle);
-        buttons[3] = new TextButton("The price to play Roulette is " + gamble.GetPriceToPlayRoulette(), menuButtonStyle);
+        buttons[3] = new TextButton("The price to play Roulette is " + Gamble.GetPriceToPlayRoulette(), menuButtonStyle);
         buttons[4] = new TextButton("Your Roulette Number is: " + rouletteNumber, menuButtonStyle);
         buttons[5] = new TextButton("Play Roulette", menuButtonStyle);
         buttons[5].addListener(new ChangeListener() {
@@ -97,7 +103,7 @@ public class PubScreen implements Screen
             }
         });
         buttons[6] = new TextButton("", menuButtonStyle);
-        buttons[7] = new TextButton("The Price to play lucky dip is " + gamble.GetPriceToPlayLuckyDip(), menuButtonStyle);
+        buttons[7] = new TextButton("The Price to play lucky dip is " + Gamble.GetPriceToPlayLuckyDip(), menuButtonStyle);
         buttons[8] = new TextButton("Play Lucky Dip", menuButtonStyle);
         buttons[8].addListener(new ChangeListener() {
             public void changed(ChangeEvent event, Actor actor) {
@@ -138,7 +144,7 @@ public class PubScreen implements Screen
 
         buttons[1].setText(line1);
 
-        if (player.getMoney() < gamble.GetPriceToPlayRoulette() || player.getMoney() < gamble.GetPriceToPlayLuckyDip())
+        if (player.getMoney() < Gamble.GetPriceToPlayRoulette() || player.getMoney() < Gamble.GetPriceToPlayLuckyDip())
         {
             game.setScreen(gameScreen);
         }
