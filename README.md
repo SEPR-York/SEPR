@@ -27,6 +27,5 @@ Development Build Status: [![Build Status](https://travis-ci.org/SEPR-York/SEPR.
 5. Once everything we need for the assesment has been brought into Development and is working 100%, either Jack or I will merge it into the master.
 
 ## Summary
-### master
 ### Development
 This is are only branch
