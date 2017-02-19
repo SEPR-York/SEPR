@@ -24,7 +24,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
  * @version Assessment 3
  *
  */
-public class HowToPlay implements Screen {
+public class ChoosePlayer implements Screen {
 
     /**
      * Stores current game-state, enabling transitions between screens and external QOL drawing functions
@@ -68,7 +68,7 @@ public class HowToPlay implements Screen {
     private Sprite background;
 
 
-    public HowToPlay(Game game){ 																				    //Import current game-state
+    public ChoosePlayer(Game game){ 																				    //Import current game-state
         this.game = game;
     }
 
@@ -104,38 +104,35 @@ public class HowToPlay implements Screen {
         menuButtonStyle.pressedOffsetX = 1;
         menuButtonStyle.pressedOffsetY = -1;
 
-        buttons[0] = new TextButton("How to Play", menuButtonStyle); 												//places the lines of text into an array
-        buttons[1] = new TextButton("", menuButtonStyle); 															//which is then rendered onto the screen later
-        buttons[2] = new TextButton("", menuButtonStyle);
-        buttons[3] = new TextButton("", menuButtonStyle);
-        buttons[4] = new TextButton("", menuButtonStyle);
-        buttons[5] = new TextButton("", menuButtonStyle);
-        buttons[6] = new TextButton("", menuButtonStyle);
-        buttons[7] = new TextButton("", menuButtonStyle);
-        buttons[8] = new TextButton("", menuButtonStyle);
-        buttons[9] = new TextButton("", menuButtonStyle);
-        buttons[10] = new TextButton("for more information, click here", menuButtonStyle);
-        buttons[10].addListener(new ChangeListener() 
-        { 	
-			@Override
-			public void changed(ChangeEvent event, Actor actor) {
-				try 
-        		{
-            	    Desktop.getDesktop().browse(new URL("http://www.google.com").toURI());
-            	} 
-        		catch (Exception e) {}
-				
-			}
-        	
-        });
-        
-
-        buttons[11] = new TextButton("Back to Main Menu", menuButtonStyle); 										//creates the "back to main menu" button and adds a listner 
-        buttons[11].addListener(new ChangeListener() { 																//to the button so when it is pressed it sends you back to the main menu
-            public void changed(ChangeEvent event, Actor actor) {
+        buttons[0] = new TextButton("Back to main menu", menuButtonStyle); 	
+        buttons[0].addListener(new ChangeListener() 
+        {
+            public void changed(ChangeEvent event, Actor actor) 
+            {
                 game.setScreen(new MainMenu(game));
             }
         });
+        
+        
+        buttons[1] = new TextButton("Derwent", menuButtonStyle); 												//places the lines of text into an array
+        buttons[2] = new TextButton("Langwith", menuButtonStyle); 															//which is then rendered onto the screen later
+        buttons[3] = new TextButton("Vanburgh", menuButtonStyle);
+        buttons[4] = new TextButton("James", menuButtonStyle);
+        buttons[5] = new TextButton("Wentworth", menuButtonStyle);
+        buttons[6] = new TextButton("Halifax", menuButtonStyle);
+        buttons[7] = new TextButton("Alcuin", menuButtonStyle);
+        buttons[8] = new TextButton("Goodricke", menuButtonStyle);
+        buttons[9] = new TextButton("Constantine", menuButtonStyle);
+        
+        buttons[10] = new TextButton("Start Game", menuButtonStyle);
+        buttons[10].addListener(new ChangeListener() 
+        {
+            public void changed(ChangeEvent event, Actor actor) 
+            {
+                game.setScreen(new GameScreen(game));
+            }
+        });
+
 
         
         for (int i = 0; i < buttons.length; i++) {																	//renders the buttons

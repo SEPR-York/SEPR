@@ -39,10 +39,6 @@ public class College {
   private String CustomName;
 
   /**
-   * The effect(bonus) that the college uniquely has.
-   */
-  //private Effect Effect;
-  /**
    * The player is playing as the college.
    */
 
