@@ -206,9 +206,11 @@ public class Player {
      *
      * @return Integer The player's current score
      */
-    public Integer calculateScore() {
-        return this.EnergyCount + this.FoodCount + this.OreCount;
-
+    public Integer calculateScore(Market market) {
+        int ore = market.getOreSellPrice() * this.OreCount;
+        int energy = market.getEnergySellPrice() * this.EnergyCount;
+        int food = market.getFoodSellPrice() * this.FoodCount;
+        return ore + energy + food;
     }
 
     /**

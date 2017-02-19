@@ -386,7 +386,7 @@ public class Market extends Table {
         this.add(sellFood).left();
         //Add buttons for buying and selling food to the market's visual framework
         //Note that the strings encoded by these TextButtons represent the market's current buying/selling prices for food
-        
+
         this.row();
         this.add(new Label("Ore", new Label.LabelStyle(tableFont.font(), Color.WHITE))).left();
         this.add(buyOre).left();
@@ -423,7 +423,7 @@ public class Market extends Table {
         this.add(new Label("Food", new Label.LabelStyle(tableFont.font(), Color.WHITE))).left();
         this.add(foodStockLabel).left();
         //Add label to encode current food stocks to the market's visual framework
-        
+
         this.row();
         this.add(new Label("Ore", new Label.LabelStyle(tableFont.font(), Color.WHITE))).left();
         this.add(oreStockLabel).left();
@@ -746,7 +746,6 @@ public class Market extends Table {
 
 
     }
-
 
     /**
      * A method that allows selling resources to the market.

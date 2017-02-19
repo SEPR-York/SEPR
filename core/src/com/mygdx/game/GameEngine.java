@@ -200,21 +200,6 @@ public class GameEngine {
                     break;
         }
 
-        if(checkGameEnd() == true){
-            Integer score1 = players[1].calculateScore();
-            Integer score2 = players[2].calculateScore();
-            if(score1 > score2){
-                System.out.print("Player 1 Wins!");
-            }
-            else{
-                System.out.print("Player 2 Wins!");
-            }
-            LeaderboardBackend.AddPlayerToLeaderboard(players[1].getCollege().getName(), players[1].calculateScore());
-            LeaderboardBackend.AddPlayerToLeaderboard(players[2].getCollege().getName(), players[2].calculateScore());
-        }
-        //Temporary code for determining the game's winner once all tiles have been acquired
-        //Each player should own 8 tiles when this block is executed
-
         gameScreen.closeUpgradeOverlay();
         //If the upgrade overlay is open, close it when the next phase begins
     }
@@ -323,6 +308,24 @@ public class GameEngine {
 
         gameScreen.selectTile(selectedTile);
         //Re-select the current tile to prevent buttons from being enabled mistakenly
+
+        if(checkGameEnd() == true){
+            Integer score1 = players[1].calculateScore(market);
+            Integer score2 = players[2].calculateScore(market);
+            if(score1 > score2){
+                System.out.print("Player 1 Wins!");
+            }
+            else if (score1 < score2){
+                System.out.print("Player 2 Wins!");
+            }
+            else {
+                System.out.print("Players draw!");
+            }
+            drawer.switchTextButton(gameScreen.endTurnButton(), false, Color.GRAY);
+            LeaderboardBackend.AddPlayerToLeaderboard(players[1].getCollege().getName(), players[1].calculateScore(market));
+            LeaderboardBackend.AddPlayerToLeaderboard(players[2].getCollege().getName(), players[2].calculateScore(market));
+        }
+
     }
 
     private void Phase1Setup()
