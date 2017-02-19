@@ -198,6 +198,30 @@ public class Market extends Table {
         //Build the market's visual interface using the buttons declared and prepared earlier
     }
 
+    public void produceRoboticons(){
+    	if(getOreStock() < 16) 										//If the market ore stock is below 16
+		{
+			return;													//Then exit function
+		}
+		else if(getOreStock() >= 16 && getOreStock() < 24) 			//Else if the market ore stock is between 16 and under 24
+		{
+			setRoboticonStock(getRoboticonStock() + 2);				//Add 2 roboticons to the market roboticon stock
+			setOreStock(getOreStock()-16);							//Remove 16 ore from the market ore stock
+			return;
+		}
+		else if(getOreStock() >= 24 && getOreStock() < 32) 			//Else if the market ore stock is between 24 and under 32
+		{
+			setRoboticonStock(getRoboticonStock() + 4);				//Add 4 roboticons to the market ore roboticon stock
+			setOreStock(getOreStock()-24);							//Remove 24 ore from the market ore stock
+			return;
+		}
+		else if(getOreStock() >= 32) 								//Else if the market ore stock is 32 or over
+		{
+			setRoboticonStock(getRoboticonStock() + 6);				//Add 6 roboticons to the market roboticon stock
+			setOreStock(getOreStock()-32);							//Remove 32 ore from the market ore stock
+			return;
+		}
+    }
     /**
      * Instantiates the purchase/sale buttons to be placed in the market and sets their on-click functions
      * Obviously, these buttons enable players to buy and sell resources during certain game-phases

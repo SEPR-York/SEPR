@@ -197,6 +197,7 @@ public class GameEngine {
                     break;
             case 5: Phase1Setup();
             		randomEffect.randomlyChooseEffect(players[currentPlayerID]);
+            		market.produceRoboticons();
                     break;
         }
 

@@ -54,7 +54,7 @@ public class RandomEffect
 		int randomTile = rand2.nextInt(player.getTileList().size());
 		Tile tile = player.getTileList().get(randomTile);
 		
-		int random = rand0.nextInt(5);
+		int random = rand0.nextInt(3);
 		System.out.println("If 1 then RandomEffect should occur: " + random);
 		//System.out.println("If 1 then Trump, 2 is Meteor, 3 is Solar should occur: " + );
 
