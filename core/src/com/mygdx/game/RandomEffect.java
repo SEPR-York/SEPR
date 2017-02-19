@@ -32,14 +32,16 @@ public class RandomEffect
 	}
 
 	/**
-	 * The Solar flares make the screen flash white and then production of that tile is stoped for one round
+	 * The Solar flare divides a player's resource by 2
 	 *
 	 * @param tile
 	 */
 	private void solarFlares(Tile tile)
 	{
-		Roboticon rob = tile.getRoboticonStored();			// Find the roboticon stored on the tile
-		rob.setProductionModifier(0, 0, 0);					// Set the production of that tile to 0 for the round
+		Player player = tile.getOwner();
+		player.setFoodCount(player.getFoodCount()/2);
+		player.setEnergyCount(player.getEnergyCount()/2);
+		player.setOreCount(player.getOreCount()/2);
 		tile.setSolarFlare();								// Get the tile to build the solar flare on it
 	}
 
