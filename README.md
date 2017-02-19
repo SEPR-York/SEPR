@@ -1,5 +1,5 @@
 #DRTN SEPR
-Team: [Will](https://github.com/will6767), [Luke](https://github.com/lrj509), [Steven](https://github.com/smt529), [Robert Sayles](https://github.com/ras570), [Pedro](https://github.com/Wigder).
+Team: [Will](https://github.com/will6767), [Luke](https://github.com/lrj509), [Steven](https://github.com/smt529), [Robert](https://github.com/ras570), [Pedro](https://github.com/Wigder).
 
 
 Master Build Status:      [![Build Status](https://travis-ci.org/jm179796/SEPR.svg?branch=master)](https://travis-ci.org/jm179796/SEPR)
