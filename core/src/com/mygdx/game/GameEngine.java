@@ -102,7 +102,7 @@ public class GameEngine {
      * @param game Variable storing the game's state
      * @param gameScreen The object encoding the in-game interface which is to be controlled by this engine
      */
-    public GameEngine(Game game, GameScreen gameScreen, String player1, String player2) {
+    public GameEngine(Game game, GameScreen gameScreen, String player1, String player2, College college1, College college2) {
         this.game = game;
         //Import current game-state to access the game's renderer
 
@@ -159,13 +159,11 @@ public class GameEngine {
         Player Player2 = new Player(2, player2);
         players[1] = Player1;
         players[2] = Player2;
-        College Goodricke = new College(1, "The best college");
-        College Derwent = new College(2, "Play at your own risk");
-        players[1].assignCollege(Goodricke);
-        players[2].assignCollege(Derwent);
-        Goodricke.assignPlayer(players[1]);
-        Derwent.assignPlayer(players[2]);
-        //Temporary assignment of player-data for testing purposes
+
+        players[1].assignCollege(college1);
+        players[2].assignCollege(college2);
+        college1.assignPlayer(players[1]);
+        college2.assignPlayer(players[2]);
     }
 
     /**

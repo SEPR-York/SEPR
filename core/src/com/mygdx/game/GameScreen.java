@@ -193,11 +193,11 @@ public class GameScreen implements Screen {
      *
      * @param game Variable storing the game's state for rendering purposes
      */
-    public GameScreen(Game game, String player1, String player2) {
+    public GameScreen(Game game, String player1, String player2, College college1, College college2) {
         this.game = game;
         //Import current game-state to access the game's renderer
 
-        engine = new GameEngine(game, this, player1, player2);
+        engine = new GameEngine(game, this, player1, player2, college1, college2);
 
         batch = new SpriteBatch();
         //Start game engine up

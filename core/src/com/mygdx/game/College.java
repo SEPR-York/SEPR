@@ -66,57 +66,57 @@ public class College {
    * @param ID The ID of the college.
    * @param Description The description of the college.
    */
-  public College(int ID, String Description){
+  public College(String college){
 
-    this.ID = ID;
-    //Assign it to the college object otherwise
-
-    switch (this.ID) {
-      case (1):
+    if (college == "Derwent") 
+    {
         this.Name = "Derwent";
         this.logoTexture = new Texture("image/Derwent.png");
-        break;
-      case (2):
-        this.Name = "Langwith";
+    }
+    else if (college == "Langwith")
+    {
+    	this.Name = "Langwith";
         this.logoTexture = new Texture("image/Langwith.png");
-        break;
-      case (3):
-        this.Name = "Vanburgh";
+    }
+    else if (college == "Vanburgh")
+    {
+    	this.Name = "Vanburgh";
         this.logoTexture = new Texture("image/Vanburgh.png");
-        break;
-      case (4):
-        this.Name = "James";
+    }
+    else if (college == "James")
+    {
+    	this.Name = "James";
         this.logoTexture = new Texture("image/James.png");
-        break;
-      case (5):
-        this.Name = "Wentworth";
+    }
+    else if (college == "Wentworth")
+    {
+    	this.Name = "Wentworth";
         this.logoTexture = new Texture("image/Wentworth.png");
-        break;
-      case (6):
-        this.Name = "Halifax";
+    }
+    else if (college == "Halifax")
+    {
+    	this.Name = "Halifax";
         this.logoTexture = new Texture("image/Halifax.png");
-        break;
-      case (7):
-        this.Name = "Alcuin";
+    }
+    else if (college == "Alcuin")
+    {
+    	this.Name = "Alcuin";
         this.logoTexture = new Texture("image/Alcuin.png");
-        break;
-      case (8):
-        this.Name = "Goodricke";
+    }
+    else if (college == "Goodricke")
+    {
+    	this.Name = "Goodricke";
         this.logoTexture = new Texture("image/Goodricke.png");
-        break;
-      case (9):
+    }
+    else if (college == "Constantine")
+    {
         this.Name = "Constantine";
         this.logoTexture = new Texture("image/Constantine.png");
-        break;
     }
-    //College ID determines name and logo
 
     this.logo = new Image(logoTexture);
     //Map the college's associated logo texture to an image object
 
-    this.Description = Description;
-    //Set the description of the college
-    //This will be displayed on the college-selection screen
   }
 
   /**

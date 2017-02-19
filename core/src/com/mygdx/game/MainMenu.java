@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+
 import javax.swing.*;
 
 
@@ -151,7 +152,7 @@ public class MainMenu implements Screen {
                 }
                 System.out.printf("Player 1's name is '%s'.\n", player1);
                 System.out.println("Player 1 has chosen college: " + player1college);
-                
+                College college1 = new College((String) player1college);
                 
                 String player2 = JOptionPane.showInputDialog(null, "Player 2 enter your name");          
                 if(player2 == null)    // If the player click's cancel or doesn't enter a name
@@ -166,8 +167,9 @@ public class MainMenu implements Screen {
                     
                 	System.out.printf("Player 2's name is '%s'.\n", player2);
                     System.out.println("Player 2 has chosen college: " + player2college);
+                    College college2 = new College((String) player2college);
 
-                	game.setScreen(new GameScreen(game, player1, player2));
+                	game.setScreen(new GameScreen(game, player1, player2, college1, college2));
                 }
             
                 
