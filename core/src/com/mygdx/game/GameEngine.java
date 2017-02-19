@@ -197,7 +197,6 @@ public class GameEngine {
                     break;
             case 5: Phase1Setup();
             		randomEffect.randomlyChooseEffect(players[currentPlayerID]);
-            		market.produceRoboticons();
                     break;
         }
 
@@ -333,6 +332,7 @@ public class GameEngine {
             //Update the market's interface for the other player
         }
         else if (checkGameEnd() == false) {
+    		market.produceRoboticons();
             phase = 1;
             gameScreen.updatePhaseLabel("ACQUISITION");
 
