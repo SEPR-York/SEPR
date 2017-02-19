@@ -209,6 +209,8 @@ public class GameEngine {
             else{
                 System.out.print("Player 2 Wins!");
             }
+            LeaderboardBackend.AddPlayerToLeaderboard(players[1].getCollege().getName(), players[1].calculateScore());
+            LeaderboardBackend.AddPlayerToLeaderboard(players[2].getCollege().getName(), players[2].calculateScore());
         }
         //Temporary code for determining the game's winner once all tiles have been acquired
         //Each player should own 8 tiles when this block is executed

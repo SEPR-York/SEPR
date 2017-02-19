@@ -12,12 +12,12 @@ class Gamble{
 
     public static void main(String args[]){
 
-        Gamble bla = new Gamble();        
+        Gamble bla = new Gamble();
         System.out.println(bla.PlayLuckyDip());
         System.out.println(bla.PlayRoulette(10));
         System.out.println("It Works");
     }
-    
+
 /*
  *This Is the price to play a game of roulette, it does not have a modifier
  *as it is not meant to be changed in game.
@@ -61,13 +61,13 @@ class Gamble{
  *wheel, and returns a int relating to the money won or lost.
  *@param UserPickedNumber - The number that the user wishes to pick for the roulette spin.
  *@return Winning - The amount of money won or lost at the game. posative for a min, negative for a loss.
- */ 
+ */
 
     public int PlayRoulette(int UserPickedNumber){
         if(UserPickedNumber < 0) throw new IllegalArgumentException();
         if(UserPickedNumber > 32) throw new IllegalArgumentException();
         Random rand = new Random();
-        int RandomNumber = rand.nextInt(32) + 1;
+        int RandomNumber = rand.nextInt(33);
         if (RandomNumber == UserPickedNumber){
             return(GetPriceToPlayRoulette() * 32);
         }
@@ -94,4 +94,4 @@ class Gamble{
         }
 
     }
-}        
+}

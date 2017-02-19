@@ -12,6 +12,9 @@ public class RandomEffect
 	private void buildsWall(Tile tile)
 	{
 		Roboticon rob = tile.getRoboticonStored(); 			// Stores the roboticon on that tile under rob
+		tile.changeOreCount(0);
+		tile.changeEnergyCount(0);
+		tile.changeFoodCount(0);
 		rob.setProductionModifier(0, 0, 0);					// Set the production of that roboticon to 0 for all elements
 		tile.setWall();										// Get the tile to build the wall and set value to TRUE
 	}
@@ -50,10 +53,10 @@ public class RandomEffect
 		Random rand0 = new Random(); 						// If there will be an effect this round
 		Random rand1 = new Random(); 						// Randomly choose which effect will be set
 		Random rand2 = new Random(); 						// Randomly select a player to effect
-		
+
 		int randomTile = rand2.nextInt(player.getTileList().size());
 		Tile tile = player.getTileList().get(randomTile);
-		
+
 		int random = rand0.nextInt(3);
 		System.out.println("If 1 then RandomEffect should occur: " + random);
 		//System.out.println("If 1 then Trump, 2 is Meteor, 3 is Solar should occur: " + );

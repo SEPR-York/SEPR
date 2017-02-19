@@ -308,6 +308,10 @@ public class Tile extends Button {
         this.EnergyCount = Count;
     }
 
+    public void changeFoodCount(int Count) {
+        this.FoodCount = Count;
+    }
+
     /**
      * Adds a Roboticon to the roboticon list.
      * @param roboticon The roboticon to be added to the list.
@@ -419,7 +423,7 @@ public class Tile extends Button {
         return Owner.getPlayerID() != 0;
     }
 
-    
+
     /**
      * Sets the colour of the tile's border
      * This must only be called if and when a player acquires the tile
@@ -439,12 +443,12 @@ public class Tile extends Button {
     {
     	this.solarActive = true;
     }
-    
+
     public void setMeteor()
     {
     	this.meteorActive = true;
     }
-    
+
     public boolean hasWall()
     {
         return this.wallActive;
