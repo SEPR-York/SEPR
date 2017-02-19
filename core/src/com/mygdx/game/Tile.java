@@ -430,6 +430,21 @@ public class Tile extends Button {
         tileBorderColor = color;
     }
 
+    public void setWall()
+    {
+    	this.wallActive = true;
+    }
+
+    public void setSolarFlare()
+    {
+    	this.solarActive = true;
+    }
+    
+    public void setMeteor()
+    {
+    	this.meteorActive = true;
+    }
+    
     public boolean hasWall()
     {
         return this.wallActive;
