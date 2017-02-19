@@ -1,13 +1,20 @@
 package com.mygdx.game;
 
 /**
- * @author Duck Related Team Name in Big Massive Letters
- * @since Assessment 2
- * @version Assessment 2
+ * @author Gandhi-Inc.
+
+ * @since Assessment 3
+ * @version Assessment 3
  *
  * An executable version of the game can be found at: https://jm179796.github.io/SEPR/DRTN-Assessment2.jar
- * Our website is: https://jm179796.github.io/SEPR/
+ * Our website is: www.gandhi-inc.me
  */
+
+import java.awt.EventQueue;
+import java.lang.reflect.InvocationTargetException;
+
+import javax.swing.*;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
@@ -114,7 +121,8 @@ public class SplashScreen implements Screen {
      * the game's window.
      */
     @Override
-    public void show() {
+    public void show() 
+    {
         batch = new SpriteBatch();
         //Initialise sprite rendering pipeline
 
@@ -122,7 +130,6 @@ public class SplashScreen implements Screen {
         logo.setSize(logo.getWidth() / (float) 2.3, logo.getHeight() / (float) 2.3);
         logo.setCenter(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
         //Create logo sprite and re-size/re-position it to fit into game window
-
         delay = 3;
         //Set the splash-screen's delay
 
@@ -139,6 +146,7 @@ public class SplashScreen implements Screen {
         Gdx.input.setInputProcessor(inputProcessor);
         //Set the splash-screen to detect inputs
         //If a keystroke or a mouse-click is detected, open the menu straight away
+        
     }
 
     /**

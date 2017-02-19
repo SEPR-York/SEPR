@@ -136,13 +136,11 @@ public class MainMenu implements Screen {
         buttons[0].addListener(new ChangeListener() {
             public void changed(ChangeEvent event, Actor actor) 
             {
-                JFrame frame = new JFrame("PLAYER NAMES");
-
-                String player1 = JOptionPane.showInputDialog(frame, "Player 1 enter your name");
+                String player1 = JOptionPane.showInputDialog(null, "Player 1 enter your name");
                 
                 System.out.printf("Player 1's name is '%s'.\n", player1);
                 
-                String player2 = JOptionPane.showInputDialog(frame, "Player 2 enter your name");
+                String player2 = JOptionPane.showInputDialog(null, "Player 2 enter your name");
 
                 System.out.printf("Player 2's name is '%s'.\n", player2);
             
