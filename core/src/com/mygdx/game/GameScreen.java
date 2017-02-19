@@ -244,7 +244,7 @@ public class GameScreen implements Screen {
         WallTexture = new Texture(Gdx.files.internal("image/Trump.png"));
         MeteorTexture = new Texture(Gdx.files.internal("image/Meteor.png"));
         SolarTexture = new Texture(Gdx.files.internal("image/Flare.png"));
-        
+
 
         //drawer.debug(gameStage);
         //Call this to draw temporary debug lines around all of the actors on the stage
@@ -269,6 +269,15 @@ public class GameScreen implements Screen {
             gameStage.act(delta);
             gameStage.draw();
             //Draw the stage onto the screen
+
+            if (engine.phase() == 5 && (engine.currentPlayer().getMoney() >= Gamble.GetPriceToPlayLuckyDip() || engine.currentPlayer().getMoney() >= Gamble.GetPriceToPlayRoulette()))
+            {
+                drawer.switchTextButton(goToPubButton, true, Color.WHITE);
+            }
+            else
+            {
+                    drawer.switchTextButton(goToPubButton, false, Color.GRAY);
+            }
 
             for (Tile tile : engine.tiles()) {
                 if (upgradeOverlayVisible == false) {

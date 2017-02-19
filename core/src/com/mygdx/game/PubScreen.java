@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import java.util.Random;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -38,6 +39,10 @@ public class PubScreen implements Screen
 
     private Drawer drawer;
 
+    private int rouletteNumber;
+
+    final private Gamble gamble = new Gamble();
+
     public PubScreen(Game game, GameScreen gs, Player player){ 																				    //Import current game-state
         this.game = game;
         this.gameScreen = gs;
@@ -52,6 +57,10 @@ public class PubScreen implements Screen
 
         stage = new Stage();
         table = new Table();																						//Initialise stage and button-table
+
+        Random rand = new Random();
+
+        rouletteNumber = rand.nextInt(33);
 
         menuFont = new TTFont(Gdx.files.internal("font/enterthegrid.ttf"), 36, 2, Color.BLACK, false);				//Initialise menu font
 
@@ -79,14 +88,24 @@ public class PubScreen implements Screen
         buttons[0] = new TextButton("Welcome to the pub!", menuButtonStyle); 												//places the lines of text into an array
         buttons[1] = new TextButton("", menuButtonStyle); 															//which is then rendered onto the screen later
         buttons[2] = new TextButton("", menuButtonStyle);
-        buttons[3] = new TextButton("", menuButtonStyle);
-        buttons[4] = new TextButton("", menuButtonStyle);
-        buttons[5] = new TextButton("", menuButtonStyle);
+        buttons[3] = new TextButton("The price to play Roulette is " + gamble.GetPriceToPlayRoulette(), menuButtonStyle);
+        buttons[4] = new TextButton("Your Roulette Number is: " + rouletteNumber, menuButtonStyle);
+        buttons[5] = new TextButton("Play Roulette", menuButtonStyle);
+        buttons[5].addListener(new ChangeListener() {
+            public void changed(ChangeEvent event, Actor actor) {
+                player.varyResource("Money", gamble.PlayRoulette(rouletteNumber));
+            }
+        });
         buttons[6] = new TextButton("", menuButtonStyle);
-        buttons[7] = new TextButton("", menuButtonStyle);
-        buttons[8] = new TextButton("", menuButtonStyle);
+        buttons[7] = new TextButton("The Price to play lucky dip is " + gamble.GetPriceToPlayLuckyDip(), menuButtonStyle);
+        buttons[8] = new TextButton("Play Lucky Dip", menuButtonStyle);
+        buttons[8].addListener(new ChangeListener() {
+            public void changed(ChangeEvent event, Actor actor) {
+                player.varyResource("Money", gamble.PlayLuckyDip());
+            }
+        });
         buttons[9] = new TextButton("", menuButtonStyle);
-        buttons[10] = new TextButton("for more information, click here", menuButtonStyle);
+        buttons[10] = new TextButton("", menuButtonStyle);
 
 
         buttons[11] = new TextButton("Go back to the game!", menuButtonStyle); 										//creates the "back to main menu" button and adds a listner
@@ -118,6 +137,11 @@ public class PubScreen implements Screen
         String line1 = "Player " + player.getPlayerID() + " \t Money " + player.getMoney();
 
         buttons[1].setText(line1);
+
+        if (player.getMoney() < gamble.GetPriceToPlayRoulette() || player.getMoney() < gamble.GetPriceToPlayLuckyDip())
+        {
+            game.setScreen(gameScreen);
+        }
 
         batch.begin(); 																								//Run through the rendering pipeline to draw the menu's background image to the screen
 

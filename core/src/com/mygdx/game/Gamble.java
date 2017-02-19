@@ -23,14 +23,14 @@ class Gamble{
  *as it is not meant to be changed in game.
  */
 
-    private int PriceToPlayRoulette = 10;
+    static private int PriceToPlayRoulette = 10;
 
 /*
  *This is the price to play a game of lucky dip, it does not have a modfier
  * as it is not meant to be changed in game.
  */
 
-    private int PriceToPlayLuckyDip = 10;
+    static private int PriceToPlayLuckyDip = 10;
 
 
 /*
@@ -38,7 +38,7 @@ class Gamble{
  *@return PriceToPlayRoulette
  */
 
-    public int GetPriceToPlayRoulette(){
+    static public int GetPriceToPlayRoulette(){
         return PriceToPlayRoulette;
     }
 
@@ -48,7 +48,7 @@ class Gamble{
  *@return PriceToPlayLuckyDip
  */
 
-    public int GetPriceToPlayLuckyDip(){
+    static public int GetPriceToPlayLuckyDip(){
         return PriceToPlayLuckyDip;
     }
 
