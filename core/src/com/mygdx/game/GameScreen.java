@@ -153,6 +153,8 @@ public class GameScreen implements Screen {
      */
     private TextButton.TextButtonStyle gameButtonStyle;
 
+    private TextButton goToPubButton;
+
     /**
      * Icon representing the currently-active player's chosen college
      */
@@ -354,6 +356,17 @@ public class GameScreen implements Screen {
         drawer.switchTextButton(endTurnButton, false, Color.GRAY);
         //Turn off the "END TURN" button right away to force players into selecting tiles
 
+        final GameScreen gs = this;
+
+        goToPubButton = new TextButton("Go To Pub", gameButtonStyle);
+        goToPubButton.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor)
+            {
+                game.setScreen(new PubScreen(game, gs, engine.currentPlayer()));
+            }
+        });
+
         /**
          * Button which can be clicked on to pause the game
          */
@@ -535,8 +548,8 @@ public class GameScreen implements Screen {
         tableLeft.add(resourceCounters).size(150, 120).align(Align.right);
         //Add resource-counters to the table
         //These will show the current resource stocks for the current player
-
-        drawer.addTableRow(tableLeft, pauseButton, 105, 0, 0, 0, 2);
+        drawer.addTableRow(tableLeft, goToPubButton, 60, 0, 0, 0, 2);
+        drawer.addTableRow(tableLeft, pauseButton, 10, 0, 0, 0, 2);
         //Prepare and add the pause button to the bottom of the table
 
         gameStage.addActor(tableLeft);
