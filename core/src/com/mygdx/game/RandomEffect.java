@@ -12,7 +12,7 @@ public class RandomEffect
 	private void buildsWall(Tile tile)
 	{
 		Roboticon rob = tile.getRoboticonStored(); 			// Stores the roboticon on that tile under rob
-		rob.setProductionModifier(-1,-1,-1);					// Set the production of that roboticon to 0 for all elements
+		rob.setProductionModifier(0, 0, 0);					// Set the production of that roboticon to 0 for all elements
 		tile.setWall();										// Get the tile to build the wall and set value to TRUE
 	}
 

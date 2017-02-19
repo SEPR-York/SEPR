@@ -52,7 +52,7 @@ public class Roboticon {
     /**
      * Upgrade array, holds the possible levels of upgrade for the current robot. Stored as [Ore, Energy, Food]
      */
-    private int Upgrades[] = {0, 0, 0};
+    private int Upgrades[] = {1, 1, 1};
 
     /**
      * The image object providing the roboticon's visual representation
@@ -153,7 +153,7 @@ public class Roboticon {
     public Integer[] productionModifier() {
         Integer[] Modifiers = {1, 1, 1};
         Integer Max = 5;
-        Integer Min = 1;
+        Integer Min = 0;
         Random rand = new Random();
 
         int n = rand.nextInt(Max) + Min;
