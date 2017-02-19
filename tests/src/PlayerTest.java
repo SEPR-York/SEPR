@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNotEquals;
 public class PlayerTest extends TesterFile {
 
     private Game game = new Main();
-    private Player TestPlayer = new Player(1, false);
+    private Player TestPlayer = new Player(1, "");
 
     private Tile TestTile = new Tile(game, 0,0,0,0, true, new Runnable() {
         @Override
@@ -69,7 +69,7 @@ public class PlayerTest extends TesterFile {
 
     @Test
     public void testcalculateScore(){
-        GameEngine engine = new GameEngine(null, null);
+        GameEngine engine = new GameEngine(null, null, "", "");
 
         Market market = new Market(game, engine);
 

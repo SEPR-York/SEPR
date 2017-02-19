@@ -16,10 +16,10 @@ import static org.junit.Assert.*;
  * Our website is: https://jm179796.github.io/SEPR/
  */
 public class MarketTest extends TesterFile{
-    private Player TestPlayer = new Player(0, false);
+    private Player TestPlayer = new Player(0, "");
     private Game testGame;
     private GameScreen testScreen;
-    private GameEngine testGameEngine = new GameEngine(testGame,testScreen);
+    private GameEngine testGameEngine = new GameEngine(testGame,testScreen, "", "");
     private Market TestMarket = new Market(testGame,testGameEngine);
 
     /**
