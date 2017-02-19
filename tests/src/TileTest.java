@@ -19,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 
 public class TileTest extends TesterFile {
     private Game game = new Main();
-    private Player TestPlayer = new Player(1);
+    private Player TestPlayer = new Player(1, false);
     private Tile TestTile = new Tile(game, 0, 5, 5, 5, true, new Runnable() {
         @Override
         public void run() {
@@ -38,9 +38,9 @@ public class TileTest extends TesterFile {
 
         TestPlayer = TestTile.Produce(TestPlayer);
 
-        assertTrue(TestPlayer.getEnergyCount() > TestValues[0]);
-        assertTrue(TestPlayer.getFoodCount() > TestValues[1]);
-        assertTrue(TestPlayer.getOreCount() > TestValues[2]);
+        assertTrue(TestPlayer.getEnergyCount() >= TestValues[0]);
+        assertTrue(TestPlayer.getFoodCount() >= TestValues[1]);
+        assertTrue(TestPlayer.getOreCount() >= TestValues[2]);
 
     }
 
@@ -52,7 +52,7 @@ public class TileTest extends TesterFile {
     @Test
     public void testUnassignRoboticon(){
         TestTile.assignRoboticon(TestRoboticon);
-        TestTile.unassignRoboticon(TestRoboticon);
+        TestTile.removeRoboticon(TestRoboticon);
         assertFalse(TestTile.hasRoboticon());
     }
 
@@ -65,7 +65,7 @@ public class TileTest extends TesterFile {
     }
     @Test
     public void testhasRoboticon(){
-        TestTile.unassignRoboticon(TestRoboticon);
+        TestTile.removeRoboticon(TestRoboticon);
         assertFalse(TestTile.hasRoboticon());
         TestTile.assignRoboticon(TestRoboticon);
         assertTrue(TestTile.hasRoboticon());

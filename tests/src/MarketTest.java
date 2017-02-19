@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  * Our website is: https://jm179796.github.io/SEPR/
  */
 public class MarketTest extends TesterFile{
-    private Player TestPlayer = new Player(0);
+    private Player TestPlayer = new Player(0, false);
     private Game testGame;
     private GameScreen testScreen;
     private GameEngine testGameEngine = new GameEngine(testGame,testScreen);
@@ -52,7 +52,7 @@ public class MarketTest extends TesterFile{
         assertEquals(TestEnergyCount, TestPlayer.getEnergyCount());
         Integer TestMoney = 0;
         assertEquals(TestMoney, TestPlayer.getMoney());
-        Integer TestSellPrice = 200;
+        Integer TestSellPrice = 20;
         assertEquals(TestSellPrice, TestMarket.getEnergySellPrice());
         Integer TestBuyPrice = 0;
         assertEquals(TestBuyPrice, TestMarket.getEnergyBuyPrice());
@@ -76,7 +76,7 @@ public class MarketTest extends TesterFile{
         assertEquals(TestOreCount, TestPlayer.getOreCount());
         TestMoney = 0;
         assertEquals(TestMoney, TestPlayer.getMoney());
-        TestSellPrice = 200;
+        TestSellPrice = 20;
         assertEquals(TestSellPrice, TestMarket.getOreSellPrice());
         TestBuyPrice = 0;
         assertEquals(TestBuyPrice, TestMarket.getOreBuyPrice());
@@ -100,7 +100,7 @@ public class MarketTest extends TesterFile{
         assertEquals(TestFoodCount, TestPlayer.getFoodCount());
         TestMoney = 0;
         assertEquals(TestMoney, TestPlayer.getMoney());
-        TestSellPrice = 200;
+        TestSellPrice = 20;
         assertEquals(TestSellPrice, TestMarket.getFoodSellPrice());
         TestBuyPrice = 0;
         assertEquals(TestBuyPrice, TestMarket.getFoodBuyPrice());
@@ -374,7 +374,7 @@ public class MarketTest extends TesterFile{
             fail("Expected to pass");
         }
 
-        assertTrue(initialbuyprice < TestMarket.getEnergyBuyPrice());
+        assertTrue(initialbuyprice > TestMarket.getEnergyBuyPrice());
         assertTrue(initialsellprice > TestMarket.getEnergySellPrice());
 
         TestPlayer.setOreCount(10);
@@ -391,7 +391,7 @@ public class MarketTest extends TesterFile{
             fail("Expected to pass");
         }
 
-        assertTrue(initialbuyprice < TestMarket.getOreBuyPrice());
+        assertTrue(initialbuyprice > TestMarket.getOreBuyPrice());
         assertTrue(initialsellprice > TestMarket.getOreSellPrice());
 
         TestPlayer.setFoodCount(10);
@@ -408,7 +408,7 @@ public class MarketTest extends TesterFile{
             fail("Expected to pass");
         }
 
-        assertTrue(initialbuyprice < TestMarket.getFoodBuyPrice());
+        assertTrue(initialbuyprice > TestMarket.getFoodBuyPrice());
         assertTrue(initialsellprice > TestMarket.getFoodSellPrice());
     }
 

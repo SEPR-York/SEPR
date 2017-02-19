@@ -19,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 public class RoboticonTest extends TesterFile {
 
     private Game game = new Main();
-    private Player TestPlayer = new Player(0);
+    private Player TestPlayer = new Player(0, false);
     private Tile TestTile = new Tile(game, 0,0, 0, 0, true, new Runnable() {
         @Override
         public void run() {
@@ -72,4 +72,3 @@ public class RoboticonTest extends TesterFile {
     }
 
 }
-
