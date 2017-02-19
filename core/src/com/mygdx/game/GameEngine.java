@@ -102,7 +102,7 @@ public class GameEngine {
      * @param game Variable storing the game's state
      * @param gameScreen The object encoding the in-game interface which is to be controlled by this engine
      */
-    public GameEngine(Game game, GameScreen gameScreen) {
+    public GameEngine(Game game, GameScreen gameScreen, String player1, String player2) {
         this.game = game;
         //Import current game-state to access the game's renderer
 
@@ -155,8 +155,8 @@ public class GameEngine {
         state = State.RUN;
         //Mark the game's current play-state as "running" (IE: not paused)
 
-        Player Player1 = new Player(1, false);
-        Player Player2 = new Player(2, true);
+        Player Player1 = new Player(1, player1);
+        Player Player2 = new Player(2, player2);
         players[1] = Player1;
         players[2] = Player2;
         College Goodricke = new College(1, "The best college");
@@ -322,8 +322,8 @@ public class GameEngine {
                 System.out.print("Players draw!");
             }
             drawer.switchTextButton(gameScreen.endTurnButton(), false, Color.GRAY);
-            LeaderboardBackend.AddPlayerToLeaderboard(players[1].getCollege().getName(), players[1].calculateScore(market));
-            LeaderboardBackend.AddPlayerToLeaderboard(players[2].getCollege().getName(), players[2].calculateScore(market));
+            LeaderboardBackend.AddPlayerToLeaderboard(players[1].getName(), players[1].calculateScore(market));
+            LeaderboardBackend.AddPlayerToLeaderboard(players[2].getName(), players[2].calculateScore(market));
         }
 
     }
@@ -369,8 +369,6 @@ public class GameEngine {
 
         gameScreen.updateInventoryLabels();
         //Display the "new" player's inventory on-screen
-
-        System.out.println(players[currentPlayerID].isAi());
 
     }
 

@@ -181,7 +181,7 @@ public class Tile extends Button {
         //Import and save the tile's landmark status
 
         this.runnable = runnable;
-        this.Owner = new Player(0, false);
+        this.Owner = new Player(0, "NULL");
         //Establish the function that the tile should execute when interacted with
         //Currently, "interacting" with the tile means clicking on it
 

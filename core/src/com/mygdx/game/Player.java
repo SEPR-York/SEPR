@@ -47,7 +47,7 @@ public class Player {
      */
     private College College;
 
-    private boolean ai;
+    private String name;
 
     /**
      * A list of the tiles that the player owns.
@@ -64,14 +64,19 @@ public class Player {
      *
      * @param PlayerID The id of the player that is being created. Should be an integer greater than 0.
      */
-    public Player(Integer PlayerID, boolean isAi) {
+    public Player(Integer PlayerID, String name) {
         this.playerID = PlayerID;
-        this.ai = isAi;
+        this.name = name;
     }
 
 
     public int getPlayerID() {
         return playerID;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 
     /**
@@ -251,10 +256,5 @@ public class Player {
      */
     public College getCollege() {
         return this.College;
-    }
-
-    public boolean isAi()
-    {
-        return ai;
     }
 }

@@ -102,6 +102,8 @@ public class GameScreen implements Screen {
 
     private Label selectedTileRoboticonLevels;
 
+    private Label playerNameLabel;
+
     /**
      * Object defining QOL drawing functions for rectangles and on-screen tables
      * Used in this class to render tooltip regions
@@ -191,11 +193,11 @@ public class GameScreen implements Screen {
      *
      * @param game Variable storing the game's state for rendering purposes
      */
-    public GameScreen(Game game) {
+    public GameScreen(Game game, String player1, String player2) {
         this.game = game;
         //Import current game-state to access the game's renderer
 
-        engine = new GameEngine(game, this);
+        engine = new GameEngine(game, this, player1, player2);
 
         batch = new SpriteBatch();
         //Start game engine up
@@ -278,6 +280,8 @@ public class GameScreen implements Screen {
             {
                     drawer.switchTextButton(goToPubButton, false, Color.GRAY);
             }
+
+            playerNameLabel.setText(engine.currentPlayer().getName());
 
             for (Tile tile : engine.tiles()) {
                 if (upgradeOverlayVisible == false) {
@@ -550,7 +554,8 @@ public class GameScreen implements Screen {
         //Prepare and add the "End Phase" button to the table
 
         gameFont.setSize(36);
-        drawer.addTableRow(tableLeft, new Label("CURRENT PLAYER", new Label.LabelStyle(gameFont.font(), Color.BLACK)), 0, 0, 10, 0, 2);
+        playerNameLabel = new Label("CURRENT PLAYER", new Label.LabelStyle(gameFont.font(), Color.BLACK));
+        drawer.addTableRow(tableLeft, playerNameLabel, 0, 0, 10, 0, 2);
         //Window-dressing: adds "CURRENT PLAYER" label
 
         gameFont.setSize(24);
