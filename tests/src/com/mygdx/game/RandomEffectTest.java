@@ -19,9 +19,11 @@ public class RandomEffectTest extends TesterFile {
 		
 		testEffects.buildsWall(dummyTile);
 		
+		int[] newRes = dummyTile.getResources();
+		int[] newLvl = dummyBot.getLevel();
 		assertEquals(dummyTile.hasWall(), true);
-		assertEquals(dummyTile.getResources(), new int[] {0,0,0});
-		assertEquals(dummyBot.getLevel(), new int[] {0,0,0});
+		assertTrue(newRes[0]==0 && newRes[1]==0 && newRes[2]==0);
+		assertTrue(newLvl[0]==0 && newLvl[1]==0 && newLvl[2]==0);
 	}
 
 	@Test
@@ -49,6 +51,8 @@ public class RandomEffectTest extends TesterFile {
 		testEffects.solarFlares(dummyTile);
 		
 		int[] afterRes = new int[] {dummyPlayer.getFoodCount(), dummyPlayer.getOreCount(), dummyPlayer.getEnergyCount()};
-		assertEquals(halfBeforeRes, afterRes);
+		assertTrue(halfBeforeRes[0]==afterRes[0]);
+		assertTrue(halfBeforeRes[1]==afterRes[1]);
+		assertTrue(halfBeforeRes[2]==afterRes[2]);
 	}
 }

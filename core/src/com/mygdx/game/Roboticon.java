@@ -160,13 +160,15 @@ public class Roboticon {
         return Modifiers;
     }
     
-    public Integer[] setProductionModifier(int ore, int energy, int food)
+    public void setProductionModifier(int ore, int energy, int food)
     {
-    	Integer[] Modifiers = {ore, energy, food};
-    	
-    	return Modifiers;
+    	oreLevel = ore;
+    	energyLevel = energy;
+    	foodLevel = food;
+
     }
 
+    
     /**
      * Returns an Image object with the texture of the roboticon's icon mapped to it
      *
