@@ -1,16 +1,11 @@
 package com.mygdx.game;
 
-import java.util.ArrayList;
-
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Timer;
@@ -77,10 +72,6 @@ public class Tile extends Button {
      * A modifier influencing how much ore is produced.
      */
     private int OreCount;
-    /**
-     * A modifier influencing how much ore is produced.
-     */
-    private boolean landmark;
     /**
      * The player that owns the tile, if it has one.
      */
@@ -175,9 +166,6 @@ public class Tile extends Button {
         this.FoodCount = FoodCount;
         this.OreCount = OreCount;
         //Import and save the tile's determined resource yields
-
-        this.landmark = landmark;
-        //Import and save the tile's landmark status
 
         this.runnable = runnable;
         this.Owner = new Player(0, "NULL");

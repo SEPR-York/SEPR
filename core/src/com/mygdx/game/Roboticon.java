@@ -19,11 +19,6 @@ public class Roboticon {
     private Integer RoboticonID;
 
     /**
-     * Variable holding which player the roboticon belongs to.
-     */
-    private Player Owner;
-
-    /**
      * Variable holding what tile the roboticon is stored on.
      */
     private Tile CurrentTile;
@@ -73,8 +68,6 @@ public class Roboticon {
     public Roboticon(int ID, Player Player, Tile Tile) {
         RoboticonID = ID;
         this.CurrentTile = Tile;
-        this.Owner = Player;
-
         this.iconTexture = new Texture("image/Roboticon.png");
         this.icon = new Image(iconTexture);
 
