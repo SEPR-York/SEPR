@@ -130,59 +130,83 @@ public class MainMenu implements Screen {
         menuButtonStyle.pressedOffsetX = 1;
         menuButtonStyle.pressedOffsetY = -1;
         //Set up the format for the buttons on the menu
-        //STILL NEED TO SORT OUT BUTTON ANIMATIONS
 
         buttons[0] = new TextButton("Start", menuButtonStyle);
-        buttons[0].addListener(new ChangeListener() {
+        buttons[0].addListener(new ChangeListener() 
+        {
             public void changed(ChangeEvent event, Actor actor)
             {
-
+            	// ------------ PLAYER 1 ---------------
+            	
                 String player1 = JOptionPane.showInputDialog(null, "Player 1 enter your name", "Player 1");
 
-                JDialog.setDefaultLookAndFeelDecorated(true);
-                //ArrayList<String> collegeValues = new ArrayList<String>(Arrays.asList({ "Derwent", "Langwith", "Vanburgh", "James", "Wentworth", "Halifax", "Alcuin", "Goodricke", "Constantine" }));
-                String[] tmpArray = {"Derwent", "Langwith", "Vanburgh", "James", "Wentworth", "Halifax", "Alcuin", "Goodricke", "Constantine"};
-                ArrayList<String> collegeValueList = new ArrayList<String>(Arrays.asList(tmpArray));
-                String initialSelection = "Derwent";
-                Object player1college = JOptionPane.showInputDialog(null, "Which college would you like to be in?", "Player 1", JOptionPane.QUESTION_MESSAGE, null, collegeValueList.toArray(), initialSelection);
-
-                if(player1 == null || player1college == null)   // If the player click's cancel or doesn't enter a name
+                if(player1 == null || player1 == "")   		// If the player click's cancel or doesn't enter a name
                 {
-                	game.setScreen(new MainMenu(game));
+                	game.setScreen(new MainMenu(game));		// Returns to main screen
                 }
-                System.out.printf("Player 1's name is '%s'.\n", player1);
-                System.out.println("Player 1 has chosen college: " + player1college);
-                College college1 = new College((String) player1college);
-
-                collegeValueList.remove((String) player1college);
-
-                String player2 = JOptionPane.showInputDialog(null, "Player 2 enter your name", "Player 2");
-                if(player2 == null)    // If the player click's cancel or doesn't enter a name
+                else										// If the player has a valid input
                 {
-                	game.setScreen(new MainMenu(game));
+                	// Create array list of colleges
+                	String[] tmpArray = {"Derwent", "Langwith", "Vanburgh", "James", "Wentworth", "Halifax", "Alcuin", "Goodricke", "Constantine"};
+                    ArrayList<String> collegeValueList = new ArrayList<String>(Arrays.asList(tmpArray));
+                    
+                    //Create a college selection message
+                    JDialog.setDefaultLookAndFeelDecorated(true);														//Set the type of display box
+                    String initialSelection = "Derwent";																//Default to Derwent  
+                    Object player1college = JOptionPane.showInputDialog(												//Show the message
+                    													null, 											// Parent JFrame is null
+                    													"Which college would you like to be in?", 		// Text to display
+                    													"Player 1", 									// Title
+                    													JOptionPane.QUESTION_MESSAGE, 					// Type of message
+                    													null, 											// null
+                    													collegeValueList.toArray(), 					// List of options
+                    													initialSelection);								// Initial value selected
+                    
+                    
+	                System.out.printf("Player 1's name is '%s'.\n", player1);				//Print players name to console
+	                System.out.println("Player 1 has chosen college: " + player1college);	//Print their college to console
+	                College college1 = new College((String) player1college);				//Set their college to their name
+	
+	                collegeValueList.remove((String) player1college);						//Remove the college player 1 picked from player 2's list
+	
+	                // --------------- PLAYER 2 ----------------
+		            // Player 2 enter their name frame
+	                String player2 = JOptionPane.showInputDialog(null, 							//Parent class is null
+	                											"Player 2 enter your name", 	//Text to display
+	                											"Player 2");					//Default name
+	                
+	                if(player2 == null || player2 == "")    									// If the player click's cancel or doesn't enter a name
+	                {
+	                	game.setScreen(new MainMenu(game));										// Return to main menu									
+	                }
+	                else
+	                {
+	                	JDialog.setDefaultLookAndFeelDecorated(true);
+	                    Object player2college = JOptionPane.showInputDialog(null, 
+	                    								"Which college would you like to be in?", 		// Question in message
+	                    								"Player 2", 									// Title of message
+	                    								JOptionPane.QUESTION_MESSAGE, 					// Type of message window
+	                    								null, 											// null
+	                    								collegeValueList.toArray(), 					// List of options available
+	                    								initialSelection);								// Default option selected
+	  
+	                    if (player2college == null || player2college == "")								// If the input isn't valid																	
+	                    {
+	                        	game.setScreen(new MainMenu(game));										// Return to main menu
+	                    }
+	                    else																			// If it is valid
+	                    {
+	                    	System.out.printf("Player 2's name is '%s'.\n", player2);					// Print player 2's name to console
+	                        System.out.println("Player 2 has chosen college: " + player2college);		// Print their college to console
+	                        College college2 = new College((String) player2college);					// Set player 2's college selection to their college choice
+	
+	                    	game.setScreen(new GameScreen(game, player1, player2, college1, college2));	// START THE GAME!
+	                    }
+	                }
                 }
-                else
-                {
-                	JDialog.setDefaultLookAndFeelDecorated(true);
-                    Object player2college = JOptionPane.showInputDialog(null, "Which college would you like to be in?",
-                    "Player 2", JOptionPane.QUESTION_MESSAGE, null, collegeValueList.toArray(), initialSelection);
-
-                    if (player2college == null)
-                    {
-                        	game.setScreen(new MainMenu(game));
-                    }
-                    else{
-                    	System.out.printf("Player 2's name is '%s'.\n", player2);
-                        System.out.println("Player 2 has chosen college: " + player2college);
-                        College college2 = new College((String) player2college);
-
-                    	game.setScreen(new GameScreen(game, player1, player2, college1, college2));
-                    }
-                }
-
-
             }
         });
+        
         buttons[1] = new TextButton("How to Play", menuButtonStyle);
         buttons[1].addListener(new ChangeListener() {
             public void changed(ChangeEvent event, Actor actor) {
