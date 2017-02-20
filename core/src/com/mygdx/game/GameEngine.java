@@ -154,13 +154,17 @@ public class GameEngine {
         state = State.RUN;
         //Mark the game's current play-state as "running" (IE: not paused)
 
+        // Create 2 players objects which will represent the two human players taking the arguments of an integer to represent their ID and a string which is the players name
         Player Player1 = new Player(1, player1);
         Player Player2 = new Player(2, player2);
+        // Then assign these players to indexes in the array of players
         players[1] = Player1;
         players[2] = Player2;
 
+        // Then assign the college to players that they chose on the main menu
         players[1].assignCollege(college1);
         players[2].assignCollege(college2);
+        // Then assign the player to the college to insure integrity of the data throughout the system
         college1.assignPlayer(players[1]);
         college2.assignPlayer(players[2]);
     }
@@ -171,7 +175,7 @@ public class GameEngine {
      * currently at when this method if called. If player 1 is the current player in any particular phase, then the
      * phase number remains and control is handed off to the other player: otherwise, control returns to player 1 and
      * the game advances to the next state, implementing any state-specific features as it goes.
-     *
+     * <br/>
      * PHASE 1: Acquisition of Tiles
      * PHASE 2: Acquisition of Roboticons
      * PHASE 3: Placement of Roboticons
@@ -180,9 +184,11 @@ public class GameEngine {
      */
     public void nextPhase() {
         System.out.print("Player " + currentPlayerID + " | Phase " + phase + "\n");
+        // Create a random effect class so that the random effects can be performed during the game
         RandomEffect randomEffect = new RandomEffect();
         timer.stop();
 
+        // Switch statement for what to do on advance the phase
         switch (phase) {
             case 1: Phase2Setup();
                     break;
@@ -193,6 +199,7 @@ public class GameEngine {
             case 4: Phase5Setup();
                     break;
             case 5: Phase1Setup();
+                    // At the end of a round perform the random effect functionality
             		randomEffect.randomlyChooseEffect(players[currentPlayerID]);
                     break;
         }
@@ -306,23 +313,33 @@ public class GameEngine {
         gameScreen.selectTile(selectedTile);
         //Re-select the current tile to prevent buttons from being enabled mistakenly
 
+        // The game has ended then perform the function for the game to end
         if(checkGameEnd() == true){
-            Integer score1 = players[1].calculateScore(market);
-            Integer score2 = players[2].calculateScore(market);
-            if(score1 > score2){
-                System.out.print("Player 1 Wins!");
-            }
-            else if (score1 < score2){
-                System.out.print("Player 2 Wins!");
-            }
-            else {
-                System.out.print("Players draw!");
-            }
-            drawer.switchTextButton(gameScreen.endTurnButton(), false, Color.GRAY);
-            LeaderboardBackend.AddPlayerToLeaderboard(players[1].getName(), players[1].calculateScore(market));
-            LeaderboardBackend.AddPlayerToLeaderboard(players[2].getName(), players[2].calculateScore(market));
+            gameEnd();
         }
 
+    }
+
+    private void gameEnd()
+    {
+        // Store the players current scores
+        Integer score1 = players[1].calculateScore(market);
+        Integer score2 = players[2].calculateScore(market);
+        // Log the winner to the terminal (Mainly used for testing, user is unlikely to view this unless they run the game from the terminal)
+        if(score1 > score2){
+            System.out.print("Player 1 Wins!");
+        }
+        else if (score1 < score2){
+            System.out.print("Player 2 Wins!");
+        }
+        else {
+            System.out.print("Players draw!");
+        }
+        // Disable the end turn button so that they cannot continue to play the game after this point
+        drawer.switchTextButton(gameScreen.endTurnButton(), false, Color.GRAY);
+        // Save the players scores to GameSave.txt file
+        LeaderboardBackend.AddPlayerToLeaderboard(players[1].getName(), players[1].calculateScore(market));
+        LeaderboardBackend.AddPlayerToLeaderboard(players[2].getName(), players[2].calculateScore(market));
     }
 
     private void Phase1Setup()
@@ -424,45 +441,7 @@ public class GameEngine {
             tileAcquired = true;
             //Mark that a tile has been acquired on this turn
 
-            switch (players[currentPlayerID].getCollege().getID()) {
-                case (1):
-                    //DERWENT
-                    selectedTile.setTileBorderColor(Color.BLUE);
-                    break;
-                case (2):
-                    //LANGWITH
-                    selectedTile.setTileBorderColor(Color.CHARTREUSE);
-                    break;
-                case (3):
-                    //VANBURGH
-                    selectedTile.setTileBorderColor(Color.TEAL);
-                    break;
-                case (4):
-                    //JAMES
-                    selectedTile.setTileBorderColor(Color.CYAN);
-                    break;
-                case (5):
-                    //WENTWORTH
-                    selectedTile.setTileBorderColor(Color.MAROON);
-                    break;
-                case (6):
-                    //HALIFAX
-                    selectedTile.setTileBorderColor(Color.YELLOW);
-                    break;
-                case (7):
-                    //ALCUIN
-                    selectedTile.setTileBorderColor(Color.RED);
-                    break;
-                case (8):
-                    //GOODRICKE
-                    selectedTile.setTileBorderColor(Color.GREEN);
-                    break;
-                case (9):
-                    //CONSTANTINE
-                    selectedTile.setTileBorderColor(Color.PINK);
-                    break;
-            }
-            //Set the colour of the tile's new border based on the college of the player who claimed it
+            // Removed the code to control the tile color from here, has now been migrated to the Tile and Collge class since it is the College which determines the Color of the tile
 
             nextPhase();
             //Advance the game

@@ -192,7 +192,15 @@ public class GameScreen implements Screen {
      *
      * @param game Variable storing the game's state for rendering purposes
      */
-    public GameScreen(Game game, String player1, String player2, College college1, College college2) {
+    public GameScreen(Game game, String player1, String player2, College college1, College college2){
+
+        /*
+        *
+        * Moved almost everything from the show method to the constructor so that the game state would be remembered inbetween switching of screens
+        * since we had a bug where when coming out of the pub screen the game would reset due to the variables being initialised to their default state everytime this screen is shown.
+        *
+        */
+
         this.game = game;
         //Import current game-state to access the game's renderer
 
@@ -227,6 +235,7 @@ public class GameScreen implements Screen {
         constructUpgradeOverlay();
         //Construct roboticon upgrade overlay (and, again, hide it for the moment)
 
+        // Textures for the random effects are initialised so that they can be used later
         WallTexture = new Texture(Gdx.files.internal("image/Trump.png"));
         MeteorTexture = new Texture(Gdx.files.internal("image/Meteor.png"));
         SolarTexture = new Texture(Gdx.files.internal("image/Flare.png"));
@@ -246,9 +255,8 @@ public class GameScreen implements Screen {
      */
     @Override
     public void show() {
-
+        // When switching to this screen make the input processor the game stage so that the input is handled correctly
         Gdx.input.setInputProcessor(gameStage);
-
     }
 
     /**
@@ -271,10 +279,12 @@ public class GameScreen implements Screen {
             gameStage.draw();
             //Draw the stage onto the screen
 
+            // If the current phase is 5 (The market phase) and the current player has enough money to gamble in the pub then enable the pub button
             if (engine.phase() == 5 && (engine.currentPlayer().getMoney() >= Gamble.GetPriceToPlayLuckyDip() || engine.currentPlayer().getMoney() >= Gamble.GetPriceToPlayRoulette()))
             {
                 drawer.switchTextButton(goToPubButton, true, Color.WHITE);
             }
+            // Otherwise disable the button
             else
             {
                     drawer.switchTextButton(goToPubButton, false, Color.GRAY);
@@ -290,6 +300,8 @@ public class GameScreen implements Screen {
 
                 tile.drawBorder();
                 //Draw each tile's border too
+
+                // If the tile has had the wall random effect on it then draw that image over that tole
                 if (tile.hasWall())
                 {
                     batch.begin();
@@ -298,7 +310,7 @@ public class GameScreen implements Screen {
                     batch.draw(WallTexture, (int) x, (int) y);
                     batch.end();
                 }
-                //Draw each tile's border too
+                // Similar as above just for the meteor effect
                 if (tile.hasMeteor())
                 {
                     batch.begin();
@@ -307,7 +319,7 @@ public class GameScreen implements Screen {
                     batch.draw(MeteorTexture, (int) x, (int) y);
                     batch.end();
                 }
-                //Draw each tile's border too
+                // Again similar as above but for the solar effect
                 if (tile.hasSolarFlare())
                 {
                     batch.begin();
@@ -391,9 +403,12 @@ public class GameScreen implements Screen {
         drawer.switchTextButton(endTurnButton, false, Color.GRAY);
         //Turn off the "END TURN" button right away to force players into selecting tiles
 
+        // Copy the game screen object into this final variable for use in an event handler function
         final GameScreen gs = this;
 
+        // Initialise the Pub button with the correct style and text
         goToPubButton = new TextButton("Go To Pub", gameButtonStyle);
+        // Add the listener so that when it is clicked the screen is set to the pub screen
         goToPubButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor)
@@ -584,7 +599,12 @@ public class GameScreen implements Screen {
         tableLeft.add(resourceCounters).size(150, 120).align(Align.right);
         //Add resource-counters to the table
         //These will show the current resource stocks for the current player
+
+
+        // Add the pub button to the left side of the game screen just above the pause button
         drawer.addTableRow(tableLeft, goToPubButton, 60, 0, 0, 0, 2);
+
+
         drawer.addTableRow(tableLeft, pauseButton, 10, 0, 0, 0, 2);
         //Prepare and add the pause button to the bottom of the table
 

@@ -41,9 +41,11 @@ public class College {
   /**
    * The player is playing as the college.
    */
-
   private Player Owner;
 
+  /**
+  * The color of the College
+  */
   private Color color;
 
   /**
@@ -70,6 +72,7 @@ public class College {
    */
   public College(String college){
 
+      //Given the college string initialise some of the important variables for the game to display properly
     if (college == "Derwent")
     {
         this.Name = "Derwent";
@@ -164,6 +167,11 @@ public class College {
     return this.ID;
   }
 
+  /**
+  * Returns the Color object for this college
+  *
+  * @return Color The color associated with the college
+  */
   public Color getColor()
   {
       return color;
@@ -185,6 +193,5 @@ public class College {
    */
   public Texture getLogoTexture() {
     return logoTexture;
-
   }
 }
