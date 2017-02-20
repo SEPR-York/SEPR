@@ -2,6 +2,9 @@ package com.mygdx.game;
 
 import java.util.Random;
 
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -146,6 +149,13 @@ public class PubScreen implements Screen
 
         if (player.getMoney() < Gamble.GetPriceToPlayRoulette() || player.getMoney() < Gamble.GetPriceToPlayLuckyDip())
         {
+        	System.out.println(player + " is too poor to play in the pub!");
+        	
+        	JOptionPane pubOptionPane = new JOptionPane("You are too poor to play in Trump's Entertainment Resort - Bye bye!");
+        	JDialog pubDialog = pubOptionPane.createDialog("Too poor for Trump!");
+        	pubDialog.setAlwaysOnTop(true);
+        	pubDialog.setVisible(true);
+        	
             game.setScreen(gameScreen);
         }
 
