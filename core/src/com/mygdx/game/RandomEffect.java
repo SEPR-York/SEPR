@@ -19,7 +19,7 @@ public class RandomEffect
 	 * There is a wall built around their tile and a Mexican flag appears
 	 * @param tile
 	 */
-	private void buildsWall(Tile tile)
+	public void buildsWall(Tile tile)
 	{
 		Roboticon rob = tile.getRoboticonStored(); 			// Stores the roboticon on that tile under rob
 		tile.changeOreCount(0);
@@ -34,7 +34,7 @@ public class RandomEffect
 	 * @param players
 	 * @param tile
 	 */
-	private void meteorShower(Tile tile)
+	public void meteorShower(Tile tile)
 	{
 		Roboticon rob = tile.getRoboticonStored();			// Find the roboticon on that tile
 		tile.removeRoboticon(rob);							// Remove the roboticon from that tile
@@ -46,7 +46,7 @@ public class RandomEffect
 	 *
 	 * @param tile
 	 */
-	private void solarFlares(Tile tile)
+	public void solarFlares(Tile tile)
 	{
 		Player player = tile.getOwner();
 		player.setFoodCount(player.getFoodCount()/2);

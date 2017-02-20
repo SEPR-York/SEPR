@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Duck-Related-Team-Game-tests</name>
+	<name>Gandhi-Inc.-tests</name>
 	<comment>Project Duck-Related-Team-Game-tests created by Buildship.</comment>
 	<projects>
 	</projects>
@@ -24,7 +24,7 @@
 		<link>
 			<name>assets</name>
 			<type>2</type>
-			<location>/Users/Will/Google Drive York Uni/SEPR/SEPR/core/assets</location>
+			<location>Z:/w2k/YEAR2/SEPR/Phase 3/Project Files/SEPR/core/assets</location>
 		</link>
 	</linkedResources>
 </projectDescription>
