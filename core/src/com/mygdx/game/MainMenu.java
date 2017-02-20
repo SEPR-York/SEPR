@@ -15,6 +15,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.*;
 
 /**
@@ -135,23 +137,26 @@ public class MainMenu implements Screen {
             {
 
                 String player1 = JOptionPane.showInputDialog(null, "Player 1 enter your name");
-                
+
                 JDialog.setDefaultLookAndFeelDecorated(true);
-                Object[] collegeValues = { "Derwent", "Langwith", "Vanburgh", "James", "Wentworth", "Halifax", "Alcuin", "Goodricke", "Constantine" };
+                //ArrayList<String> collegeValues = new ArrayList<String>(Arrays.asList({ "Derwent", "Langwith", "Vanburgh", "James", "Wentworth", "Halifax", "Alcuin", "Goodricke", "Constantine" }));
+                String[] tmpArray = {"Derwent", "Langwith", "Vanburgh", "James", "Wentworth", "Halifax", "Alcuin", "Goodricke", "Constantine"};
+                ArrayList<String> collegeValueList = new ArrayList<String>(Arrays.asList(tmpArray));
                 String initialSelection = "Derwent";
                 Object player1college = JOptionPane.showInputDialog(null, "Which college would you like to be in?",
-                "Player 1", JOptionPane.QUESTION_MESSAGE, null, collegeValues, initialSelection);
-                
-                
-                if(player1 == null)   // If the player click's cancel or doesn't enter a name
+                "Player 1", JOptionPane.QUESTION_MESSAGE, null, collegeValueList.toArray(), initialSelection);
+
+                if(player1 == null || player1college == null)   // If the player click's cancel or doesn't enter a name
                 {
                 	game.setScreen(new MainMenu(game));
                 }
                 System.out.printf("Player 1's name is '%s'.\n", player1);
                 System.out.println("Player 1 has chosen college: " + player1college);
                 College college1 = new College((String) player1college);
-                
-                String player2 = JOptionPane.showInputDialog(null, "Player 2 enter your name");          
+
+                collegeValueList.remove((String) player1college);
+
+                String player2 = JOptionPane.showInputDialog(null, "Player 2 enter your name");
                 if(player2 == null)    // If the player click's cancel or doesn't enter a name
                 {
                 	game.setScreen(new MainMenu(game));
@@ -160,16 +165,22 @@ public class MainMenu implements Screen {
                 {
                 	JDialog.setDefaultLookAndFeelDecorated(true);
                     Object player2college = JOptionPane.showInputDialog(null, "Which college would you like to be in?",
-                    "Player 2", JOptionPane.QUESTION_MESSAGE, null, collegeValues, initialSelection);
-                    
-                	System.out.printf("Player 2's name is '%s'.\n", player2);
-                    System.out.println("Player 2 has chosen college: " + player2college);
-                    College college2 = new College((String) player2college);
+                    "Player 2", JOptionPane.QUESTION_MESSAGE, null, collegeValueList.toArray(), initialSelection);
 
-                	game.setScreen(new GameScreen(game, player1, player2, college1, college2));
+                    if (player2college == null)
+                    {
+                        	game.setScreen(new MainMenu(game));
+                    }
+                    else{
+                    	System.out.printf("Player 2's name is '%s'.\n", player2);
+                        System.out.println("Player 2 has chosen college: " + player2college);
+                        College college2 = new College((String) player2college);
+
+                    	game.setScreen(new GameScreen(game, player1, player2, college1, college2));
+                    }
                 }
-            
-                
+
+
             }
         });
         buttons[1] = new TextButton("How to Play", menuButtonStyle);

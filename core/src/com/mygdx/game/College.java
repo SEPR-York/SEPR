@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.graphics.Color;
 
 /**
  * @author Gandhi-Inc.
@@ -43,6 +44,8 @@ public class College {
 
   private Player Owner;
 
+  private Color color;
+
   /**
    * The description of the College.
    */
@@ -67,50 +70,59 @@ public class College {
    */
   public College(String college){
 
-    if (college == "Derwent") 
+    if (college == "Derwent")
     {
         this.Name = "Derwent";
         this.logoTexture = new Texture("image/Derwent.png");
+        this.color = Color.BLUE;
     }
     else if (college == "Langwith")
     {
     	this.Name = "Langwith";
         this.logoTexture = new Texture("image/Langwith.png");
+        this.color = Color.CHARTREUSE;
     }
     else if (college == "Vanburgh")
     {
     	this.Name = "Vanburgh";
         this.logoTexture = new Texture("image/Vanburgh.png");
+        this.color = Color.TEAL;
     }
     else if (college == "James")
     {
     	this.Name = "James";
         this.logoTexture = new Texture("image/James.png");
+        this.color = Color.CYAN;
     }
     else if (college == "Wentworth")
     {
     	this.Name = "Wentworth";
         this.logoTexture = new Texture("image/Wentworth.png");
+        this.color = Color.MAROON;
     }
     else if (college == "Halifax")
     {
     	this.Name = "Halifax";
         this.logoTexture = new Texture("image/Halifax.png");
+        this.color = Color.YELLOW;
     }
     else if (college == "Alcuin")
     {
     	this.Name = "Alcuin";
         this.logoTexture = new Texture("image/Alcuin.png");
+        this.color = Color.RED;
     }
     else if (college == "Goodricke")
     {
     	this.Name = "Goodricke";
         this.logoTexture = new Texture("image/Goodricke.png");
+        this.color = Color.GREEN;
     }
     else if (college == "Constantine")
     {
         this.Name = "Constantine";
         this.logoTexture = new Texture("image/Constantine.png");
+        this.color = Color.PINK;
     }
 
     this.logo = new Image(logoTexture);
@@ -150,6 +162,11 @@ public class College {
    */
   public int getID() {
     return this.ID;
+  }
+
+  public Color getColor()
+  {
+      return color;
   }
 
   /**

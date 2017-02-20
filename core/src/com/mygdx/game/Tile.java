@@ -400,7 +400,7 @@ public class Tile extends Button {
      */
     public void drawBorder() {
         if (isOwned()) {
-            drawer.lineRectangle(tileBorderColor, (128 * ((getID() - 1) % 4)) + 257, (128 * ((getID() - 1) / 4)) + 1, (int) (this.getWidth() - 2), (int) (this.getHeight() - 2), tileBorderThickness);
+            drawer.lineRectangle(Owner.getCollege().getColor(), (128 * ((getID() - 1) % 4)) + 257, (128 * ((getID() - 1) / 4)) + 1, (int) (this.getWidth() - 2), (int) (this.getHeight() - 2), tileBorderThickness);
         }
     }
 
