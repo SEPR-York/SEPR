@@ -9,13 +9,15 @@ public class GambleTest {
 	@Test
 	public void DipTest(){
 			Gamble g = new Gamble();
-			assertTrue(g.PlayLuckyDip() == 100 || g.PlayLuckyDip() == -10);
+			int x = g.PlayLuckyDip();
+			assertTrue(x == 100 || x == -10);
 		}
 	
 	@Test
 	public void RoulTest(){
 			Gamble g = new Gamble();
-			assertTrue(g.PlayRoulette(1) == 320 || g.PlayRoulette(1) == -10);
+			int x = g.PlayRoulette(1);
+			assertTrue(x == 320 || x == -10);
 		}
 
 
