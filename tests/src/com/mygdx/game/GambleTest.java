@@ -13,7 +13,7 @@ public class GambleTest {
 		}
 	
 	@Test
-	public void DipTest(){
+	public void RoulTest(){
 			Gamble g = new Gamble();
 			assertTrue(g.PlayRoulette(1) == 100 || g.PlayRoulette(1) == -10);
 		}
