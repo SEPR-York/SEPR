@@ -8,11 +8,6 @@ package com.mygdx.game;
  * @since Assessment 3
  */
 
-import java.awt.EventQueue;
-import java.lang.reflect.InvocationTargetException;
-
-import javax.swing.*;
-
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;

@@ -33,23 +33,7 @@ public class College {
    */
   private String Name;
 
-  /**
-   * The custom name that a player can choose for the college.
-   */
-  private String CustomName;
-
-  /**
-   * The player is playing as the college.
-   */
-
-  private Player Owner;
-
   private Color color;
-
-  /**
-   * The description of the College.
-   */
-  private String Description;
 
   /**
    * The symbol of the college
@@ -135,7 +119,6 @@ public class College {
    * @param Name The name that the custom name is to be changed to.
    */
   public void changeCustomName(String Name) {
-    this.CustomName = Name;
   }
 
   /**
@@ -143,7 +126,6 @@ public class College {
    * @param Player The player that has chosen the college.
    */
   public void assignPlayer( Player Player) {
-      this.Owner = Player;
   }
 
   /**

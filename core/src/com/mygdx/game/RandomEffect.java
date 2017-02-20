@@ -5,7 +5,6 @@ import java.util.Random;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
 /**
  * @author Gandhi-Inc.
  * @version Assessment 3
