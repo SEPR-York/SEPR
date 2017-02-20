@@ -200,25 +200,11 @@ public class GameScreen implements Screen {
 
         batch = new SpriteBatch();
         //Start game engine up
-    }
-
-    /**
-     * Executes when the game-screen is loaded up, typically from the point of another screen
-     * Serves as an extension of the screen's constructor that primarily builds visual elements
-     *
-     * Currently instantiates Drawer object, the main stage, the font used to render on-screen text and the image of
-     * the game's map before constructing the three primary tables that make up the in-game interface (along with the
-     * auxiliary pause menu)
-     */
-    @Override
-    public void show() {
         drawer = new Drawer(game);
         //Import QOL drawing functions
 
         gameStage = new Stage();
-        Gdx.input.setInputProcessor(gameStage);
         //Prepare the local stage and set it up to accept inputs
-
         gameFont = new TTFont(Gdx.files.internal("font/testfontbignoodle.ttf"), 36);
         //Set fonts for game interface
 
@@ -226,7 +212,6 @@ public class GameScreen implements Screen {
         map.setPosition((Gdx.graphics.getWidth() / 2) - (map.getWidth() / 2), (Gdx.graphics.getHeight() / 2) - (map.getHeight() / 2));
         gameStage.addActor(map);
         //Initialise and deploy map texture
-
         constructTileGrid();
 
         constructButtons();
@@ -249,6 +234,21 @@ public class GameScreen implements Screen {
 
         //drawer.debug(gameStage);
         //Call this to draw temporary debug lines around all of the actors on the stage
+    }
+
+    /**
+     * Executes when the game-screen is loaded up, typically from the point of another screen
+     * Serves as an extension of the screen's constructor that primarily builds visual elements
+     *
+     * Currently instantiates Drawer object, the main stage, the font used to render on-screen text and the image of
+     * the game's map before constructing the three primary tables that make up the in-game interface (along with the
+     * auxiliary pause menu)
+     */
+    @Override
+    public void show() {
+
+        Gdx.input.setInputProcessor(gameStage);
+
     }
 
     /**
