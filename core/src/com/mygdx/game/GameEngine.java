@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 /**
  * @author Gandhi-Inc.
  * @version Assessment 3
- *          An executable version of the game can be found at: ____________
+ *          An executable version of the game can be found at: http://gandhi-inc.me/downloads/assessment3.jar
  *          Our website is: www.gandhi-inc.me
  * @since Assessment 3
  */
@@ -292,7 +292,6 @@ public class GameEngine {
         for (Tile Tile : tileList){
 
             if (tileList.size() > 0){
-                System.out.print("yes");
                 players[1] = Tile.Produce(players[1]);
                 switchCurrentPlayer();
             }
@@ -358,7 +357,8 @@ public class GameEngine {
     	winnerDialog.setAlwaysOnTop(true);
     	winnerDialog.setVisible(true);
     	
-    	game.setScreen(new MainMenu(game));		// Returns to main screen
+    	//Game freezes at this stage... 
+    	game.setScreen(new MainMenu(game));							// Returns to main screen
     }
 
     private void Phase1Setup()

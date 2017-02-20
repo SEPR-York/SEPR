@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author Gandhi-Inc.
  * @version Assessment 3
- *          An executable version of the game can be found at: ____________
+ *          An executable version of the game can be found at: http://gandhi-inc.me/downloads/assessment3.jar
  *          Our website is: www.gandhi-inc.me
  * @since Assessment 3
  */
