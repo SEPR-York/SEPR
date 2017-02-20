@@ -162,47 +162,54 @@ public class MainMenu implements Screen {
                     													collegeValueList.toArray(), 					// List of options
                     													initialSelection);								// Initial value selected
                     
-                    
-	                System.out.printf("Player 1's name is '%s'.\n", player1);				//Print players name to console
-	                System.out.println("Player 1 has chosen college: " + player1college);	//Print their college to console
-	                College college1 = new College((String) player1college);				//Set their college to their name
-	
-	                collegeValueList.remove((String) player1college);						//Remove the college player 1 picked from player 2's list
-	
-	                // --------------- PLAYER 2 ----------------
-		            // Player 2 enter their name frame
-	                String player2 = JOptionPane.showInputDialog(null, 							//Parent class is null
-	                											"Player 2 enter your name", 	//Text to display
-	                											"Player 2");					//Default name
-	                
-	                if(player2 == null || player2 == "")    									// If the player click's cancel or doesn't enter a name
-	                {
-	                	game.setScreen(new MainMenu(game));										// Return to main menu									
-	                }
-	                else
-	                {
-	                	JDialog.setDefaultLookAndFeelDecorated(true);
-	                    Object player2college = JOptionPane.showInputDialog(null, 
-	                    								"Which college would you like to be in?", 		// Question in message
-	                    								"Player 2", 									// Title of message
-	                    								JOptionPane.QUESTION_MESSAGE, 					// Type of message window
-	                    								null, 											// null
-	                    								collegeValueList.toArray(), 					// List of options available
-	                    								initialSelection);								// Default option selected
-	  
-	                    if (player2college == null || player2college == "")								// If the input isn't valid																	
-	                    {
-	                        	game.setScreen(new MainMenu(game));										// Return to main menu
-	                    }
-	                    else																			// If it is valid
-	                    {
-	                    	System.out.printf("Player 2's name is '%s'.\n", player2);					// Print player 2's name to console
-	                        System.out.println("Player 2 has chosen college: " + player2college);		// Print their college to console
-	                        College college2 = new College((String) player2college);					// Set player 2's college selection to their college choice
-	
-	                    	game.setScreen(new GameScreen(game, player1, player2, college1, college2));	// START THE GAME!
-	                    }
-	                }
+                    if (player1college == null || player1college == "")								// If the input isn't valid																	
+                    {
+                        	game.setScreen(new MainMenu(game));										// Return to main menu
+                    }
+                    else
+                    {
+		                System.out.printf("Player 1's name is '%s'.\n", player1);				//Print players name to console
+		                System.out.println("Player 1 has chosen college: " + player1college);	//Print their college to console
+		                
+		                College college1 = new College((String) player1college);				//Set their college to their name
+		
+		                collegeValueList.remove((String) player1college);						//Remove the college player 1 picked from player 2's list
+		
+		                // --------------- PLAYER 2 ----------------
+			            // Player 2 enter their name frame
+		                String player2 = JOptionPane.showInputDialog(null, 							//Parent class is null
+		                											"Player 2 enter your name", 	//Text to display
+		                											"Player 2");					//Default name
+		                
+		                if(player2 == null || player2 == "")    									// If the player click's cancel or doesn't enter a name
+		                {
+		                	game.setScreen(new MainMenu(game));										// Return to main menu									
+		                }
+		                else
+		                {
+		                	JDialog.setDefaultLookAndFeelDecorated(true);
+		                    Object player2college = JOptionPane.showInputDialog(null, 
+		                    								"Which college would you like to be in?", 		// Question in message
+		                    								"Player 2", 									// Title of message
+		                    								JOptionPane.QUESTION_MESSAGE, 					// Type of message window
+		                    								null, 											// null
+		                    								collegeValueList.toArray(), 					// List of options available
+		                    								initialSelection);								// Default option selected
+		  
+		                    if (player2college == null || player2college == "")								// If the input isn't valid																	
+		                    {
+		                        	game.setScreen(new MainMenu(game));										// Return to main menu
+		                    }
+		                    else																			// If it is valid
+		                    {
+		                    	System.out.printf("Player 2's name is '%s'.\n", player2);					// Print player 2's name to console
+		                        System.out.println("Player 2 has chosen college: " + player2college);		// Print their college to console
+		                        College college2 = new College((String) player2college);					// Set player 2's college selection to their college choice
+		
+		                    	game.setScreen(new GameScreen(game, player1, player2, college1, college2));	// START THE GAME!
+		                    }
+		                }
+                    }
                 }
             }
         });
