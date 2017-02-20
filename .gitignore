@@ -43,7 +43,7 @@ tests/build/resources/test/image/Roboticon.png
 tests/build/tmp/test/jar_extract_4398026260512175248_tmp
 tests/build/tmp/test/jar_extract_6169253101592092999_tmp
 tests/build/tmp/test/jar_extract_8600742285130688885_tmp
-tests/.project
+/tests/.project
 tests/.classpath
 desktop/.classpath
 /desktop/build/
