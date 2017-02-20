@@ -42,7 +42,7 @@ public class HowToPlay implements Screen {
     private Table table;
 
     /**
-     * Array of all the text that needs to be rended. 
+     * Array of all the text that needs to be rended.
      */
     private TextButton[] buttons = new TextButton[12];
 
@@ -80,17 +80,18 @@ public class HowToPlay implements Screen {
      */
     @Override
     public void show() {
+
         drawer = new Drawer(game);
 
         batch = new SpriteBatch(); 																					//Initialise sprite-batch
-        
+
         stage = new Stage();
         table = new Table();																						//Initialise stage and button-table
 
         menuFont = new TTFont(Gdx.files.internal("font/enterthegrid.ttf"), 36, 2, Color.BLACK, false);				//Initialise menu font
 
         Gdx.input.setInputProcessor(stage);																			//Set the stage up to accept user inputs
-        
+
         background = new Sprite(new Texture("image/Solid_white.svg.png"));
         background.setSize(background.getWidth(), background.getHeight());
         background.setCenter(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
@@ -115,34 +116,36 @@ public class HowToPlay implements Screen {
         buttons[8] = new TextButton("", menuButtonStyle);
         buttons[9] = new TextButton("", menuButtonStyle);
         buttons[10] = new TextButton("", menuButtonStyle);
-        buttons[5].addListener(new ChangeListener() 
-        { 	
+
+        // Add the event for the more information button so that will open the pdf stored on the website
+        buttons[5].addListener(new ChangeListener()
+        {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
-				try 
+				try
         		{
             	    Desktop.getDesktop().browse(new URL("http://www.google.com").toURI());
-            	} 
+            	}
         		catch (Exception e) {}
-				
-			}
-        	
-        });
-        
 
-        buttons[11] = new TextButton("Back to Main Menu", menuButtonStyle); 										//creates the "back to main menu" button and adds a listner 
+			}
+
+        });
+
+
+        buttons[11] = new TextButton("Back to Main Menu", menuButtonStyle); 										//creates the "back to main menu" button and adds a listner
         buttons[11].addListener(new ChangeListener() { 																//to the button so when it is pressed it sends you back to the main menu
             public void changed(ChangeEvent event, Actor actor) {
                 game.setScreen(new MainMenu(game));
             }
         });
 
-        
+
         for (int i = 0; i < buttons.length; i++) {																	//renders the buttons
             drawer.addTableRow(table, buttons[i]);
         }
 
-        
+
         stage.addActor(table);																						//FINALISE TABLE
 
     }
@@ -162,7 +165,7 @@ public class HowToPlay implements Screen {
 
         background.draw(batch);
         batch.end();
-        
+
         stage.act(delta);																							//Draw the stage onto the screen
         stage.draw();
     }

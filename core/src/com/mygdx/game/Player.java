@@ -208,9 +208,11 @@ public class Player {
     /**
      * Calculates the score of the player based on the resources that they own.
      *
+     * @param market - The market to get the price of the resources from
      * @return Integer The player's current score
      */
     public Integer calculateScore(Market market) {
+        // The scores is caluclated by finding the value of all of the players resources at current market value
         int ore = market.getOreSellPrice() * this.OreCount;
         int energy = market.getEnergySellPrice() * this.EnergyCount;
         int food = market.getFoodSellPrice() * this.FoodCount;
