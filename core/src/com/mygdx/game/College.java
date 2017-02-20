@@ -33,7 +33,6 @@ public class College {
    */
   private String Name;
 
-<<<<<<< HEAD
   /**
    * The custom name that a player can choose for the college.
    */
@@ -47,8 +46,6 @@ public class College {
   /**
   * The color of the College
   */
-=======
->>>>>>> 5c3bb105fec40e194d1155ae1d862863343fac26
   private Color color;
 
   /**
