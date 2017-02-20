@@ -109,13 +109,13 @@ public class HowToPlay implements Screen {
         buttons[2] = new TextButton("", menuButtonStyle);
         buttons[3] = new TextButton("", menuButtonStyle);
         buttons[4] = new TextButton("", menuButtonStyle);
-        buttons[5] = new TextButton("", menuButtonStyle);
+        buttons[5] = new TextButton("for more information, click here", menuButtonStyle);
         buttons[6] = new TextButton("", menuButtonStyle);
         buttons[7] = new TextButton("", menuButtonStyle);
         buttons[8] = new TextButton("", menuButtonStyle);
         buttons[9] = new TextButton("", menuButtonStyle);
-        buttons[10] = new TextButton("for more information, click here", menuButtonStyle);
-        buttons[10].addListener(new ChangeListener() 
+        buttons[10] = new TextButton("", menuButtonStyle);
+        buttons[5].addListener(new ChangeListener() 
         { 	
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
