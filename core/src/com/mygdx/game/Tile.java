@@ -258,6 +258,10 @@ public class Tile extends Button {
     public void setResource(String Resource, int quantity) {
         //Nothing here?
     }
+    
+    public int[] getResources () {
+    	return new int[] {this.FoodCount, this.OreCount, this.EnergyCount};
+    }
 
     /**
      * Returns the class of the player who owns the tile
