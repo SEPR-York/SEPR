@@ -24,11 +24,11 @@ public class Drawer {
      * Class constructor
      * Stores the game's state inside the drawer class
      *
-     * @param game
+     * @param game the libgdx game object
      */
-    public Drawer (Game game) 
+    public Drawer (Game game)
     {
-    	
+
     }
 
     /**
@@ -41,6 +41,7 @@ public class Drawer {
      * @param y Y-coordinate of the new rectangle's top-left corner
      * @param width Width of the new rectangle
      * @param height Height of the new rectangle
+     * @param thickness The thickness of the lines for the rectangle
      */
     public void rectangle(ShapeRenderer.ShapeType type, Color color, int x, int y, int width, int height, int thickness) {
         ShapeRenderer renderer = new ShapeRenderer();
@@ -89,6 +90,7 @@ public class Drawer {
      * @param y Y-coordinate of the new rectangle's top-left corner
      * @param width Width of the new rectangle
      * @param height Height of the new rectangle
+     * @param thickness The thickness of the lines for the rectangle
      */
     public void lineRectangle(Color color, int x, int y, int width, int height, int thickness) {
         rectangle(ShapeRenderer.ShapeType.Line, color, x, y, width, height, thickness);
@@ -104,6 +106,7 @@ public class Drawer {
      * @param y Y-coordinate of the new rectangle's top-left corner
      * @param width Width of the new rectangle
      * @param height Height of the new rectangle
+     * @param thickness The thickness of the lines for the rectangle
      */
     public void borderedRectangle(Color fillColor, Color lineColor, int x, int y, int width, int height, int thickness) {
         rectangle(ShapeRenderer.ShapeType.Filled, fillColor, x, y, width, height, 1);

@@ -132,12 +132,12 @@ public class MainMenu implements Screen {
         //Set up the format for the buttons on the menu
 
         buttons[0] = new TextButton("Start", menuButtonStyle);
-        buttons[0].addListener(new ChangeListener() 
+        buttons[0].addListener(new ChangeListener()
         {
             public void changed(ChangeEvent event, Actor actor)
             {
             	// ------------ PLAYER 1 ---------------
-            	
+
                 String player1 = JOptionPane.showInputDialog(null, "Player 1 enter your name", "Player 1");
 
                 if(player1 == null || player1 == "")   		// If the player click's cancel or doesn't enter a name
@@ -149,10 +149,10 @@ public class MainMenu implements Screen {
                 	// Create array list of colleges
                 	String[] tmpArray = {"Derwent", "Langwith", "Vanburgh", "James", "Wentworth", "Halifax", "Alcuin", "Goodricke", "Constantine"};
                     ArrayList<String> collegeValueList = new ArrayList<String>(Arrays.asList(tmpArray));
-                    
+
                     //Create a college selection message
                     JDialog.setDefaultLookAndFeelDecorated(true);														//Set the type of display box
-                    String initialSelection = "Derwent";																//Default to Derwent  
+                    String initialSelection = "Derwent";																//Default to Derwent
                     Object player1college = JOptionPane.showInputDialog(												//Show the message
                     													null, 											// Parent JFrame is null
                     													"Which college would you like to be in?", 		// Text to display
@@ -161,8 +161,8 @@ public class MainMenu implements Screen {
                     													null, 											// null
                     													collegeValueList.toArray(), 					// List of options
                     													initialSelection);								// Initial value selected
-                    
-                    if (player1college == null || player1college == "")								// If the input isn't valid																	
+
+                    if (player1college == null || player1college == "")								// If the input isn't valid
                     {
                         	game.setScreen(new MainMenu(game));										// Return to main menu
                     }
@@ -170,33 +170,33 @@ public class MainMenu implements Screen {
                     {
 		                System.out.printf("Player 1's name is '%s'.\n", player1);				//Print players name to console
 		                System.out.println("Player 1 has chosen college: " + player1college);	//Print their college to console
-		                
+
 		                College college1 = new College((String) player1college);				//Set their college to their name
-		
+
 		                collegeValueList.remove((String) player1college);						//Remove the college player 1 picked from player 2's list
-		
+
 		                // --------------- PLAYER 2 ----------------
 			            // Player 2 enter their name frame
 		                String player2 = JOptionPane.showInputDialog(null, 							//Parent class is null
 		                											"Player 2 enter your name", 	//Text to display
 		                											"Player 2");					//Default name
-		                
+
 		                if(player2 == null || player2 == "")    									// If the player click's cancel or doesn't enter a name
 		                {
-		                	game.setScreen(new MainMenu(game));										// Return to main menu									
+		                	game.setScreen(new MainMenu(game));										// Return to main menu
 		                }
 		                else
 		                {
 		                	JDialog.setDefaultLookAndFeelDecorated(true);
-		                    Object player2college = JOptionPane.showInputDialog(null, 
+		                    Object player2college = JOptionPane.showInputDialog(null,
 		                    								"Which college would you like to be in?", 		// Question in message
 		                    								"Player 2", 									// Title of message
 		                    								JOptionPane.QUESTION_MESSAGE, 					// Type of message window
 		                    								null, 											// null
 		                    								collegeValueList.toArray(), 					// List of options available
 		                    								initialSelection);								// Default option selected
-		  
-		                    if (player2college == null || player2college == "")								// If the input isn't valid																	
+
+		                    if (player2college == null || player2college == "")								// If the input isn't valid
 		                    {
 		                        	game.setScreen(new MainMenu(game));										// Return to main menu
 		                    }
@@ -205,7 +205,7 @@ public class MainMenu implements Screen {
 		                    	System.out.printf("Player 2's name is '%s'.\n", player2);					// Print player 2's name to console
 		                        System.out.println("Player 2 has chosen college: " + player2college);		// Print their college to console
 		                        College college2 = new College((String) player2college);					// Set player 2's college selection to their college choice
-		
+
 		                    	game.setScreen(new GameScreen(game, player1, player2, college1, college2));	// START THE GAME!
 		                    }
 		                }
@@ -213,7 +213,7 @@ public class MainMenu implements Screen {
                 }
             }
         });
-        
+
         buttons[1] = new TextButton("How to Play", menuButtonStyle);
         buttons[1].addListener(new ChangeListener() {
             public void changed(ChangeEvent event, Actor actor) {
@@ -248,7 +248,7 @@ public class MainMenu implements Screen {
      * Renders all visual elements (set up in the [show()] subroutine and all of its subsiduaries) to the window
      * This is called to prepare each and every frame that the screen deploys
      *
-     * @param delta
+     * @param delta The time between the last frame and this frame
      */
     @Override
     public void render(float delta) {

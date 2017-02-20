@@ -73,7 +73,7 @@ public class Roboticon {
 
         this.CurrentTile.assignRoboticon(this);
     }
-    
+
     /**
      * Function to get the current roboticon Level
      * @return Integer array of the resource
@@ -99,6 +99,7 @@ public class Roboticon {
      * 0: ORE
      * 1: ENERGY
      * 2: FOOD
+     * @param resource The resource that is going to be upgraded for this roboticon
      */
     public void upgrade(int resource) {
         switch (resource) {
@@ -159,7 +160,7 @@ public class Roboticon {
 
         return Modifiers;
     }
-    
+
     public void setProductionModifier(int ore, int energy, int food)
     {
     	oreLevel = ore;
@@ -168,7 +169,7 @@ public class Roboticon {
 
     }
 
-    
+
     /**
      * Returns an Image object with the texture of the roboticon's icon mapped to it
      *

@@ -65,10 +65,10 @@ public class LeaderboardFrontend implements Screen {
      * The object which will encode the menu's background
      */
     private Sprite background;
-    
+
 
     private LeaderboardBackend backend = new LeaderboardBackend();
-    
+
     /**
      * a string array for storing the top 3 players
      */
@@ -77,9 +77,9 @@ public class LeaderboardFrontend implements Screen {
 
 
     /**
-     * imports the current game state
+     * imports the current game
+     * @param game The libgdx game object to pass the game state around
      */
-
     public LeaderboardFrontend(Game game) {
         this.game = game;
     }
@@ -92,30 +92,30 @@ public class LeaderboardFrontend implements Screen {
      */
     @Override
     public void show() {
-        backend.OpenFile(); 																				
+        backend.OpenFile();
         players = backend.GetTopThree();																//populates the players array with the top three players and their respective scores
         drawer = new Drawer(game);
 
         batch = new SpriteBatch();																		//Initialise sprite-batch
-        
+
 
         stage = new Stage();
         table = new Table();																			//Initialise stage and button-table
-        
 
-        menuFont = new TTFont(Gdx.files.internal("font/enterthegrid.ttf"), 36, 2, Color.BLACK, false);	//The font information for the text that is displayed. 
+
+        menuFont = new TTFont(Gdx.files.internal("font/enterthegrid.ttf"), 36, 2, Color.BLACK, false);	//The font information for the text that is displayed.
 
         Gdx.input.setInputProcessor(stage);																//Set the stage up to accept user inputs
-        
+
 
         background = new Sprite(new Texture("image/Solid_white.svg.png")); 								//sets the background to a solid white image
         background.setSize(background.getWidth(), background.getHeight());
         background.setCenter(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
 
         table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());						//Fill the screen with the table
-        
 
-        
+
+
         TextButton.TextButtonStyle menuButtonStyle = new TextButton.TextButtonStyle();					//enables the button to look like it is depressed when it is pressed
         menuButtonStyle.font = menuFont.font();
         menuButtonStyle.fontColor = Color.BLACK;
@@ -129,10 +129,10 @@ public class LeaderboardFrontend implements Screen {
         buttons[3] = new TextButton(players[1][0] + " : "+players[1][1],menuButtonStyle);
         buttons[4] = new TextButton(players[2][0] + " : "+players[2][1],menuButtonStyle);
         buttons[5] = new TextButton("\n\n\n\n", menuButtonStyle);
-        
-        
-        
-        
+
+
+
+
         buttons[6] = new TextButton("Back to Main Menu", menuButtonStyle);								//creates the "back to main menu" button and adds a listner
         buttons[6].addListener(new ChangeListener() {													//to the button so when it is pressed it sends you back to the main menu
             public void changed(ChangeEvent event, Actor actor) {
@@ -144,7 +144,7 @@ public class LeaderboardFrontend implements Screen {
             drawer.addTableRow(table, buttons[i]);
         }
 
-        
+
         stage.addActor(table);																			//FINALISE TABLE
     }
 
@@ -152,7 +152,7 @@ public class LeaderboardFrontend implements Screen {
      * Renders all visual elements (set up in the [show()] subroutine and all of its subsiduaries) to the window
      * This is called to prepare each and every frame that the screen deploys
      *
-     * @param delta
+     * @param delta The time between the last frame and this frame
      */
     @Override
     public void render(float delta) {
@@ -162,11 +162,11 @@ public class LeaderboardFrontend implements Screen {
         batch.begin();																					//Run through the rendering pipeline to draw the menu's background image to the screen
         background.draw(batch);
         batch.end();
-        
+
 
         stage.act(delta);																				//Draw the stage onto the screen
         stage.draw();
-        
+
     }
 
 

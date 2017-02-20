@@ -258,7 +258,7 @@ public class Tile extends Button {
     public void setResource(String Resource, int quantity) {
         //Nothing here?
     }
-    
+
     public int[] getResources () {
     	return new int[] {this.FoodCount, this.OreCount, this.EnergyCount};
     }
@@ -314,7 +314,7 @@ public class Tile extends Button {
     /**
      * Removes the first instance of the roboticon from the list.
      *
-     * @param Roboticon The roboticon to be removed.
+     * @param rob The roboticon to be removed.
      */
     public void removeRoboticon(Roboticon rob)
     {

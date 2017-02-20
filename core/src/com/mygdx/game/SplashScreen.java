@@ -114,7 +114,7 @@ public class SplashScreen implements Screen {
      * the game's window.
      */
     @Override
-    public void show() 
+    public void show()
     {
         batch = new SpriteBatch();
         //Initialise sprite rendering pipeline
@@ -139,14 +139,14 @@ public class SplashScreen implements Screen {
         Gdx.input.setInputProcessor(inputProcessor);
         //Set the splash-screen to detect inputs
         //If a keystroke or a mouse-click is detected, open the menu straight away
-        
+
     }
 
     /**
      * Renders all visual elements (set up in the [show()] subroutine and all of its subsiduaries) to the window
      * This is called to prepare each and every frame that the screen deploys
      *
-     * @param delta
+     * @param delta The time between the last frame and the current frame
      */
     @Override
     public void render(float delta) {

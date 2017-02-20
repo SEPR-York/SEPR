@@ -62,6 +62,7 @@ public class Player {
      * The constructor of the class
      *
      * @param PlayerID The id of the player that is being created. Should be an integer greater than 0.
+     * @param name The name that is associated with this player
      */
     public Player(Integer PlayerID, String name) {
         this.playerID = PlayerID;

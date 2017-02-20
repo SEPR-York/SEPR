@@ -53,8 +53,7 @@ public class College {
    * The constructor for the College class
    * This will assign a name and a logo to the College based on the ID provided
    *
-   * @param ID The ID of the college.
-   * @param Description The description of the college.
+   * @param college The Name of the college.
    */
   public College(String college){
 

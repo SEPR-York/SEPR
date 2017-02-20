@@ -23,7 +23,7 @@ public class LeaderboardBackend{
 	/**
 	* Returns the array list of the leaderboard scores
 	*
-	* @return ArrayList<String[]> it returns an array list of string arrays where each string array is 2 items big with index 0 being the name, and index 1 being the score
+	* @return ArrayList &lt;String[]&gt; it returns an array list of string arrays where each string array is 2 items big with index 0 being the name, and index 1 being the score
 	*/
 	public ArrayList<String[]> getListofScores(){
 		return ArrayOfPeopleWithScores;

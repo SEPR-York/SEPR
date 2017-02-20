@@ -661,6 +661,8 @@ public class Market extends Table {
      * @param Stock_Type Type of resources (ore, energy or food) that is stored in the market.
      * @param Quantity   The amount of resources that Player wants to buy.
      * @param Player     A Player object.
+     * @throws Exception Throws an exception if the player does not have enough money to buy the resource
+     * @return Returns the new player object created with the new money
      */
     public Player buy(String Stock_Type, Integer Quantity, Player Player) throws Exception {
         if ("ore".equals(Stock_Type)) {
@@ -759,6 +761,8 @@ public class Market extends Table {
      * @param Stock_Type Type of resources (ore, energy or food) that is stored in the market.
      * @param Quantity   The amount of resources that Player wants to buy.
      * @param Player     A Player object.
+     * @throws Exception Throws an exception if the player does not have enough of the resource to sell
+     * @return returns the new player object 
      */
     public Player sell(String Stock_Type, int Quantity, Player Player) throws Exception {
         int playersMoney = Player.getMoney();

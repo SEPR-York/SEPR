@@ -103,6 +103,10 @@ public class GameEngine {
      *
      * @param game Variable storing the game's state
      * @param gameScreen The object encoding the in-game interface which is to be controlled by this engine
+     * @param player1 The name of player 1
+     * @param player2 The name of player 2
+     * @param college1 The college for player 1
+     * @param college2 The college for player 2
      */
     public GameEngine(Game game, GameScreen gameScreen, String player1, String player2, College college1, College college2) {
         this.game = game;
@@ -178,7 +182,7 @@ public class GameEngine {
      * currently at when this method if called. If player 1 is the current player in any particular phase, then the
      * phase number remains and control is handed off to the other player: otherwise, control returns to player 1 and
      * the game advances to the next state, implementing any state-specific features as it goes.
-     * <br/>
+     * <br>
      * PHASE 1: Acquisition of Tiles
      * PHASE 2: Acquisition of Roboticons
      * PHASE 3: Placement of Roboticons
@@ -339,25 +343,25 @@ public class GameEngine {
             System.out.print("Player 2 Wins!");
             winner = "Player 2 wins!";
         }
-        else 
+        else
         {
             System.out.print("Players draw!");
             winner = "It was a tie";
         }
-        
+
         // Disable the end turn button so that they cannot continue to play the game after this point
         drawer.switchTextButton(gameScreen.endTurnButton(), false, Color.GRAY);
         // Save the players scores to GameSave.txt file
         LeaderboardBackend.AddPlayerToLeaderboard(players[1].getName(), players[1].calculateScore(market));
         LeaderboardBackend.AddPlayerToLeaderboard(players[2].getName(), players[2].calculateScore(market));
-        
+
         // Display a dialog to tell the players who won
     	JOptionPane winnerOptionPane = new JOptionPane(winner + " Click 'Ok' to return to main menu");
     	JDialog winnerDialog = winnerOptionPane.createDialog("Congratulations!");
     	winnerDialog.setAlwaysOnTop(true);
     	winnerDialog.setVisible(true);
-    	
-    	//Game freezes at this stage... 
+
+    	//Game freezes at this stage...
     	game.setScreen(new MainMenu(game));							// Returns to main screen
     }
 

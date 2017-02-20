@@ -17,7 +17,7 @@ public class RandomEffect
 	/**
 	 * Donald Trump decides to build a wall - we stop all production of the roboticon on a specific tile
 	 * There is a wall built around their tile and a Mexican flag appears
-	 * @param tile
+	 * @param tile The tile that the wall effect is going to happen on
 	 */
 	public void buildsWall(Tile tile)
 	{
@@ -31,8 +31,7 @@ public class RandomEffect
 
 	/**
 	 * Destorys the roboticon on the specific tile
-	 * @param players
-	 * @param tile
+	 * @param tile The tile that the meteor shower effect is going to happen on
 	 */
 	public void meteorShower(Tile tile)
 	{
@@ -44,7 +43,7 @@ public class RandomEffect
 	/**
 	 * The Solar flare divides a player's resource by 2
 	 *
-	 * @param tile
+	 * @param tile The tile that the solar flare is going to be associated with
 	 */
 	public void solarFlares(Tile tile)
 	{
@@ -57,8 +56,8 @@ public class RandomEffect
 
 
 	/**
-	 *
-	 * @param tile
+	 * This has a 50/50 chance of a random effect happening to a player, And then each random effect has an equal chance of happening if an effect is going to happen 
+	 * @param player The player that is going to have an effect done to them
 	 */
 	public void randomlyChooseEffect(Player player)
 	{
@@ -78,35 +77,35 @@ public class RandomEffect
 	        if(randomNumber == 1) 							// If that random number is 1
 	        {
 	        	System.out.println("Builds a wall!");
-	        	
+
 	        	JOptionPane trumpOptionPane = new JOptionPane("Trump has built a wall! Looks like you will no longer be able to produce resources!");
 	        	JDialog trumpDialog = trumpOptionPane.createDialog("Trump has appeared!");
 	        	trumpDialog.setAlwaysOnTop(true);
 	        	trumpDialog.setVisible(true);
-	        	
+
 	        	buildsWall(tile); 							// Builds the wall around a random tile & stops production
 	        }
 
 	        else if(randomNumber == 2) 						// If the random number is 2
 	        {
 	        	System.out.println("Meteor strike!");
-	            
+
 	        	JOptionPane meteorOptionPane = new JOptionPane("Meteor Strike! No roboticons have survived on that tile!");
 	        	JDialog meteorDialog = meteorOptionPane.createDialog("Meteor Strike!!");
 	        	meteorDialog.setAlwaysOnTop(true);
 	        	meteorDialog.setVisible(true);
-	        	
+
 	        	meteorShower(tile); 						// Rains a meteorShower and takes away all of a player's ore
 	        }
 	        else
 	        {
 	        	System.out.println("Solar flares!");
-	        	
+
 	        	JOptionPane solarOptionPane = new JOptionPane("Solar flares! Half your resources have now been stolen!");
 	        	JDialog solarDialog = solarOptionPane.createDialog("Solar Flares!!");
 	        	solarDialog.setAlwaysOnTop(true);
 	        	solarDialog.setVisible(true);
-	        	
+
 	        	solarFlares(tile); 							// Solar Flares
 	        }
 		}

@@ -191,6 +191,10 @@ public class GameScreen implements Screen {
      * The game-screen's initial constructor
      *
      * @param game Variable storing the game's state for rendering purposes
+     * @param player1 The name for player 1
+     * @param player2 The name for player 2
+     * @param college1 The college for player 1
+     * @param college2 The college for player 2
      */
     public GameScreen(Game game, String player1, String player2, College college1, College college2){
 
@@ -263,7 +267,7 @@ public class GameScreen implements Screen {
      * Renders all visual elements (set up in the [show()] subroutine and all of its subsiduaries) to the window
      * This is called to prepare each and every frame that the game deploys
      *
-     * @param delta
+     * @param delta The time between the last frame and this frame
      */
     @Override
     public void render(float delta) {
