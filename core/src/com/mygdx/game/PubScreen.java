@@ -72,7 +72,7 @@ public class PubScreen implements Screen
         // Select a random rouletteNumber upon entry to the pub
         rouletteNumber = rand.nextInt(33);
 
-        menuFont = new TTFont(Gdx.files.internal("font/enterthegrid.ttf"), 36, 2, Color.BLACK, false);				//Initialise menu font
+        menuFont = new TTFont(Gdx.files.internal("font/earthorbiter.ttf"), 30, 2, Color.BLACK, false);				//Initialise menu font
 
 
         Gdx.input.setInputProcessor(stage);																			//Set the stage up to accept user inputs
