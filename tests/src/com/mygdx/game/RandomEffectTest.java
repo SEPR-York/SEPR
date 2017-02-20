@@ -1,7 +1,6 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Game;
-import com.mygdx.game.RandomEffect;
 import static org.junit.Assert.*;
 
 import org.junit.Test;

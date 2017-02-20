@@ -24,7 +24,7 @@ class Gamble{
     static private int PriceToPlayRoulette = 10;
 
     /*
-    * This is the price to play a game of lucky dip, it does not have a modfier
+    * This is the price to play a game of lucky dip, it does not have a modifier
     * as it is not meant to be changed in game.
     * Has been declared static so that an instance of the gamble class is not needed to get the prices since the prices will be constant throughout a whole game.
     */
@@ -51,8 +51,8 @@ class Gamble{
     /**
     * The Lucky Dip Game
     * <p>
-    * This game is a game where you have a one in tem chance of wining back 10 times your winnings.
-    * @return Winning - The amount of money won or lost in the game. posative for a win, negative for a loss.
+    * This game is a game where you have a one in ten chance of wining back 10 times your winnings.
+    * @return Winning - The amount of money won or lost in the game. positive for a win, negative for a loss.
     */
     public int PlayLuckyDip(){
         Random rand = new Random();
@@ -74,7 +74,7 @@ class Gamble{
     * It takes a number between 0 and 32 as input , the numbers on a roulette
     * wheel, and returns a int relating to the money won or lost.
     * @param UserPickedNumber - The number that the user wishes to pick for the roulette spin.
-    * @return Winning - The amount of money won or lost at the game. posative for a min, negative for a loss.
+    * @return Winning - The amount of money won or lost at the game. positive for a min, negative for a loss.
     */
     public int PlayRoulette(int UserPickedNumber){
         // If the number is outside of the bounds 0 - 32 than throw an exception
@@ -87,7 +87,7 @@ class Gamble{
             throw new IllegalArgumentException();
         }
         Random rand = new Random();
-        // Othwerise pick a random number
+        // Otherwise pick a random number
         int RandomNumber = rand.nextInt(33);
         // If the user pick is the same as the random pick then the user wins otherwise they lose
         if (RandomNumber == UserPickedNumber){
