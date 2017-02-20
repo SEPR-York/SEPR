@@ -17,6 +17,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import javax.swing.*;
 
 /**
@@ -136,15 +137,14 @@ public class MainMenu implements Screen {
             public void changed(ChangeEvent event, Actor actor)
             {
 
-                String player1 = JOptionPane.showInputDialog(null, "Player 1 enter your name");
+                String player1 = JOptionPane.showInputDialog(null, "Player 1 enter your name", "Player 1");
 
                 JDialog.setDefaultLookAndFeelDecorated(true);
                 //ArrayList<String> collegeValues = new ArrayList<String>(Arrays.asList({ "Derwent", "Langwith", "Vanburgh", "James", "Wentworth", "Halifax", "Alcuin", "Goodricke", "Constantine" }));
                 String[] tmpArray = {"Derwent", "Langwith", "Vanburgh", "James", "Wentworth", "Halifax", "Alcuin", "Goodricke", "Constantine"};
                 ArrayList<String> collegeValueList = new ArrayList<String>(Arrays.asList(tmpArray));
                 String initialSelection = "Derwent";
-                Object player1college = JOptionPane.showInputDialog(null, "Which college would you like to be in?",
-                "Player 1", JOptionPane.QUESTION_MESSAGE, null, collegeValueList.toArray(), initialSelection);
+                Object player1college = JOptionPane.showInputDialog(null, "Which college would you like to be in?", "Player 1", JOptionPane.QUESTION_MESSAGE, null, collegeValueList.toArray(), initialSelection);
 
                 if(player1 == null || player1college == null)   // If the player click's cancel or doesn't enter a name
                 {
@@ -156,7 +156,7 @@ public class MainMenu implements Screen {
 
                 collegeValueList.remove((String) player1college);
 
-                String player2 = JOptionPane.showInputDialog(null, "Player 2 enter your name");
+                String player2 = JOptionPane.showInputDialog(null, "Player 2 enter your name", "Player 2");
                 if(player2 == null)    // If the player click's cancel or doesn't enter a name
                 {
                 	game.setScreen(new MainMenu(game));
