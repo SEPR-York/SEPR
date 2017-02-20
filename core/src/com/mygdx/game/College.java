@@ -34,18 +34,9 @@ public class College {
   private String Name;
 
   /**
-   * The custom name that a player can choose for the college.
-   */
-  private String CustomName;
-
-  /**
-   * The player is playing as the college.
-   */
-  private Player Owner;
-
-  /**
   * The color of the College
   */
+
   private Color color;
 
   /**
