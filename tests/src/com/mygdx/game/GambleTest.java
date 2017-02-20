@@ -15,7 +15,7 @@ public class GambleTest {
 	@Test
 	public void RoulTest(){
 			Gamble g = new Gamble();
-			assertTrue(g.PlayRoulette(1) == 100 || g.PlayRoulette(1) == -10);
+			assertTrue(g.PlayRoulette(1) == 320 || g.PlayRoulette(1) == -10);
 		}
 
 
