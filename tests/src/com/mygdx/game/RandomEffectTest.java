@@ -11,10 +11,13 @@ public class RandomEffectTest extends TesterFile {
 	RandomEffect testEffects = new RandomEffect();
 
 	@Test
-	public void wallTest() {
-		Tile dummyTile = new Tile(dummyGame, 0, 5, 5, 5, false, new Runnable() {
+	public void wallTest() 
+	{
+		Tile dummyTile = new Tile(dummyGame, 0, 5, 5, 5, false, new Runnable() 
+		{
 	        @Override
-	        public void run() {}});
+	        public void run() {}
+	    });
 		Roboticon dummyBot = new Roboticon(0, dummyPlayer, dummyTile);
 		
 		testEffects.buildsWall(dummyTile);
