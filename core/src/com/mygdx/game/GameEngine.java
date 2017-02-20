@@ -8,6 +8,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 import java.util.List;
 
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 /**
  * @author Gandhi-Inc.
  * @version Assessment 3
@@ -326,20 +329,36 @@ public class GameEngine {
         Integer score1 = players[1].calculateScore(market);
         Integer score2 = players[2].calculateScore(market);
         // Log the winner to the terminal (Mainly used for testing, user is unlikely to view this unless they run the game from the terminal)
-        if(score1 > score2){
+        String winner = "";
+        if(score1 > score2)
+        {
             System.out.print("Player 1 Wins!");
+            winner = "Player 1 wins!";
         }
-        else if (score1 < score2){
+        else if (score1 < score2)
+        {
             System.out.print("Player 2 Wins!");
+            winner = "Player 2 wins!";
         }
-        else {
+        else 
+        {
             System.out.print("Players draw!");
+            winner = "It was a tie";
         }
+        
         // Disable the end turn button so that they cannot continue to play the game after this point
         drawer.switchTextButton(gameScreen.endTurnButton(), false, Color.GRAY);
         // Save the players scores to GameSave.txt file
         LeaderboardBackend.AddPlayerToLeaderboard(players[1].getName(), players[1].calculateScore(market));
         LeaderboardBackend.AddPlayerToLeaderboard(players[2].getName(), players[2].calculateScore(market));
+        
+        // Display a dialog to tell the players who won
+    	JOptionPane winnerOptionPane = new JOptionPane(winner + " Click 'Ok' to return to main menu");
+    	JDialog winnerDialog = winnerOptionPane.createDialog("Congratulations!");
+    	winnerDialog.setAlwaysOnTop(true);
+    	winnerDialog.setVisible(true);
+    	
+    	game.setScreen(new MainMenu(game));		// Returns to main screen
     }
 
     private void Phase1Setup()
