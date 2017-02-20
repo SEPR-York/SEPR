@@ -88,7 +88,7 @@ public class HowToPlay implements Screen {
         stage = new Stage();
         table = new Table();																						//Initialise stage and button-table
 
-        menuFont = new TTFont(Gdx.files.internal("font/enterthegrid.ttf"), 36, 2, Color.BLACK, false);				//Initialise menu font
+        menuFont = new TTFont(Gdx.files.internal("font/earthorbiter.ttf"), 25, 2, Color.BLACK, false);				//Initialise menu font
 
         Gdx.input.setInputProcessor(stage);																			//Set the stage up to accept user inputs
 
@@ -107,31 +107,30 @@ public class HowToPlay implements Screen {
 
         buttons[0] = new TextButton("How to Play", menuButtonStyle); 												//places the lines of text into an array
         buttons[1] = new TextButton("", menuButtonStyle); 															//which is then rendered onto the screen later
-        buttons[2] = new TextButton("", menuButtonStyle);
-        buttons[3] = new TextButton("", menuButtonStyle);
-        buttons[4] = new TextButton("", menuButtonStyle);
-        buttons[5] = new TextButton("for more information, click here", menuButtonStyle);
-        buttons[6] = new TextButton("", menuButtonStyle);
-        buttons[7] = new TextButton("", menuButtonStyle);
-        buttons[8] = new TextButton("", menuButtonStyle);
+        buttons[2] = new TextButton("In the year 3000, after the apocalypse, the remains", menuButtonStyle);
+        buttons[3] = new TextButton("of the University of York have become an ideal location", menuButtonStyle);
+        buttons[4] = new TextButton("for setting up new colonies. There are fertile lands ", menuButtonStyle);
+        buttons[5] = new TextButton("and resources available to be exploited and expand your", menuButtonStyle);
+        buttons[6] = new TextButton("colony. The future of your colony is in your hands, your", menuButtonStyle);
+        buttons[7] = new TextButton("goal is to become the new Vice-Chancellor by gaining", menuButtonStyle);
+        buttons[8] = new TextButton("the most resources as possible.", menuButtonStyle);
         buttons[9] = new TextButton("", menuButtonStyle);
-        buttons[10] = new TextButton("", menuButtonStyle);
+        buttons[10] = new TextButton("for more information, click here", menuButtonStyle);
 
         // Add the event for the more information button so that will open the pdf stored on the website
-        buttons[5].addListener(new ChangeListener()
+        buttons[10].addListener(new ChangeListener()
         {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				try
         		{
-            	    Desktop.getDesktop().browse(new URL("http://www.google.com").toURI());
+            	    Desktop.getDesktop().browse(new URL("http://www.gandhi-inc.me/downloads/UserManual.pdf").toURI());
             	}
         		catch (Exception e) {}
 
 			}
 
         });
-
 
         buttons[11] = new TextButton("Back to Main Menu", menuButtonStyle); 										//creates the "back to main menu" button and adds a listner
         buttons[11].addListener(new ChangeListener() { 																//to the button so when it is pressed it sends you back to the main menu

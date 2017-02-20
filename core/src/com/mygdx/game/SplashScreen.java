@@ -119,7 +119,7 @@ public class SplashScreen implements Screen {
         batch = new SpriteBatch();
         //Initialise sprite rendering pipeline
 
-        logo = new Sprite(new Texture("image/Storyline.png"));
+        logo = new Sprite(new Texture("image/logo.png"));
         logo.setSize(logo.getWidth() / (float) 2.3, logo.getHeight() / (float) 2.3);
         logo.setCenter(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
         //Create logo sprite and re-size/re-position it to fit into game window
